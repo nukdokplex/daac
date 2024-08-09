@@ -1,0 +1,19 @@
+[
+  ./alacritty.nix
+  ./firefox.nix
+  ./gaming.nix
+  ./hyprlock.nix
+  ./hyprpicker.nix
+  ./hyprshot.nix
+  ./lutris.nix
+  ./mangohud.nix
+  ./nheko.nix
+  ./pcmanfm-qt.nix
+  ./r2modman.nix
+  ./rofi.nix
+  ./spicetify.nix
+  ./steam.nix
+  ./vscodium.nix
+  ./wine.nix
+  ./zsh.nix
+]
