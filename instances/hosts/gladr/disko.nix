@@ -3,7 +3,7 @@
     disk = {
       vdb = {
         type = "disk";
-        device = "/dev/disk/by-id/HFM512GDJTNG-8310A_FY03N076611104A0B";
+        device = "/dev/disk/by-id/nvme-HFM512GDJTNG-8310A_FY03N076611104A0B";
         content = {
           type = "gpt";
           partitions = {
