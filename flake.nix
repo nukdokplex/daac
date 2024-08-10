@@ -42,6 +42,7 @@
       hosts = [
         "sleipnir"
         "gladr"
+        "testvm"
       ];
     in
     {
@@ -63,6 +64,7 @@
         hosts = {
           sleipnir = ./instances/hosts/sleipnir;
           gladr = ./instances/hosts/gladr;
+          testvm = ./instances/hosts/testvm;
         };
 
         homes = {
