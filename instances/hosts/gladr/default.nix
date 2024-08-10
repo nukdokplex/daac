@@ -6,7 +6,7 @@
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
-  networking.hostName = "ndp-desktop";
+  networking.hostName = "gladr";
   time.timeZone = "Asia/Yekaterinburg";
   system.stateVersion = "24.05";
 
