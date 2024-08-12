@@ -70,6 +70,8 @@
         homes = {
           nukdokplex = ./instances/homes/nukdokplex;
         };
+
+        secrets = ./instances/secrets;
       };
 
       nixosConfigurations = (self.inputs.nixpkgs.lib.genAttrs hosts) (
@@ -83,6 +85,7 @@
             self.inputs.disko.nixosModules.default
             self.inputs.home-manager.nixosModules.home-manager
             self.instances.hosts.${host}
+            self.instances.secrets
             {
               nixpkgs.config.allowUnfree = true;
 
