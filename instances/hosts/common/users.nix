@@ -4,6 +4,7 @@
     users.users.nukdokplex = {
       isNormalUser = true;
       description = "NukDokPlex";
+      hashedPasswordFile = config.age.secrets.nukdokplexPasswordFile.path;
     };
 
     home-manager.users.nukdokplex = self.instances.homes.nukdokplex;
