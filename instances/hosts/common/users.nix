@@ -1,4 +1,4 @@
-{ self, ... }: {
+{ self, config, ... }: {
   config = {
     # TODO dehardcodify users
     users.users.nukdokplex = {
