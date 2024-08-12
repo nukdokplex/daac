@@ -10,6 +10,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.darwin.follows = "";
+    };
+
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -84,6 +90,7 @@
             self.modules.nixos.default
             self.inputs.disko.nixosModules.default
             self.inputs.home-manager.nixosModules.home-manager
+            self.inputs.agenix.nixosModules.default
             self.instances.hosts.${host}
             self.instances.secrets
             {
