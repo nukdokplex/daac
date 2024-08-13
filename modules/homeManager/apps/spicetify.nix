@@ -16,7 +16,7 @@
       {
         enable = true;
         spotifyPackage = pkgs.spotify;
-        theme = spicePkgs.themes.catppuccin;
+        # theme = spicePkgs.themes.catppuccin;
         colorScheme = "mocha";
       };
   };
