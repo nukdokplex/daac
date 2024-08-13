@@ -33,7 +33,7 @@ in
       nheko.enable = true;
       pcmanfm-qt.enable = true;
       rofi.enable = true;
-      spicetify.enable = true;
+      # spicetify.enable = true;
       vscodium.enable = true;
     };
   };
