@@ -46,14 +46,14 @@ in
         } else { }
       );
 
-      config = lib.mkIf cfg.enable { }
-        // moduleCfg
-        // (
-        if (lib.types.nonEmptyStr.check privilegedUsersGroup)
-        then {
-          users.extraGroups.${privilegedUsersGroup}.members = cfg.privilegedUsers;
-        }
-        else { }
+      config = lib.mkIf cfg.enable (
+        moduleCfg // (
+          if (lib.types.nonEmptyStr.check privilegedUsersGroup)
+          then {
+            users.extraGroups.${privilegedUsersGroup}.members = cfg.privilegedUsers;
+          }
+          else { }
+        )
       );
     };
 
