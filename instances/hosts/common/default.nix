@@ -3,5 +3,5 @@
     ./users.nix
   ];
 
-  cor.nixos.services.ssh.enable = true;
+  hardware.enableRedistributableFirmware = true;
 }
