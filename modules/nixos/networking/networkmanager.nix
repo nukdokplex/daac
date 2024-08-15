@@ -7,5 +7,6 @@
   enableDefault = true;
   moduleCfg = {
     networking.networkmanager.enable = true;
+    networking.networkmanager.wifi.scanRandMacAddress = false; # prevent some issues
   };
 }
