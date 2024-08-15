@@ -4,7 +4,7 @@
   category = "misc";
   name = "sudo";
   privilegedUsersGroup = "wheel";
-  enableDefault = false;
+  enableDefault = true;
   moduleCfg = {
     security.sudo = {
       enable = true;
