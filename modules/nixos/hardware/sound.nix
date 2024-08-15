@@ -2,7 +2,7 @@
   inherit config;
   domain = "nixos";
   category = "hardware";
-  name = "fstrim";
+  name = "sound";
   enableDefault = true;
   moduleCfg = {
     hardware.pulseaudio.enable = false;
