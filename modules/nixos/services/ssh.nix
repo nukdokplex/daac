@@ -3,7 +3,7 @@
   domain = "nixos";
   category = "services";
   name = "ssh";
-  enableDefault = false;
+  enableDefault = true;
   moduleCfg = {
     services.openssh = {
       enable = true;
