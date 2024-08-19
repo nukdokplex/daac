@@ -1,4 +1,6 @@
-[
-  ./docker.nix
-  ./virtualbox.nix
-]
+{ ... }: {
+  imports = [
+    ./docker.nix
+    ./virtualbox-host.nix
+  ];
+}

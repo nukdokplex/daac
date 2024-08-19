@@ -12,6 +12,8 @@ in
     homeDirectory = "/home/${username}";
     inherit username;
 
+
+    # TODO move to modules
     packages = with pkgs; [
       vesktop
       telegram-desktop
@@ -20,21 +22,18 @@ in
     ];
   };
 
-  # there the magic starts
-  cor.home = {
-    desktop.hyprland.enable = true;
-    apps = {
-      alacritty.enable = true;
-      firefox.enable = true;
-      gaming.enable = true; # includes lutris, mangohud, r2modman, steam and wine
-      hyprpicker.enable = true;
-      hyprshot.enable = true;
-      hyprlock.enable = true;
-      nheko.enable = true;
-      pcmanfm-qt.enable = true;
-      rofi.enable = true;
-      # spicetify.enable = true;
-      vscodium.enable = true;
-    };
+  programs.git = {
+    userName = "nukdokplex";
+    userEmail = "me@nukdokplex.ru";
+  };
+
+  wayland.windowManager.hyprland = lib.mkDefault {
+    enable = true;
+
+    settings.bind = lib.mkDefault [
+      "$mainMod, W, exec, ${lib.getExe pkgs.firefox}"
+      "$mainMod, Q, exec, ${lib.getExe pkgs.alacritty}"
+      "$mainMod, R, exec, ${lib.getExe pkgs.wofi}"
+    ];
   };
 }

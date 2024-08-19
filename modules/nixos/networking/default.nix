@@ -1,5 +1,7 @@
-[
-  ./firewall.nix
-  ./networkmanager.nix
-  ./nftables.nix
-]
+{ ... }: {
+  imports = [
+    ./firewall.nix
+    ./networkmanager.nix
+    ./nftables.nix
+  ];
+}

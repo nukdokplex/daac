@@ -1,4 +1,0 @@
-[
-  # ./sddm.nix
-  ./hyprland.nix
-]

@@ -1,5 +1,5 @@
 { config, lib, ... }: {
-  networking.nftables = lib.mkDefault {
+  services.gvfs = lib.mkDefault {
     enable = true;
   };
 }

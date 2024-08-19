@@ -1,8 +1,11 @@
-{ ... }: {
+{ config, lib, ... }: {
   imports = [
-    ./users.nix
+    ./users
   ];
 
   hardware.enableRedistributableFirmware = true;
   hardware.enableAllFirmware = true;
+
+  programs.gamemode.enable = lib.mkDefault true;
+  programs.hyprland.enable = lib.mkDefault true;
 }
