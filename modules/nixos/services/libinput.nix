@@ -1,3 +1,3 @@
 { config, lib, ... }: {
-  services.libinput.enable = lib.mkDefault true;
+  services.libinput.enable = true;
 }

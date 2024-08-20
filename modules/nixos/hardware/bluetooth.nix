@@ -1,5 +1,5 @@
 { lib, ... }: {
-  hardware.bluetooth = lib.mkDefault {
+  hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
     settings = {

@@ -1,5 +1,5 @@
 { lib, pkgs, ... }: {
-  stylix = lib.mkDefault {
+  stylix = {
     enable = true;
   };
 }

@@ -1,5 +1,5 @@
 { config, lib, ... }: {
-  security.sudo = lib.mkDefault {
+  security.sudo = {
     enable = true;
     wheelNeedsPassword = true;
   };

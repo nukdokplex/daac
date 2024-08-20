@@ -1,5 +1,5 @@
 { config, lib, ... }: {
-  programs.zsh = lib.mkDefault {
+  programs.zsh = {
     enable = true;
     oh-my-zsh = {
       enable = true;

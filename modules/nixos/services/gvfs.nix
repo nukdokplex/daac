@@ -1,5 +1,5 @@
 { config, lib, ... }: {
-  services.gvfs = lib.mkDefault {
+  services.gvfs = {
     enable = true;
   };
 }

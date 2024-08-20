@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }: {
-  programs.firefox = lib.mkDefault {
+  programs.firefox = {
     enable = true;
     package = pkgs.firefox;
     policies = {

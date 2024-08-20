@@ -1,5 +1,5 @@
 { config, lib, ... }: {
-  services.openssh = lib.mkDefault {
+  services.openssh = {
     enable = true;
 
     allowSFTP = true;

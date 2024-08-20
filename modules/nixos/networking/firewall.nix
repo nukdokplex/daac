@@ -1,5 +1,5 @@
 { config, lib, ... }: {
-  networking.firewall = lib.mkDefault {
+  networking.firewall = {
     enable = true;
     allowPing = true;
   };

@@ -1,6 +1,6 @@
 { lib, config, pkgs, ... }:
 {
-  programs.wofi = lib.mkDefault {
+  programs.wofi = {
     enable = config.wayland.windowManager.hyprland.enable;
     package = pkgs.wofi;
   };

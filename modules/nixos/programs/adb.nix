@@ -1,5 +1,5 @@
 { lib, config, ... }: {
-  programs.adb = lib.mkDefault {
+  programs.adb = {
     enable = true;
   };
 }

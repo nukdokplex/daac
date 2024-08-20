@@ -1,5 +1,5 @@
 { config, lib, ... }: {
-  networking.networkmanager = lib.mkDefault {
+  networking.networkmanager = {
     enable = true;
   };
 }

@@ -1,5 +1,5 @@
 { lib, pkgs, ... }: {
-  stylix = lib.mkDefault {
+  stylix = {
     enable = true;
     # https://www.pixel4k.com/wp-content/uploads/2018/09/tokyo-night-city-skyscrapers-4k_1538067528.jpg
 

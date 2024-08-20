@@ -5,7 +5,7 @@ in
 {
   imports = [ self.inputs.spicetify-nix.homeManagerModules.default ];
 
-  programs.spicetify = lib.mkDefault {
+  programs.spicetify = {
     enable = true;
   };
 }

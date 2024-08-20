@@ -1,11 +1,8 @@
 { config, lib, pkgs, ... }:
 {
-  config.wayland.windowManager.hyprland = lib.mkDefault {
+  config.wayland.windowManager.hyprland = {
     settings = {
       "$mainMod" = "SUPER";
-      "$accent" = "#ff0000";
-      "$text" = "#ffffff";
-
       # autostarts
       exec-once = [
         "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1"
@@ -49,8 +46,6 @@
         gaps_out = 10;
 
         border_size = 2;
-        "col.active_border" = "$accent";
-        "col.inactive_border" = "$text";
         layout = "dwindle";
         allow_tearing = false;
       };
@@ -187,7 +182,6 @@
         drop_shadow = false;
         shadow_range = 15;
         shadow_render_power = 3;
-        "col.shadow" = "rgba(000000ee)";
 
         dim_inactive = false;
         dim_strength = 0.2;

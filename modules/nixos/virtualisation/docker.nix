@@ -1,5 +1,5 @@
 { config, lib, ... }: {
-  virtualisation.docker = lib.mkDefault {
+  virtualisation.docker = {
     enable = true;
   };
 }

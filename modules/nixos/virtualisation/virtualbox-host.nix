@@ -1,5 +1,5 @@
 { config, lib, ... }: {
-  virtualisation.virtualbox.host = lib.mkDefault {
+  virtualisation.virtualbox.host = {
     enable = true;
     enableExtensionPack = true;
   };

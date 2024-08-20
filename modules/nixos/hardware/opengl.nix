@@ -1,5 +1,5 @@
 { config, lib, ... }: {
-  hardware.opengl = lib.mkDefault {
+  hardware.opengl = {
     enable = true;
     driSupport = true;
     driSupport32Bit = true;

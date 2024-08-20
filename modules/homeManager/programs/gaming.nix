@@ -7,10 +7,10 @@
   };
 
   config.programs = lib.mkIf config.custom.gaming.enable  {
-    lutris.enable = lib.mkDefault true;
-    mangohud.enable = lib.mkDefault true;
-    r2modman.enable = lib.mkDefault true;
-    steam.enable = lib.mkDefault true;
-    wine.enable = lib.mkDefault true;
+    lutris.enable = true;
+    mangohud.enable = true;
+    r2modman.enable = true;
+    steam.enable = true;
+    wine.enable = true;
   };
 }
