@@ -1,6 +1,4 @@
-{ self, lib, pkgs, ... }: {
-  imports = [ self.inputs.stylix.homeManagerModules.stylix ];
-
+{ lib, pkgs, ... }: {
   stylix = lib.mkDefault {
     enable = true;
   };
