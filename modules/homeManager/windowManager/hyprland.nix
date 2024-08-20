@@ -53,7 +53,7 @@
       monitor = ",preferred,auto,auto";
 
       # binds
-      bind = lib.mkDefault [
+      bind = [
         "$mainMod, C, killactive"
         "$mainMod SHIFT, C, exec, hyprctl reload"
         "$mainMod, M, exit"
@@ -260,13 +260,13 @@
     };
   };
 
-  config.programs.hyprlock = lib.mkDefault {
+  config.programs.hyprlock = {
     enable = config.wayland.windowManager.hyprland.enable;
     package = pkgs.hyprlock;
     settings = { };
   };
 
-  config.services.hypridle = lib.mkDefault {
+  config.services.hypridle = {
     enable = config.wayland.windowManager.hyprland.enable;
 
     settings = {
