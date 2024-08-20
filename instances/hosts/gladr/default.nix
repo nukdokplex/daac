@@ -2,7 +2,7 @@
   imports = [
     ../common
     ./disko.nix
-    # self.inputs.lanzaboote.nixosModules.lanzaboote
+    self.inputs.lanzaboote.nixosModules.lanzaboote
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
