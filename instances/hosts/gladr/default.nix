@@ -20,18 +20,16 @@
     kernelModules = [ "kvm-amd" "amdgpu" ];
     extraModulePackages = [ ];
 
-    # lanzaboote = {
-    #   enable = true;
-    #   pkiBundle = "/etc/secureboot";
-    # };
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/etc/secureboot";
+    };
 
     loader = {
       efi = {
         canTouchEfiVariables = true;
         efiSysMountPoint = "/boot";
       };
-      systemd-boot.enable = lib.mkForce true;
-      systemd-boot.consoleMode = "max";
     };
   };
 
