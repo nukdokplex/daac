@@ -30,7 +30,6 @@
 
     # misc
     cmatrix
-    new-cowsay
     kittysay
     ponysay
     fastfetch
