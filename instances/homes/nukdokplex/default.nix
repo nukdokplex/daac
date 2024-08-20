@@ -27,10 +27,10 @@ in
     userEmail = "me@nukdokplex.ru";
   };
 
-  wayland.windowManager.hyprland = lib.mkDefault {
+  wayland.windowManager.hyprland = {
     enable = true;
 
-    settings.bind = lib.mkDefault [
+    settings.bind = [
       "$mainMod, W, exec, ${lib.getExe pkgs.firefox}"
       "$mainMod, Q, exec, ${lib.getExe pkgs.alacritty}"
       "$mainMod, R, exec, ${lib.getExe pkgs.wofi}"
