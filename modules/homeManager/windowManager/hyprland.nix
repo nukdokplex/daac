@@ -49,9 +49,7 @@
         layout = "dwindle";
         allow_tearing = false;
       };
-
-      monitor = ",preferred,auto,auto";
-
+      
       # binds
       bind = [
         "$mainMod, C, killactive"
