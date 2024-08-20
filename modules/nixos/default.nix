@@ -9,5 +9,6 @@
     ./console.nix
     ./fonts.nix
     ./packages.nix
+    ./stylix.nix
   ];
 }

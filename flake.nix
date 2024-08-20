@@ -26,6 +26,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,6 +40,7 @@
       url = "github:nukdokplex/epson_201310w";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
 
   };
 
@@ -91,6 +97,7 @@
             self.inputs.disko.nixosModules.default
             self.inputs.home-manager.nixosModules.home-manager
             self.inputs.agenix.nixosModules.default
+            self.inputs.stylix.nixosModules.stylix
             self.instances.hosts.${host}
             self.instances.secrets
             {
