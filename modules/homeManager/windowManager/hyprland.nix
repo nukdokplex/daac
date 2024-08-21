@@ -245,7 +245,7 @@ in
 
         "WLR_DRM_NO_ATOMIC,1"
 
-        "NIXOS_OZONE_WL=1"
+        "NIXOS_OZONE_WL,1"
       ];
     };
 
@@ -261,6 +261,7 @@ in
         "WAYLAND_DISPLAY"
         "DESKTOP_SESSION"
         "WLR_DRM_NO_ATOMIC"
+        "NIXOS_OZONE_WL"
       ];
     };
   };
