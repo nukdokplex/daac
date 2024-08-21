@@ -1,4 +1,8 @@
 { config, lib, pkgs, ... }:
+let
+  rgb = color: "rgb(${color})";
+  rgba = color: alpha: "rgba(${color}${alpha})";
+in
 {
   config.wayland.windowManager.hyprland = {
     settings = {
@@ -49,7 +53,7 @@
         layout = "dwindle";
         allow_tearing = false;
       };
-      
+
       # binds
       bind = [
         "$mainMod, C, killactive"
@@ -57,6 +61,7 @@
         "$mainMod, M, exit"
         "$mainMod, P, pseudo"
         "$mainMod, Z, togglesplit"
+        "$mainMod, L, exec, loginctl lock-session"
         "$mainMod, V, togglefloating"
         "$mainMod, F, fullscreen"
         "$mainMod SHIFT, F, fakefullscreen"
@@ -258,42 +263,41 @@
     };
   };
 
-  config.programs.hyprlock = {
-    enable = config.wayland.windowManager.hyprland.enable;
-    package = pkgs.hyprlock;
-    settings = { };
+  config.programs.swaylock = lib.mkIf config.wayland.windowManager.hyprland.enable {
+    enable = true;
+    package = pkgs.swaylock;
   };
 
-  config.services.hypridle = {
-    enable = config.wayland.windowManager.hyprland.enable;
+  config.services.hypridle = lib.mkIf config.wayland.windowManager.hyprland.enable {
+    enable = true;
 
     settings = {
       general = {
-        lock_cmd = "pidof hyprlock || hyprlock";
-        unlock_cmd = "killall hyprlock";
+        lock_cmd = "pidof swaylock || swaylock";
+        unlock_cmd = "killall swaylock";
         before_sleep_cmd = "loginctl lock-session"; # lock before suspend.
         after_sleep_cmd = "hyprctl dispatch dpms on"; # to avoid having to press a key twice to turn on the display.
       };
 
-      # listener =
-      #   let
-      #     cfg = config.idling-settings;
-      #   in
-      #   [
-      #     (lib.mkIf (cfg.lockSessionTimeout > -1) {
-      #       timeout = cfg.lockSessionTimeout;
-      #       on-timeout = "loginctl lock-session";
-      #     })
-      #     (lib.mkIf (cfg.screenOffTimeout > -1) {
-      #       timeout = cfg.screenOffTimeout;
-      #       on-timeout = "hyprctl dispatch dpms off"; # screen off when timeout has passed
-      #       on-resume = "hyprctl dispatch dpms on"; # screen on when activity is detected after timeout has fired.
-      #     })
-      #     (lib.mkIf (cfg.suspendTimeout > -1) {
-      #       timeout = cfg.suspendTimeout;
-      #       on-timeout = "systemctl suspend";
-      #     })
-      #   ];
+      listener =
+        let
+          cfg = config.idling-settings;
+        in
+        [ ] ++
+        (lib.optional (cfg.lockSessionTimeout > -1) {
+          timeout = cfg.lockSessionTimeout;
+          on-timeout = "loginctl lock-session";
+        }) ++
+        (lib.optional (cfg.screenOffTimeout > -1) {
+          timeout = cfg.screenOffTimeout;
+          on-timeout = "hyprctl dispatch dpms off"; # screen off when timeout has passed
+          on-resume = "hyprctl dispatch dpms on"; # screen on when activity is detected after timeout has fired.
+        }) ++
+        (lib.optional (cfg.suspendTimeout > -1) {
+          timeout = cfg.suspendTimeout;
+          on-timeout = "systemctl suspend";
+        })
+      ;
     };
   };
 }
