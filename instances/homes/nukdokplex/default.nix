@@ -47,7 +47,7 @@ in
     modules-right = [ ] ++
       [ "wireplumber" ] ++
       [ "tray" ] ++
-      (lib.optional config.programs.waybar.enableBatteryIndicator [ "battery" ]) ++
+      (lib.optional config.programs.waybar.enableBatteryIndicator "battery") ++
       [ "hyprland/language" ]
     ;
   };
