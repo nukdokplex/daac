@@ -8,6 +8,7 @@
     ./virtualisation
     ./console.nix
     ./fonts.nix
+    ./nix.nix
     ./packages.nix
     ./stylix.nix
   ];
