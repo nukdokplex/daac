@@ -6,6 +6,7 @@
     ./lutris.nix
     ./mangohud.nix
     ./pcmanfm-qt.nix
+    ./pcmanfm.nix
     ./r2modman.nix
     ./spicetify.nix
     ./steam.nix
