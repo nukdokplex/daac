@@ -1,14 +1,14 @@
 { lib, config, pkgs, ... }: {
-  options.programs.pcmanfm-qt = {
+  options.programs.pcmanfm = {
     enable = lib.mkOption {
       default = false;
       type = lib.types.bool;
     };
   };
 
-  config = lib.mkIf config.programs.pcmanfm-qt.enable {
+  config = lib.mkIf config.programs.pcmanfm.enable {
     home.packages = [
-      pkgs.lxqt.pcmanfm-qt
+      pkgs.pcmanfm
     ];
   };
 }

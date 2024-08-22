@@ -12,8 +12,6 @@ in
     homeDirectory = "/home/${username}";
     inherit username;
 
-
-    # TODO move to modules
     packages = with pkgs; [
       vesktop
       telegram-desktop
@@ -22,19 +20,26 @@ in
     ];
   };
 
-  programs.git = {
-    userName = "nukdokplex";
-    userEmail = "me@nukdokplex.ru";
+  programs = {
+    git = {
+      userName = "nukdokplex";
+      userEmail = "me@nukdokplex.ru";
+    };
+    pcmanfm.enable = true;
   };
+
+
+  
 
   wayland.windowManager.hyprland = {
     enable = true;
 
+    # TODO: these packages are hardcoded
     settings.bind = [
       "$mainMod, W, exec, ${lib.getExe pkgs.firefox}"
       "$mainMod, Q, exec, ${lib.getExe pkgs.alacritty}"
       "$mainMod, R, exec, ${lib.getExe pkgs.wofi} --show drun"
-      "$mainMod, E, exec, ${lib.getExe pkgs.pcmanfm-qt}"
+      "$mainMod, E, exec, ${lib.getExe pkgs.pcmanfm}"
     ];
   };
 
