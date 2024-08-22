@@ -23,13 +23,10 @@ in
   programs = {
     git = {
       userName = "nukdokplex";
-      userEmail = "me@nukdokplex.ru";
+      userEmail = "nukdokplex@nukdokplex.ru";
     };
     pcmanfm.enable = true;
   };
-
-
-  
 
   wayland.windowManager.hyprland = {
     enable = true;
