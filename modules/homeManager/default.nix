@@ -3,6 +3,6 @@
     ./programs
     ./windowManager
     ./idling.nix
-    ./stylix.nix
+    ./theme.nix
   ];
 }
