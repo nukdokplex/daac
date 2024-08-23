@@ -23,7 +23,11 @@ in
         follow_mouse = 1;
 
         touchpad = {
-          natural_scroll = false;
+          clickfinger_behavior = true;
+          drag_lock = true;
+          middle_button_emulation = true;
+          natural_scroll = true;
+          tap-to-click = true;
         };
 
         sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
