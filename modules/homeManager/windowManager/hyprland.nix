@@ -243,6 +243,8 @@ in
         ];
       };
 
+      xwayland.force_zero_scaling = true;
+
       env = [
         # GTK 
         "GDK_BACKEND,wayland,x11"
