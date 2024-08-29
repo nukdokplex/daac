@@ -26,6 +26,7 @@ in
       userEmail = "nukdokplex@nukdokplex.ru";
     };
     pcmanfm.enable = true;
+    waybar.enable = true;
   };
 
   wayland.windowManager.hyprland = {
