@@ -8,6 +8,7 @@
   nixpkgs.hostPlatform = "x86_64-linux";
   networking.hostName = "gladr";
   time.timeZone = "Asia/Yekaterinburg";
+  i18n.defaultLocale = "ru_RU.UTF-8";
   system.stateVersion = "24.05";
 
   boot = {
