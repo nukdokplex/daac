@@ -25,7 +25,7 @@ with config.stylix.fonts;
         modules-right = [
           "group/hardware"
           "tray"
-          "hyprland/languages"
+          "hyprland/language"
         ];
         "hyprland/workspaces" = {
           all-outputs = false;
