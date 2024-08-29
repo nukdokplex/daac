@@ -38,7 +38,7 @@
       wayland.windowManager.hyprland.settings.monitor = [
         "desc:LG Display 0x05F6, 1920x1080, 0x0, 1.25"
       ];
-      programs.waybar.enableBatteryIndicator = true;
+      custom.usesBattery = true;
     }
   ];
 

@@ -39,18 +39,4 @@ in
       "$mainMod, E, exec, ${lib.getExe pkgs.pcmanfm}"
     ];
   };
-
-  programs.waybar.settings.mainBar = {
-    modules-left = [
-      "hyprland/workspaces"
-      "hyprland/window"
-    ];
-    modules-center = [ "clock" ];
-    modules-right = [ ] ++
-      [ "wireplumber" ] ++
-      [ "tray" ] ++
-      (lib.optional config.programs.waybar.enableBatteryIndicator "battery") ++
-      [ "hyprland/language" ]
-    ;
-  };
 }
