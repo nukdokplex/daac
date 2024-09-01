@@ -15,5 +15,6 @@
     ./wine.nix
     ./wofi.nix
     ./zsh.nix
+    ./gwenview.nix
   ];
 }
