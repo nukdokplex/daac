@@ -61,8 +61,6 @@ in
       # binds
       bind =
         let
-          grim = lib.getExe pkgs.grim;
-          slurp = lib.getExe pkgs.slurp;
           jq = lib.getExe pkgs.jq;
         in
         [
@@ -72,12 +70,14 @@ in
           "$mainMod, P, pseudo"
           "$mainMod, Z, togglesplit"
           "$mainMod, L, exec, loginctl lock-session"
-          "$mainMod, V, togglefloating"
+          "$mainMod, D, togglefloating"
           "$mainMod, F, fullscreen"
           "$mainMod SHIFT, F, fakefullscreen"
-          "$mainMod, PRINT, exec, ${grim} -g \"$(${slurp})\" -q 100 -l 0 -t png - | wl-copy"
-          ", PRINT, exec, ${grim} -c -q 100 -l 0 -t png -o \"$(hyprctl activeworkspace -j | ${jq} -r '.monitor')\" - | wl-copy"
-
+          "$mainMod, R, exec, wofi --show drun"
+          "$mainMod, V, exec, cliphist list | wofi --dmenu -p \"Select clipboard history entry...\" | cliphist decode | wl-copy"
+          "$mainMod, PRINT, exec, grim -g \"$(slurp)\" -l 6 -t png - | wl-copy"
+          ", PRINT, exec, grim -c -l 6 -t png -o \"$(hyprctl activeworkspace -j | ${jq} -r .monitor)\" - | wl-copy"
+          
           # Move focus with mainMod + arrow keys
           "$mainMod, left, movefocus, l"
           "$mainMod, right, movefocus, r"
@@ -298,12 +298,21 @@ in
     };
   };
 
+  config.services.cliphist = lib.mkIf config.wayland.windowManager.hyprland.enable {
+    enable = true;
+    allowImages = true;
+  };
+
   config.home.packages = lib.mkIf config.wayland.windowManager.hyprland.enable [
     pkgs.grim
     pkgs.slurp
     pkgs.wl-clipboard
-    pkgs.cliphist
   ];
+
+  config.programs.wofi = lib.mkIf config.wayland.windowManager.hyprland.enable{
+    enable = true;
+    package = pkgs.wofi;
+  };
 
   config.programs.swaylock = lib.mkIf config.wayland.windowManager.hyprland.enable {
     enable = true;

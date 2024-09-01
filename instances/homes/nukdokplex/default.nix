@@ -36,7 +36,6 @@ in
     settings.bind = [
       "$mainMod, W, exec, ${lib.getExe pkgs.firefox}"
       "$mainMod, Q, exec, ${lib.getExe pkgs.alacritty}"
-      "$mainMod, R, exec, ${lib.getExe pkgs.wofi} --show drun"
       "$mainMod, E, exec, ${lib.getExe pkgs.pcmanfm}"
     ];
   };

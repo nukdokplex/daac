@@ -13,7 +13,6 @@
     ./vscodium.nix
     ./waybar
     ./wine.nix
-    ./wofi.nix
     ./zsh.nix
     ./gwenview.nix
   ];
