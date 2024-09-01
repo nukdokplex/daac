@@ -34,5 +34,6 @@
     ponysay
     fastfetch
     sl # steam locomotive
+    inotify-tools
   ];
 }
