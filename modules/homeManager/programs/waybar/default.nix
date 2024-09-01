@@ -1,6 +1,5 @@
 { pkgs, lib, config, ... }:
 with config.lib.stylix.colors.withHashtag;
-with config.stylix.fonts;
 {
   stylix.targets.waybar.enable = false;
 
@@ -89,7 +88,7 @@ with config.stylix.fonts;
         };
         "bluetooth" = {
           format = "";
-          format-connected = "　{num_connections}";
+          format-connected = " {num_connections}";
           format-disabled = ""; # an empty format will hide the module
           on-clic = lib.getExe' pkgs.blueberry "blueberry";
           tooltip-format = "{controller_alias}	{controller_address}";
@@ -130,6 +129,17 @@ with config.stylix.fonts;
 
           tooltip = true;
         };
+        "battery" = {
+          format = "{icon}";
+          format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
+
+          on-update = "${pkgs.writeShellScript "check-battery" (builtins.readFile ./scripts/check-battery.sh)}";
+          tooltip-format = ''
+            {capacity}%: {timeTo}.
+            Draw: {power} watts.'';
+
+          states = { critical = 20; };
+        };
         "group/hardware" = {
           orientation = "horizontal";
           modules = [ "wireplumber" "network" "bluetooth" ] ++
@@ -159,8 +169,9 @@ with config.stylix.fonts;
 
 
       * {
-        font-family: "${sansSerif.name}";
-        font-size: ${builtins.toString sizes.desktop}pt;
+        /* that's kinda tricky solution for clipping icons */
+        font-family: ${config.stylix.fonts.sansSerif.name}, Symbols Nerd Font;
+        font-size: 10pt;
       }
 
       #waybar {
@@ -175,9 +186,13 @@ with config.stylix.fonts;
         opacity: 0.1;
       }
 
-      .modules-left > * > *,
-      .modules-right > * > *,
-      .modules-center > * > * {
+      /*
+        gtk css has no attrbute selectors and
+        i can't use some thing like [class*='modules']
+        so we have to select left, center and right modules
+      */
+
+      #waybar > box > * > widget > * {
         padding: 0px 6px;
         margin: 12px 6px;
         background-color: @base01;
@@ -185,22 +200,38 @@ with config.stylix.fonts;
         border: 0.5px solid @base02;
       }
 
-      .modules-left > :first-child > * {
-        margin-left: 12px;
+      .modules-left {
+        margin-left: 6px;
       }
 
-      .modules-right > :last-child > * {
-        margin-right: 12px;
+      .modules-right {
+        margin-right: 6px;
+      }
+
+      #waybar > box > * > widget > box > widget > * {
+        padding: 0px 3px;
+        background-color: @base00;
+        border-radius: 2.5px;
+        margin: 3px;
+        border: 0.5px solid @base02;
+      }
+
+      #waybar > box > * > widget > box > :first-child > * {
+        margin-left: 0px;
+      }
+
+      #waybar > box > * > widget > box > :last-child > * {
+        margin-right: 0px;
       }
 
       #workspaces {
         padding: 0px 0px;
       }
 
-      #workspaces > * {
+      #workspaces> * {
         padding: 0px 3px;
         border-radius: 7px;
-        margin: 0px 0px; 
+        margin: 0px 0px;
       }
 
       #workspaces .active {

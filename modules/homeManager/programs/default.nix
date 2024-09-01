@@ -11,7 +11,7 @@
     ./spicetify.nix
     ./steam.nix
     ./vscodium.nix
-    ./waybar.nix
+    ./waybar
     ./wine.nix
     ./wofi.nix
     ./zsh.nix
