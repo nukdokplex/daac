@@ -10,6 +10,6 @@
     ./fonts.nix
     ./nix.nix
     ./packages.nix
-    ./stylix.nix
+    ./theme.nix
   ];
 }
