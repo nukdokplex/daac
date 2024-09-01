@@ -36,5 +36,6 @@
     sl # steam locomotive
     inotify-tools
     psmisc
+    nixpkgs-fmt
   ];
 }
