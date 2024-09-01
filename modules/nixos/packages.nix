@@ -37,5 +37,6 @@
     inotify-tools
     psmisc
     nixpkgs-fmt
+    nix-search-cli
   ];
 }
