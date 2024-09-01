@@ -148,95 +148,95 @@ with config.lib.stylix.colors.withHashtag;
       };
     };
 
-    style = ''
-      /* colors in comments are examples, not actual color scheme */
-      @define-color base00 ${base00}; /* #00211f Default Background */
-      @define-color base01 ${base01}; /* #003a38 Lighter Background (Used for status bars, line number and folding marks) */
-      @define-color base02 ${base02}; /* #005453 Selection Background */
-      @define-color base03 ${base03}; /* #ababab Comments, Invisibles, Line Highlighting */
-      @define-color base04 ${base04}; /* #c3c3c3 Dark Foreground (Used for status bars) */
-      @define-color base05 ${base05}; /* #dcdcdc Default Foreground, Caret, Delimiters, Operators */
-      @define-color base06 ${base06}; /* #efefef Light Foreground (Not often used) */
-      @define-color base07 ${base07}; /* #f5f5f5 Brightest Foreground (Not often used) */
-      @define-color base08 ${base08}; /* #ce7e8e Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted */
-      @define-color base09 ${base09}; /* #dca37c Integers, Boolean, Constants, XML Attributes, Markup Link Url */
-      @define-color base0A ${base0A}; /* #bfac4e Classes, Markup Bold, Search Text Background */
-      @define-color base0B ${base0B}; /* #56c16f Strings, Inherited Class, Markup Code, Diff Inserted */
-      @define-color base0C ${base0C}; /* #62c0be Support, Regular Expressions, Escape Characters, Markup Quotes */
-      @define-color base0D ${base0D}; /* #88b0da Functions, Methods, Attribute IDs, Headings */
-      @define-color base0E ${base0E}; /* #b39be0 Keywords, Storage, Selector, Markup Italic, Diff Changed */
-      @define-color base0F ${base0F}; /* #d89aba Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?> */
+    style =
+      let
+        borderWidth = config.custom.borders.width;
+        borderRadius = config.custom.borders.radius;
+        borderRadiusWithWidth = borderRadius + borderWidth;
+      in
+      ''
+              /* colors in comments are examples, not actual color scheme */
+              @define-color base00 ${base00}; /* #00211f Default Background */
+              @define-color base01 ${base01}; /* #003a38 Lighter Background (Used for status bars, line number and folding marks) */
+              @define-color base02 ${base02}; /* #005453 Selection Background */
+              @define-color base03 ${base03}; /* #ababab Comments, Invisibles, Line Highlighting */
+              @define-color base04 ${base04}; /* #c3c3c3 Dark Foreground (Used for status bars) */
+              @define-color base05 ${base05}; /* #dcdcdc Default Foreground, Caret, Delimiters, Operators */
+              @define-color base06 ${base06}; /* #efefef Light Foreground (Not often used) */
+              @define-color base07 ${base07}; /* #f5f5f5 Brightest Foreground (Not often used) */
+              @define-color base08 ${base08}; /* #ce7e8e Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted */
+              @define-color base09 ${base09}; /* #dca37c Integers, Boolean, Constants, XML Attributes, Markup Link Url */
+              @define-color base0A ${base0A}; /* #bfac4e Classes, Markup Bold, Search Text Background */
+              @define-color base0B ${base0B}; /* #56c16f Strings, Inherited Class, Markup Code, Diff Inserted */
+              @define-color base0C ${base0C}; /* #62c0be Support, Regular Expressions, Escape Characters, Markup Quotes */
+              @define-color base0D ${base0D}; /* #88b0da Functions, Methods, Attribute IDs, Headings */
+              @define-color base0E ${base0E}; /* #b39be0 Keywords, Storage, Selector, Markup Italic, Diff Changed */
+              @define-color base0F ${base0F}; /* #d89aba Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?> */
 
 
-      * {
-        /* that's kinda tricky solution for clipping icons */
-        font-family: ${config.stylix.fonts.sansSerif.name}, Symbols Nerd Font;
-        font-size: 10pt;
-      }
+              * {
+                /* that's kinda tricky solution for clipping icons */
+                font-family: ${config.stylix.fonts.sansSerif.name}, Symbols Nerd Font;
+                font-size: 10pt;
+              }
 
-      #waybar {
-        background-color: @base00;
-        color: @base05;
-        border-radius: 17px;
-        border: 2px solid @base0D;
-        padding: 10px 10px;
-      }
+              #waybar {
+                background-color: @base00;
+                color: @base05;
+                border-radius: ${builtins.toString borderRadiusWithWidth}px;
+                border: ${builtins.toString borderWidth}px solid @base0D;
+                padding: 10px 10px;
+              }
 
-      #waybar.hidden {
-        opacity: 0.1;
-      }
+              #waybar.hidden {
+                opacity: 0.1;
+              }
 
-      /*
-        gtk css has no attrbute selectors and
-        i can't use some thing like [class*='modules']
-        so we have to select left, center and right modules
-      */
+              #waybar > box > * > widget > * {
+                padding: 0px 6px;
+                margin: 12px 6px;
+                background-color: @base01;
+                border-radius: ${builtins.toString (borderRadius - 6)}px;
+                border: 0.5px solid @base02;
+              }
 
-      #waybar > box > * > widget > * {
-        padding: 0px 6px;
-        margin: 12px 6px;
-        background-color: @base01;
-        border-radius: 7.5px;
-        border: 0.5px solid @base02;
-      }
+              .modules-left {
+                margin-left: 6px;
+              }
 
-      .modules-left {
-        margin-left: 6px;
-      }
+              .modules-right {
+                margin-right: 6px;
+              }
 
-      .modules-right {
-        margin-right: 6px;
-      }
+              #waybar > box > * > widget > box > widget > * {
+                padding: 0px 3px;
+                background-color: @base00;
+                border-radius: ${builtins.toString (borderRadius - 6 - 0.5 - 3)}px;
+                margin: 3px;
+                border: 0.5px solid @base02;
+              }
 
-      #waybar > box > * > widget > box > widget > * {
-        padding: 0px 3px;
-        background-color: @base00;
-        border-radius: 2.5px;
-        margin: 3px;
-        border: 0.5px solid @base02;
-      }
+              #waybar > box > * > widget > box > :first-child > * {
+                margin-left: 0px;
+              }
 
-      #waybar > box > * > widget > box > :first-child > * {
-        margin-left: 0px;
-      }
+              #waybar > box > * > widget > box > :last-child > * {
+                margin-right: 0px;
+              }
 
-      #waybar > box > * > widget > box > :last-child > * {
-        margin-right: 0px;
-      }
+              #workspaces {
+                padding: 0px 0px;
+              }
 
-      #workspaces {
-        padding: 0px 0px;
-      }
+              #workspaces> * {
+                padding: 0px 3px;
+                border-radius: 7px;
+                margin: 0px 0px;
+              }
 
-      #workspaces> * {
-        padding: 0px 3px;
-        border-radius: 7px;
-        margin: 0px 0px;
-      }
-
-      #workspaces .active {
-        background-color: @base02;
-      }
-    '';
-  };
-}
+              #workspaces .active {
+                background-color: @base02;
+              }
+            '';
+          };
+        }

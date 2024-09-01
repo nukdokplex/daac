@@ -53,7 +53,7 @@ in
         gaps_in = 5;
         gaps_out = 10;
 
-        border_size = 2;
+        border_size = config.custom.borders.width;
         layout = "dwindle";
         allow_tearing = false;
       };
@@ -191,7 +191,7 @@ in
 
       # appearance
       decoration = {
-        rounding = 15;
+        rounding = config.custom.borders.radius;
 
         blur = {
           enabled = true;
