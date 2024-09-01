@@ -23,6 +23,7 @@
 
     lanzaboote = {
       enable = true;
+      enrollKeys = true;
       pkiBundle = "/etc/secureboot";
     };
 
@@ -32,6 +33,14 @@
         efiSysMountPoint = "/boot";
       };
     };
+  };
+
+  environment.etc.secureboot-GUID = {
+    source = ./GUID;
+    target = "secureboot/GUID";
+    mode = "0400";
+    user = "root";
+    group = "root";
   };
 
   home-manager.sharedModules = [
