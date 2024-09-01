@@ -15,7 +15,6 @@ in
     packages = with pkgs; [
       vesktop
       telegram-desktop
-      logseq
       keepassxc
     ];
   };
