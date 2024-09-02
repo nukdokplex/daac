@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }: {
   imports = [
     ./users
+    ./networkManagerProfiles.nix
   ];
 
   hardware.enableRedistributableFirmware = true;
