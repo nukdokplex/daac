@@ -3,7 +3,7 @@
     disk = {
       main = {
         type = "disk";
-        device = "/dev/disk/by-id/eui.00253857019d3107";
+        device = "/dev/disk/by-id/nvme_SSD_970_EVO_Plus_500GB_S4EVNZFN703254E";
         content = {
           type = "gpt";
           partitions = {
