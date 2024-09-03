@@ -19,18 +19,19 @@
                 ];
               };
             };
-            ssh = {
-              size = "512M";
-              content = {
-                type = "luks";
-                name = "ssh";
-                content = {
-                  type = "filesystem";
-                  format = "ext4";
-                  mountpoint = "/etc/ssh";
-                };
-              };
-            };
+            # ssh = {
+            #   size = "512M";
+            #   content = {
+            #     type = "luks";
+            #     name = "ssh";
+            #     passwordFile = "/tmp/secret.key";
+            #     content = {
+            #       type = "filesystem";
+            #       format = "ext4";
+            #       mountpoint = "/etc/ssh";
+            #     };
+            #   };
+            # };
             root = {
               size = "100%";
               content = {
@@ -40,7 +41,7 @@
               };
             };
             swap = {
-              size = "36GB";
+              size = "36G";
               content = {
                 type = "swap";
                 resumeDevice = true;
