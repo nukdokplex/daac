@@ -28,6 +28,8 @@ in
     waybar.enable = true;
   };
 
+  custom.gaming.enable = true;
+
   wayland.windowManager.hyprland = {
     enable = true;
 
