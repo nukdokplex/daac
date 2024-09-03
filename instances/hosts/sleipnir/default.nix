@@ -51,4 +51,49 @@
       custom.usesBattery = false;
     }
   ];
+
+  hardware.printers = {
+    ensurePrinters = [
+      {
+        name = "Epson_L120_Series";
+        location = "Home";
+        deviceUri = "usb://EPSON/L120%20Series?serial=544E594B3132383744";
+        model = "EPSON_L120.ppd";
+      }
+    ];
+  };
+
+  systemd.mounts = [
+    {
+      name = "data-archive.mount";
+      enable = true;
+      wantedBy = [ "multi-user.target" ];
+      what = "/dev/disk/by-label/ARCHIVE";
+      where = "/data/archive";
+      type = "ext4";
+      options = "rw,nosuid,nodev,relatime,errors=remount-ro,x-mount.mkdir=0755";
+    }
+    {
+      name = "data-downloads.mount";
+      enable = true;
+      wantedBy = [ "multi-user.target" ];
+      what = "/dev/disk/by-label/DOWNLOADS";
+      where = "/data/downloads";
+      type = "ext4";
+      options = "rw,nosuid,nodev,relatime,errors=remount-ro,x-mount.mkdir=0755";
+    }
+    {
+      name = "data-passport.mount";
+      enable = true;
+      wantedBy = [ "multi-user.target" ];
+      what = "/dev/mapper/passport";
+      where = "/data/passport";
+      type = "ext4";
+      options = "rw,nosuid,nodev,relatime,errors=remount-ro,x-mount.mkdir=0755";
+    }
+  ];
+
+  environment.etc.crypttab.text = ''
+    passport /dev/disk/by-label/PASSPORT none
+  '';
 }
