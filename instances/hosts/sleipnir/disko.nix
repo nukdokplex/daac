@@ -3,7 +3,7 @@
     disk = {
       main = {
         type = "disk";
-        device = "/dev/disk/by-id/nvme_SSD_970_EVO_Plus_500GB_S4EVNZFN703254E";
+        device = "/dev/disk/by-id/nvme-Samsung_SSD_970_EVO_Plus_500GB_S4EVNZFN703254E";
         content = {
           type = "gpt";
           partitions = {
@@ -19,42 +19,33 @@
                 ];
               };
             };
-            luks = {
-              size = "100%";
+            ssh = {
+              size = "512M";
               content = {
                 type = "luks";
-                name = "crypted";
+                name = "ssh";
                 content = {
-                  type = "lvm_pv";
-                  vg = "main_pool";
+                  type = "filesystem";
+                  format = "ext4";
+                  mountpoint = "/etc/ssh";
                 };
               };
             };
-          };
-        };
-      };
-    };
-    lvm_vg = {
-      main_pool = {
-        type = "lvm_vg";
-        lvs = {
-          swap = {
-            size = "36G";
-            content = {
-              type = "swap";
-              resumeDevice = true;
+            root = {
+              size = "100%";
+              content = {
+                type = "filesystem";
+                format = "ext4";
+                mountpoint = "/";
+              };
             };
-          };
-          root = {
-            size = "100%FREE";
-            content = {
-              type = "filesystem";
-              format = "ext4";
-              mountpoint = "/";
-              mountOptions = [
-                "defaults"
-              ];
-            };
+            swap = {
+              size = "36GB";
+              content = {
+                type = "swap";
+                resumeDevice = true;
+              };
+            };      
           };
         };
       };
