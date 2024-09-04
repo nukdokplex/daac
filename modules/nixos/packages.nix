@@ -40,5 +40,6 @@
     nix-search-cli
     self.inputs.agenix.packages.${config.nixpkgs.hostPlatform.system}.agenix
     btop
+    htop
   ];
 }
