@@ -1,11 +1,14 @@
-{ self, lib, config, ... }: {
+{ self, lib, config, ... }: 
+let
+  system = "x86_64-linux";
+in {
   imports = [
     ../common
     ./disko.nix
     self.inputs.lanzaboote.nixosModules.lanzaboote
   ];
 
-  nixpkgs.hostPlatform = "x86_64-linux";
+  nixpkgs.hostPlatform = system;
   networking.hostName = "sleipnir";
   time.timeZone = "Asia/Yekaterinburg";
   i18n.defaultLocale = "ru_RU.UTF-8";
@@ -50,6 +53,10 @@
       ];
       custom.usesBattery = false;
     }
+  ];
+
+  services.printing.drivers = [
+    self.inputs.epson_201310w.packages."${system}".default
   ];
 
   hardware.printers = {
