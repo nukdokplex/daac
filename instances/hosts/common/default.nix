@@ -16,4 +16,26 @@
       user = "greeter";
     };
   };
+
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "daily";
+      options = ''
+        --delete-older-than 30d
+      '';
+      persistent = true;
+      randomizedDelaySec = "60min";
+    };
+    extraOptions = ''
+      min-free = ${toString (100 * 1024 * 1024)}
+      max-free = ${toString (1024 * 1024 * 1024)}
+    '';
+    optimise.automatic = true;
+
+    settings = {
+      auto-optimise-store = false;
+      experimental-features = [ "nix-command" "flakes" ];
+    };
+  };
 }
