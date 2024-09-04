@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ self, config, lib, pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     # file systems
     apfsprogs
@@ -38,5 +38,6 @@
     psmisc
     nixpkgs-fmt
     nix-search-cli
+    self.inputs.agenix.packages.${config.nixpkgs.hostPlatform.system}.agenix
   ];
 }

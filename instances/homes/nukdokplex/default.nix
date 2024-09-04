@@ -5,7 +5,9 @@ in
 {
   imports = [
     self.modules.homeManager.default
-
+    self.inputs.agenix.homeManagerModules.age
+    ./secrets
+    ./mail.nix
   ];
 
   home = {
@@ -39,6 +41,7 @@ in
     };
     pcmanfm.enable = true;
     waybar.enable = true;
+    thunderbird.enable = true;
   };
 
   custom.gaming.enable = true;
