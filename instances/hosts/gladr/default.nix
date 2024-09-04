@@ -23,7 +23,6 @@
 
     lanzaboote = {
       enable = true;
-      enrollKeys = true;
       pkiBundle = "/etc/secureboot";
     };
 
