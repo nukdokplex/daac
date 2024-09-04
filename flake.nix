@@ -82,8 +82,6 @@
         homes = {
           nukdokplex = ./instances/homes/nukdokplex;
         };
-
-        secrets = ./instances/secrets;
       };
 
       nixosConfigurations = (self.inputs.nixpkgs.lib.genAttrs hosts) (
@@ -99,7 +97,6 @@
             self.inputs.agenix.nixosModules.default
             self.inputs.stylix.nixosModules.stylix
             self.instances.hosts.${host}
-            self.instances.secrets
             {
               nixpkgs.config.allowUnfree = true;
 

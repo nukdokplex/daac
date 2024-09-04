@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }: {
   imports = [
     ./users
+    ./secrets
     ./networkManagerProfiles.nix
   ];
 
