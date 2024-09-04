@@ -15,7 +15,7 @@ in
 
     packages = with pkgs; [
       vesktop
-      telegram-desktop
+      _64gram
       keepassxc
     ];
   };
