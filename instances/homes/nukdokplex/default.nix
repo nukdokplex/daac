@@ -52,6 +52,17 @@ in
       "$mainMod, Q, exec, ${lib.getExe pkgs.alacritty}"
       "$mainMod, E, exec, ${lib.getExe pkgs.pcmanfm}"
     ];
+
+    settings.exec-once = lib.mkAfter [
+      "[workspace 1 silent] alacritty"
+      "[workspace 1 silent] firefox"
+      "[workspace 2 silent] telegram-desktop"
+      "[workspace 2 silent] vesktop"
+      "[workspace 3 silent] codium"
+      "[workspace 4 silent] pcmanfm"
+      "[workspace 7 silent] keepassxc"
+      "[workspace 10 silent] spotify"
+    ];
   };
 
   # TODO: dehardcodify
