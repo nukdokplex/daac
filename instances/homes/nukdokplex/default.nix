@@ -55,7 +55,7 @@ in
   };
 
   # TODO: dehardcodify
-  home.files = lib.mkIf (osConfig.networking.hostName == "sleipnir") {
+  home.file = lib.mkIf (osConfig.networking.hostName == "sleipnir") {
     "dotssh-dir-symlink" = {
       target = ".ssh";
       source = config.lib.file.mkOutOfStoreSymlink "/data/passport/ssh";
