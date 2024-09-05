@@ -1,7 +1,8 @@
 { config, lib, pkgs, ... }:
 let
-  mkPasswordCommand = secret: "${lib.getExe' pkgs.coreutils "cat"} ${secret}";
-  mkEmailPasswordCommand = email: mkPasswordCommand config.agenix.secrets.${email}.path;
+  cat = lib.getExe' pkgs.coreutils "cat";
+  mkPasswordCommand = secret: "${cat} ${secret}";
+  defaultThunderbirdProfileName = "nukdokplex";
 in
 {
   accounts.email.accounts =
@@ -12,45 +13,58 @@ in
       "nukdokplex@nukdokplex.ru" = let address = "nukdokplex@nukdokplex.ru"; in {
         inherit address realName;
         userName = address;
-        passwordCommand = mkEmailPasswordCommand address;
+        passwordCommand = mkPasswordCommand config.age.secrets.${address}.path;
         primary = true;
         thunderbird = {
           enable = true;
-          profiles = [ "default" ];
+          profiles = [ defaultThunderbirdProfileName ];
+        };
+        imap = {
+          host = "mail.nukdotcom.ru";
+          port = 993;
+          tls.enable = true;
+        };
+        smtp = {
+          host = "mail.nukdotcom.ru";
+          port = 465;
+          tls.enable = true;
         };
       };
       "nukdokplex@outlook.com" = let address = "nukdokplex@outlook.com"; in {
         inherit address realName;
         userName = address;
-        passwordCommand = mkEmailPasswordCommand address;
+        passwordCommand = mkPasswordCommand config.age.secrets.${address}.path;
         thunderbird = {
           enable = true;
-          profiles = [ "default" ];
+          profiles = [ defaultThunderbirdProfileName ];
         };
+        flavor = "outlook.office365.com";
       };
       "vik.titoff2014@gmail.com" = let address = "vik.titoff2014@gmail.com"; in {
         inherit address realName;
         userName = address;
-        passwordCommand = mkEmailPasswordCommand address;
+        passwordCommand = mkPasswordCommand config.age.secrets.${address}.path;
         thunderbird = {
           enable = true;
-          profiles = [ "default" ];
+          profiles = [ defaultThunderbirdProfileName ];
         };
+        flavor = "gmail.com";
       };
       "vik.titoff2014@yandex.ru" = let address = "vik.titoff2014@yandex.ru"; in {
         inherit address realName;
         userName = address;
-        passwordCommand = mkEmailPasswordCommand address;
+        passwordCommand = mkPasswordCommand config.age.secrets.${address}.path;
         thunderbird = {
           enable = true;
-          profiles = [ "default" ];
+          profiles = [ defaultThunderbirdProfileName ];
         };
+        flavor = "yandex.com";
       };
     };
 
   programs.thunderbird = {
     package = pkgs.betterbird;
-    profiles.default = {
+    profiles.${defaultThunderbirdProfileName} = {
       isDefault = true;
       settings = {
         "calendar.timezone.useSystemTimezone" = true;
