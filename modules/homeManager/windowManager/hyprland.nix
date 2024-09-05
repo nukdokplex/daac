@@ -1,7 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ self, config, lib, pkgs, ... }:
 let
   rgb = color: "rgb(${color})";
   rgba = color: alpha: "rgba(${color}${alpha})";
+  wofi-power-menu = lib.getExe' self.inputs.wofi-power-menu.packages.${pkgs.system}.wofi-power-menu "wofi-power-menu";
 in
 {
   config.wayland.windowManager.hyprland = {
@@ -77,7 +78,8 @@ in
           "$mainMod, V, exec, cliphist list | wofi --dmenu -p \"Select clipboard history entry...\" | cliphist decode | wl-copy"
           "$mainMod, PRINT, exec, grim -g \"$(slurp)\" -l 6 -t png - | wl-copy"
           ", PRINT, exec, grim -c -l 6 -t png -o \"$(hyprctl activeworkspace -j | ${jq} -r .monitor)\" - | wl-copy"
-          
+          "CTRL ALT, DELETE, exec, ${wofi-power-menu}"
+
           # Move focus with mainMod + arrow keys
           "$mainMod, left, movefocus, l"
           "$mainMod, right, movefocus, r"
@@ -312,6 +314,52 @@ in
   config.programs.wofi = lib.mkIf config.wayland.windowManager.hyprland.enable{
     enable = true;
     package = pkgs.wofi;
+  };
+
+  config.xdg.configFile."wofi-power-menu.toml" = lib.mkIf config.wayland.windowManager.hyprland.enable {
+    enable = true;
+    target = "wofi-power-menu.toml";
+    source = (pkgs.formats.toml {}).generate "wofi-power-menu.toml" {
+      wofi = {
+        path = lib.getExe pkgs.wofi;
+      };
+
+      menu.shutdown = {
+        enabled = "true";
+        title = "Power off";
+        cmd = "systemctl poweroff";
+      };
+
+      menu.reboot = {
+        enabled = "true";
+        title = "Reboot";
+        cmd = "systemctl reboot";
+      };
+
+      menu.suspend = {
+        enabled = "true";
+        title = "Suspend";
+        cmd = "systemctl suspend";
+      };
+
+      menu.hibernate = {
+        enabled = "true";
+        title = "Hibernate";
+        cmd = "systemctl hibernate";
+      };
+
+      menu.logout = {
+        enabled = "true";
+        title = "Logout";
+        cmd = "hyprctl dispatch exit";
+      };
+
+      menu.lock-screen = {
+        enabled = "true";
+        title = "Lock";
+        cmd = "loginctl lock-session";
+      };
+    };
   };
 
   config.programs.swaylock = lib.mkIf config.wayland.windowManager.hyprland.enable {

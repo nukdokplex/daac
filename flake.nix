@@ -41,7 +41,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-
+    wofi-power-menu = {
+      url = "github:szaffarano/wofi-power-menu";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, ... }:
