@@ -58,7 +58,16 @@ in
           enable = true;
           profiles = [ defaultThunderbirdProfileName ];
         };
-        flavor = "yandex.com";
+        imap = {
+          host = "imap.yandex.ru";
+          port = 993;
+          tls.enable = true;
+        };
+        smtp = {
+          host = "smtp.yandex.ru";
+          port = 465;
+          tls.enable = true;
+        };
       };
     };
 
