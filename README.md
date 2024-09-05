@@ -16,5 +16,6 @@ Next generation of my Desktop-as-a-Code (DaaC) implentation based on [NixOS](htt
  - [github:danth/stylix](https://github.com/danth/stylix) - system-wide colorscheming and typography;
  - [github:Gerg-L/spicetify-nix](https://github.com/Gerg-L/spicetify-nix) - declarative Spicetify (Spotify tweaker utility);
  - [github:nukdokplex/epson_201310w](https://github.com/nukdokplex/epson_201310w) - Epson L120 printer drivers;
+ - [github:szaffarano/wofi-power-menu](https://github.com/szaffarano/wofi-power-menu) - highly configurable power menu using the wofi launcher power-menu. 
 
 ## 
