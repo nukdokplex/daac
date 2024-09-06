@@ -50,22 +50,31 @@ in
     enable = true;
 
     # TODO: these packages are hardcoded
-    settings.bind = [
-      "$mainMod, W, exec, ${lib.getExe pkgs.firefox}"
-      "$mainMod, Q, exec, ${lib.getExe pkgs.alacritty}"
-      "$mainMod, E, exec, ${lib.getExe pkgs.pcmanfm}"
-    ];
 
-    settings.exec-once = lib.mkAfter [
-      "[workspace 1 silent] alacritty"
-      "[workspace 1 silent] firefox"
-      "[workspace 2 silent] telegram-desktop"
-      "[workspace 2 silent] vesktop"
-      "[workspace 3 silent] codium"
-      "[workspace 4 silent] pcmanfm"
-      "[workspace 7 silent] keepassxc"
-      "[workspace 10 silent] spotify"
-    ];
+    settings = {
+      bind = [
+        "$mainMod, W, exec, ${lib.getExe pkgs.firefox}"
+        "$mainMod, Q, exec, ${lib.getExe pkgs.alacritty}"
+        "$mainMod, E, exec, ${lib.getExe pkgs.pcmanfm}"
+      ];
+
+      exec-once = lib.mkAfter [
+        "[workspace 1 silent] alacritty"
+        "[workspace 1 silent] firefox"
+        "[workspace 2 silent] telegram-desktop"
+        "[workspace 2 silent] vesktop"
+        "[workspace 3 silent] codium"
+        "[workspace 4 silent] pcmanfm"
+        "[workspace 5 silent] betterbird"
+        "[workspace 7 silent] keepassxc"
+        "[workspace 10 silent] spotify"
+      ];
+
+      windowrulev2 = [
+        "workspace 2 silent, class:(vesktop)"
+        "workspace 3 silent, class:(codium-url-handler)"
+      ];
+    };
   };
 
   # TODO: dehardcodify
