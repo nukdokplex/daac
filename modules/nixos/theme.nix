@@ -13,6 +13,22 @@
       hash = "sha256-Ak/wZYbqmTxSq/U0e31HzAH5KZKqQJIKFEMLZCZNSC8=";
     };
 
+    cursor =
+      let
+        themeVariant = "Dracula";
+        colorVariant = "Green";
+
+        package = (pkgs.afterglow-cursors-recolored.override {
+          themeVariants = [ themeVariant ];
+          draculaColorVariants = [ colorVariant ];
+        });
+      in
+      {
+        inherit package;
+        name = "Afterglow-Recolored-${themeVariant}-${colorVariant}";
+        size = 32;
+      };
+
     fonts = {
       serif = {
         package = pkgs.dejavu_fonts;
