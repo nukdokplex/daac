@@ -1,9 +1,12 @@
-{ self, config, lib, pkgs, ... }:
-let
+{
+  self,
+  config,
+  pkgs,
+  ...
+}: let
   agenix = self.inputs.agenix.packages.${config.nixpkgs.hostPlatform.system}.agenix;
   alejandra = self.inputs.alejandra.defaultPackage.${config.nixpkgs.hostPlatform.system};
-in
-{
+in {
   environment.systemPackages = with pkgs; [
     # file systems
     apfsprogs

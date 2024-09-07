@@ -1,4 +1,4 @@
-{ self, config, ... }: {
+{self, ...}: {
   config = {
     users.users.nukdokplex = {
       isNormalUser = true;

@@ -1,4 +1,10 @@
-{ self, lib, config, osConfig, pkgs, ... }: {
+{
+  self,
+  lib,
+  osConfig,
+  pkgs,
+  ...
+}: {
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
@@ -28,7 +34,7 @@
       "nix.serverPath" = lib.getExe pkgs.nixd;
       "nix.serverSettings" = {
         formatting = {
-          command = [ self.formatter.${osConfig.nixpkgs.hostPlatform.system} ];
+          command = [self.formatter.${osConfig.nixpkgs.hostPlatform.system}];
         };
       };
     };

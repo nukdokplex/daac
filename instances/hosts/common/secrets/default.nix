@@ -1,4 +1,4 @@
-{ ... }: {
+{
   age.secrets = {
     # secureboot stuff
     sb_db_pem = {

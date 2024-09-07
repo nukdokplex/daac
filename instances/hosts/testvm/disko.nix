@@ -14,7 +14,7 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = [ "defaults" ];
+                mountOptions = ["defaults"];
               };
             };
             luks = {
@@ -26,7 +26,7 @@
                   type = "filesystem";
                   format = "ext4";
                   mountpoint = "/";
-                  mountOptions = [ "defaults" "noatime" ];
+                  mountOptions = ["defaults" "noatime"];
                 };
               };
             };

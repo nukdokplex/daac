@@ -1,4 +1,4 @@
-{ self, lib, config, ... }: {
+{self, ...}: {
   imports = [
     ../common
     ./disko.nix
@@ -13,13 +13,13 @@
 
   boot = {
     initrd = {
-      availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod" ];
-      kernelModules = [ "amdgpu" ];
+      availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod"];
+      kernelModules = ["amdgpu"];
       systemd.enable = true;
     };
 
-    kernelModules = [ "kvm-amd" "amdgpu" ];
-    extraModulePackages = [ ];
+    kernelModules = ["kvm-amd" "amdgpu"];
+    extraModulePackages = [];
 
     lanzaboote = {
       enable = true;

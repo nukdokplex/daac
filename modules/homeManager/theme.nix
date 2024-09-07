@@ -1,4 +1,9 @@
-{ lib, pkgs, config, ... }: {
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}: {
   options = {
     custom.borders.radius = lib.mkOption {
       default = 17;
@@ -22,7 +27,7 @@
         then "Papirus-Dark"
         else "Papirus";
 
-      package = pkgs.papirus-icon-theme.override { color = "adwaita"; };
+      package = pkgs.papirus-icon-theme.override {color = "adwaita";};
     };
 
     stylix.targets.gtk.extraCss = ''

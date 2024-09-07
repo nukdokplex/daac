@@ -1,8 +1,13 @@
-{ self, config, osConfig, lib, pkgs, ... }:
-let
-  username = "nukdokplex";
-in
 {
+  self,
+  config,
+  osConfig,
+  lib,
+  pkgs,
+  ...
+}: let
+  username = "nukdokplex";
+in {
   imports = [
     self.modules.homeManager.default
     self.inputs.agenix.homeManagerModules.age
@@ -11,7 +16,7 @@ in
   ];
 
   home = {
-    stateVersion = "24.05"; # TODO: dehardcodify 
+    stateVersion = "24.05"; # TODO: dehardcodify
     homeDirectory = "/home/${username}";
     inherit username;
 

@@ -52,49 +52,49 @@
     };
   };
 
-  outputs = { self, ... }:
-    let
-      allSystems = [
-        "aarch64-linux"
-        "x86_64-linux"
-        "aarch64-darwin"
-        "x86_64-darwin"
-      ];
+  outputs = {self, ...}: let
+    allSystems = [
+      "aarch64-linux"
+      "x86_64-linux"
+      "aarch64-darwin"
+      "x86_64-darwin"
+    ];
 
-      allHosts = [
-        "sleipnir"
-        "gladr"
-        "testvm"
-      ];
-      # genAttrs [ "foo" "bar" ] (name: "x_" + name)
-      #   => { foo = "x_foo"; bar = "x_bar"; }
-    in
-    {
-      formatter = self.inputs.nixpkgs.lib.genAttrs
-        allSystems
-        (system: let pkgs = import self.inputs.nixpkgs { inherit system; }; in pkgs.alejandra)
-      ;
+    allHosts = [
+      "sleipnir"
+      "gladr"
+      "testvm"
+    ];
+    # genAttrs [ "foo" "bar" ] (name: "x_" + name)
+    #   => { foo = "x_foo"; bar = "x_bar"; }
+  in {
+    formatter =
+      self.inputs.nixpkgs.lib.genAttrs
+      allSystems
+      (system: let pkgs = import self.inputs.nixpkgs {inherit system;}; in pkgs.alejandra);
 
-      modules = {
-        nixos.default = ./modules/nixos;
-        homeManager.default = ./modules/homeManager;
+    modules = {
+      nixos.default = ./modules/nixos;
+      homeManager.default = ./modules/homeManager;
+    };
+
+    instances = {
+      hosts = {
+        sleipnir = ./instances/hosts/sleipnir;
+        gladr = ./instances/hosts/gladr;
+        testvm = ./instances/hosts/testvm;
       };
 
-      instances = {
-        hosts = {
-          sleipnir = ./instances/hosts/sleipnir;
-          gladr = ./instances/hosts/gladr;
-          testvm = ./instances/hosts/testvm;
-        };
-
-        homes = {
-          nukdokplex = ./instances/homes/nukdokplex;
-        };
+      homes = {
+        nukdokplex = ./instances/homes/nukdokplex;
       };
+    };
 
-      nixosConfigurations = self.inputs.nixpkgs.lib.genAttrs
-        allHosts
-        (host: self.inputs.nixpkgs.lib.nixosSystem {
+    nixosConfigurations =
+      self.inputs.nixpkgs.lib.genAttrs
+      allHosts
+      (host:
+        self.inputs.nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit self;
             hostname = host;
@@ -119,7 +119,6 @@
               };
             }
           ];
-        })
-      ;
-    };
+        });
+  };
 }

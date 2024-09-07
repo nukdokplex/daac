@@ -1,4 +1,4 @@
-{ config, lib, ... }: {
+{
   services.pipewire = {
     enable = true;
     pulse.enable = true;

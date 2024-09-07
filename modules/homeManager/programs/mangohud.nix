@@ -1,4 +1,4 @@
-{ lib, config, ... }: {
+{
   programs.mangohud = {
     settings = {
       full = true;

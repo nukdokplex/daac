@@ -1,4 +1,4 @@
-{ ... }: {
+{
   imports = [
     ./fstrim.nix
     ./greetd.nix

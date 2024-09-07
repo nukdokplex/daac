@@ -1,4 +1,4 @@
-{ lib, config, ... }: {
+{lib, ...}: {
   options.idling-settings = {
     lockSessionTimeout = lib.mkOption {
       default = -1;

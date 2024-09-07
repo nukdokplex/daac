@@ -1,4 +1,4 @@
-{ ... }: {
+{
   imports = [
     ./nukdokplex.nix
   ];

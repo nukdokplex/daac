@@ -1,75 +1,84 @@
-{ config, lib, pkgs, ... }:
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   cat = lib.getExe' pkgs.coreutils "cat";
   mkPasswordCommand = secret: "${cat} ${secret}";
   defaultThunderbirdProfileName = "nukdokplex";
-in
-{
-  accounts.email.accounts =
-    let
-      realName = "Viktor Titov";
-    in
-    {
-      "nukdokplex@nukdokplex.ru" = let address = "nukdokplex@nukdokplex.ru"; in {
-        inherit address realName;
-        userName = address;
-        passwordCommand = mkPasswordCommand config.age.secrets.${address}.path;
-        primary = true;
-        thunderbird = {
-          enable = true;
-          profiles = [ defaultThunderbirdProfileName ];
-        };
-        imap = {
-          host = "mail.nukdotcom.ru";
-          port = 993;
-          tls.enable = true;
-        };
-        smtp = {
-          host = "mail.nukdotcom.ru";
-          port = 465;
-          tls.enable = true;
-        };
+in {
+  accounts.email.accounts = let
+    realName = "Viktor Titov";
+  in {
+    "nukdokplex@nukdokplex.ru" = let
+      address = "nukdokplex@nukdokplex.ru";
+    in {
+      inherit address realName;
+      userName = address;
+      passwordCommand = mkPasswordCommand config.age.secrets.${address}.path;
+      primary = true;
+      thunderbird = {
+        enable = true;
+        profiles = [defaultThunderbirdProfileName];
       };
-      "nukdokplex@outlook.com" = let address = "nukdokplex@outlook.com"; in {
-        inherit address realName;
-        userName = address;
-        passwordCommand = mkPasswordCommand config.age.secrets.${address}.path;
-        thunderbird = {
-          enable = true;
-          profiles = [ defaultThunderbirdProfileName ];
-        };
-        flavor = "outlook.office365.com";
+      imap = {
+        host = "mail.nukdotcom.ru";
+        port = 993;
+        tls.enable = true;
       };
-      "vik.titoff2014@gmail.com" = let address = "vik.titoff2014@gmail.com"; in {
-        inherit address realName;
-        userName = address;
-        passwordCommand = mkPasswordCommand config.age.secrets.${address}.path;
-        thunderbird = {
-          enable = true;
-          profiles = [ defaultThunderbirdProfileName ];
-        };
-        flavor = "gmail.com";
-      };
-      "vik.titoff2014@yandex.ru" = let address = "vik.titoff2014@yandex.ru"; in {
-        inherit address realName;
-        userName = address;
-        passwordCommand = mkPasswordCommand config.age.secrets.${address}.path;
-        thunderbird = {
-          enable = true;
-          profiles = [ defaultThunderbirdProfileName ];
-        };
-        imap = {
-          host = "imap.yandex.ru";
-          port = 993;
-          tls.enable = true;
-        };
-        smtp = {
-          host = "smtp.yandex.ru";
-          port = 465;
-          tls.enable = true;
-        };
+      smtp = {
+        host = "mail.nukdotcom.ru";
+        port = 465;
+        tls.enable = true;
       };
     };
+    "nukdokplex@outlook.com" = let
+      address = "nukdokplex@outlook.com";
+    in {
+      inherit address realName;
+      userName = address;
+      passwordCommand = mkPasswordCommand config.age.secrets.${address}.path;
+      thunderbird = {
+        enable = true;
+        profiles = [defaultThunderbirdProfileName];
+      };
+      flavor = "outlook.office365.com";
+    };
+    "vik.titoff2014@gmail.com" = let
+      address = "vik.titoff2014@gmail.com";
+    in {
+      inherit address realName;
+      userName = address;
+      passwordCommand = mkPasswordCommand config.age.secrets.${address}.path;
+      thunderbird = {
+        enable = true;
+        profiles = [defaultThunderbirdProfileName];
+      };
+      flavor = "gmail.com";
+    };
+    "vik.titoff2014@yandex.ru" = let
+      address = "vik.titoff2014@yandex.ru";
+    in {
+      inherit address realName;
+      userName = address;
+      passwordCommand = mkPasswordCommand config.age.secrets.${address}.path;
+      thunderbird = {
+        enable = true;
+        profiles = [defaultThunderbirdProfileName];
+      };
+      imap = {
+        host = "imap.yandex.ru";
+        port = 993;
+        tls.enable = true;
+      };
+      smtp = {
+        host = "smtp.yandex.ru";
+        port = 465;
+        tls.enable = true;
+      };
+    };
+  };
 
   programs.thunderbird = {
     package = pkgs.betterbird;

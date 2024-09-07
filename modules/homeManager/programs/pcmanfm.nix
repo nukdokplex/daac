@@ -1,4 +1,9 @@
-{ lib, config, pkgs, ... }: {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   options.programs.pcmanfm = {
     enable = lib.mkOption {
       default = false;

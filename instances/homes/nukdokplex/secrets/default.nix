@@ -1,4 +1,4 @@
-{ config, ... }: {
+{
   age = {
     secrets = {
       "nukdokplex@nukdokplex.ru".file = ./mail/. + "/nukdokplex-at-nukdokplex.ru.age";

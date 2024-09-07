@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{pkgs, ...}: {
   fonts.packages = with pkgs; [
     jetbrains-mono
     noto-fonts
@@ -7,6 +7,6 @@
     noto-fonts-cjk-serif
     noto-fonts-color-emoji
     noto-fonts-extra
-    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+    (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
   ];
 }

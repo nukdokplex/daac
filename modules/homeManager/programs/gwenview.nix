@@ -1,8 +1,11 @@
-{ pkgs, lib, config, ... }:
-let
-  cfg = config.programs.gwenview;
-in
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.programs.gwenview;
+in {
   options.programs.gwenview = {
     enable = lib.mkOption {
       default = true;
@@ -15,6 +18,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = [ cfg.package ];
+    home.packages = [cfg.package];
   };
 }

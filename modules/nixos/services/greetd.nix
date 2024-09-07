@@ -1,4 +1,4 @@
-{ ... }: {
+{
   services.greetd = {
     enable = true;
 
@@ -7,6 +7,6 @@
 
   systemd.services.greetd = {
     serviceConfig.type = "idle";
-    unitConfig.After = [ "docker.service" ];
+    unitConfig.After = ["docker.service"];
   };
 }

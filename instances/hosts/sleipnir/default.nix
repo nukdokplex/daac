@@ -1,5 +1,4 @@
-{ self, lib, config, ... }: 
-let
+{self, ...}: let
   system = "x86_64-linux";
 in {
   imports = [
@@ -16,13 +15,13 @@ in {
 
   boot = {
     initrd = {
-      availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod" ];
-      kernelModules = [ "amdgpu" ];
+      availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod"];
+      kernelModules = ["amdgpu"];
       systemd.enable = true;
     };
 
-    kernelModules = [ "kvm-amd" "amdgpu" ];
-    extraModulePackages = [ ];
+    kernelModules = ["kvm-amd" "amdgpu"];
+    extraModulePackages = [];
 
     lanzaboote = {
       enable = true;
@@ -73,7 +72,7 @@ in {
     {
       name = "data-archive.mount";
       enable = true;
-      wantedBy = [ "multi-user.target" ];
+      wantedBy = ["multi-user.target"];
       what = "/dev/disk/by-label/ARCHIVE";
       where = "/data/archive";
       type = "ext4";
@@ -82,7 +81,7 @@ in {
     {
       name = "data-downloads.mount";
       enable = true;
-      wantedBy = [ "multi-user.target" ];
+      wantedBy = ["multi-user.target"];
       what = "/dev/disk/by-label/DOWNLOADS";
       where = "/data/downloads";
       type = "ext4";
@@ -91,7 +90,7 @@ in {
     {
       name = "data-passport.mount";
       enable = true;
-      wantedBy = [ "multi-user.target" ];
+      wantedBy = ["multi-user.target"];
       what = "/dev/mapper/passport";
       where = "/data/passport";
       type = "ext4";

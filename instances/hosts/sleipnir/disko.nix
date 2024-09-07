@@ -46,7 +46,7 @@
                 type = "swap";
                 resumeDevice = true;
               };
-            };      
+            };
           };
         };
       };
