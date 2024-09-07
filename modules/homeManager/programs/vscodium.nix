@@ -33,8 +33,8 @@
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = lib.getExe pkgs.nixd;
       "nix.serverSettings" = {
-        formatting = {
-          command = [self.formatter.${osConfig.nixpkgs.hostPlatform.system}];
+        nixd.formatting = {
+          command = [(lib.getExe self.formatter.${osConfig.nixpkgs.hostPlatform.system})];
         };
       };
     };
