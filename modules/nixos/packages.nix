@@ -1,4 +1,9 @@
-{ self, config, lib, pkgs, ... }: {
+{ self, config, lib, pkgs, ... }:
+let
+  agenix = self.inputs.agenix.packages.${config.nixpkgs.hostPlatform.system}.agenix;
+  alejandra = self.inputs.alejandra.defaultPackage.${config.nixpkgs.hostPlatform.system};
+in
+{
   environment.systemPackages = with pkgs; [
     # file systems
     apfsprogs
@@ -37,8 +42,10 @@
     inotify-tools
     psmisc
     nixpkgs-fmt
+    alejandra
+    self
     nix-search-cli
-    self.inputs.agenix.packages.${config.nixpkgs.hostPlatform.system}.agenix
+    agenix
     btop
     htop
   ];

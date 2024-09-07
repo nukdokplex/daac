@@ -45,30 +45,35 @@
       url = "github:szaffarano/wofi-power-menu";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    alejandra = {
+      url = "github:kamadorueda/alejandra/3.0.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, ... }:
     let
-      linuxSystems = [
+      allSystems = [
         "aarch64-linux"
         "x86_64-linux"
+        "aarch64-darwin"
+        "x86_64-darwin"
       ];
 
-      hosts = [
+      allHosts = [
         "sleipnir"
         "gladr"
         "testvm"
       ];
+      # genAttrs [ "foo" "bar" ] (name: "x_" + name)
+      #   => { foo = "x_foo"; bar = "x_bar"; }
     in
     {
-      packages = (self.inputs.nixpkgs.lib.genAttrs linuxSystems) (
-        system: {
-          default = self.inputs.nixpkgs.legacyPackages.${system}.writeShellApplication {
-            name = "clean-install";
-            text = ./assets/scripts/clean-install.sh;
-          };
-        }
-      );
+      formatter = self.inputs.nixpkgs.lib.genAttrs
+        allSystems
+        (system: let pkgs = import self.inputs.nixpkgs { inherit system; }; in pkgs.alejandra)
+      ;
 
       modules = {
         nixos.default = ./modules/nixos;
@@ -87,8 +92,9 @@
         };
       };
 
-      nixosConfigurations = (self.inputs.nixpkgs.lib.genAttrs hosts) (
-        host: self.inputs.nixpkgs.lib.nixosSystem {
+      nixosConfigurations = self.inputs.nixpkgs.lib.genAttrs
+        allHosts
+        (host: self.inputs.nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit self;
             hostname = host;
@@ -106,14 +112,14 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                extraSpecialArgs = { 
-                  inherit self; 
+                extraSpecialArgs = {
+                  inherit self;
                   hostname = host;
                 };
               };
             }
           ];
-        }
-      );
+        })
+      ;
     };
 }
