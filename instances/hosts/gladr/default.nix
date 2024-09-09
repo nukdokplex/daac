@@ -1,4 +1,8 @@
-{self, ...}: {
+{
+  self,
+  pkgs,
+  ...
+}: {
   imports = [
     ../common
     ./disko.nix
@@ -31,6 +35,13 @@
         canTouchEfiVariables = true;
         efiSysMountPoint = "/boot";
       };
+    };
+  };
+
+  services.greetd.settings = {
+    initial_session = {
+      command = "${pkgs.hyprland}/bin/Hyprland";
+      user = "nukdokplex";
     };
   };
 

@@ -1,4 +1,8 @@
-{self, ...}: let
+{
+  self,
+  pkgs,
+  ...
+}: let
   system = "x86_64-linux";
 in {
   imports = [
@@ -33,6 +37,13 @@ in {
         canTouchEfiVariables = true;
         efiSysMountPoint = "/boot";
       };
+    };
+  };
+
+  services.greetd.settings = {
+    initial_session = {
+      command = "${pkgs.hyprland}/bin/Hyprland";
+      user = "nukdokplex";
     };
   };
 
