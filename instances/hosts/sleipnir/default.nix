@@ -99,6 +99,15 @@ in {
       options = "rw,nosuid,nodev,relatime,errors=remount-ro,x-mount.mkdir=0755";
     }
     {
+      name = "data-fastext.mount";
+      enable = true;
+      wantedBy = ["multi-user.target"];
+      what = "/dev/disk/by-label/FASTEXT";
+      where = "/data/fastext";
+      type = "ext4";
+      options = "rw,nosuid,nodev,relatime,errors=remount-ro,x-mount.mkdir=0755";
+    }
+    {
       name = "data-passport.mount";
       enable = true;
       wantedBy = ["multi-user.target"];
