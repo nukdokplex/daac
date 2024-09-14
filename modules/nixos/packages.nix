@@ -46,10 +46,11 @@ in {
     psmisc
     nixpkgs-fmt
     alejandra
-    self
     nix-search-cli
     agenix
     btop
     htop
+    jq # cli util to work with json
+    bind # dns tools like dig, nslookup, etc
   ];
 }
