@@ -24,6 +24,7 @@ in {
       vesktop
       _64gram
       keepassxc
+      qbittorrent
     ];
   };
 
