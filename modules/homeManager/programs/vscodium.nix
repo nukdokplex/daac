@@ -39,6 +39,13 @@ let pkgs-unstable = import self.inputs.nixpkgs-unstable {system = osConfig.nixpk
           command = [(lib.getExe self.formatter.${osConfig.nixpkgs.hostPlatform.system})];
         };
       };
+
+      "vscord.app.name" = "VSCodium";
+      "vscord.status.idle.disconnectOnIdle" = true;
+      "vscord.app.privacyMode.enable" = true;
+      "vscord.app.whitelist" = [
+        "273784375764582401"
+      ];
     };
   };
 }
