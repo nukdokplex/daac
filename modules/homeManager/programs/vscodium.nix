@@ -4,14 +4,15 @@
   osConfig,
   pkgs,
   ...
-}: 
-let pkgs-unstable = import self.inputs.nixpkgs-unstable {system = osConfig.nixpkgs.hostPlatform.system;}; in {
+}: let
+  pkgs-unstable = import self.inputs.nixpkgs-unstable {system = osConfig.nixpkgs.hostPlatform.system;};
+in {
   programs.vscode = {
     enable = true;
     package = pkgs-unstable.vscodium;
 
     extensions = with self.inputs.vscode-extensions.extensions.${osConfig.nixpkgs.hostPlatform.system}.open-vsx; [
-      jnoortheen.nix-ide      
+      jnoortheen.nix-ide
       naumovs.color-highlight
       leonardssh.vscord
     ];
