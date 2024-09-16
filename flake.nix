@@ -36,8 +36,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    epson_201310w = {
-      url = "github:nukdokplex/epson_201310w";
+    nukdokplex-nix-repository = {
+      url = "github:nukdokplex/nukdokplex-nix-repository";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

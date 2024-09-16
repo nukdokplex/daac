@@ -65,7 +65,7 @@ in {
   ];
 
   services.printing.drivers = [
-    self.inputs.epson_201310w.packages."${system}".default
+    self.inputs.nukdokplex-nix-repository.packages.${system}.epson_201310w
   ];
 
   hardware.printers = {
