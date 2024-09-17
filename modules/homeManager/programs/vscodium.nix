@@ -17,8 +17,15 @@ in {
       leonardssh.vscord
       arrterian.nix-env-selector
       ms-python.python
+      ms-python.black-formatter
       ms-python.debugpy
-      ms-toolsai.jupyter
+      # ms-toolsai.jupyter
+      (pkgs.vscode-utils.extensionFromVscodeMarketplace {
+        name = "jupyter";
+        publisher = "ms-toolsai";
+        version = "2024.7.0";
+        hash = "sha256-hf6Y1SjKfLGe5LQ9swbPzbOCtohQ43DzHXMZwRt2d90=";
+      })
     ];
 
     userSettings = {
