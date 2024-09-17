@@ -15,6 +15,10 @@ in {
       jnoortheen.nix-ide
       naumovs.color-highlight
       leonardssh.vscord
+      arrterian.nix-env-selector
+      ms-python.python
+      ms-python.debugpy
+      ms-toolsai.jupyter
     ];
 
     userSettings = {
