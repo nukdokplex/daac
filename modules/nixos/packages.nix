@@ -49,8 +49,11 @@ in {
     nix-search-cli
     agenix
     btop
+    atop
+    nmap
     htop
     jq # cli util to work with json
     bind # dns tools like dig, nslookup, etc
+    pwvucontrol
   ];
 }
