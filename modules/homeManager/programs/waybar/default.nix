@@ -71,7 +71,7 @@ with config.lib.stylix.colors.withHashtag; {
           tooltip = true;
           tooltip-format = "{node_name}";
           max-volume = 150.0;
-          on-click = lib.getExe pkgs.pavucontrol;
+          on-click = lib.getExe pkgs.pwvucontrol;
         };
         "hyprland/language" = {
           format = "{}";
