@@ -84,7 +84,7 @@ with config.lib.stylix.colors.withHashtag; {
           format-ethernet = "󰈀";
           format-icons = ["󰤟" "󰤢" "󰤥" "󰤨"];
           format-wifi = "{icon}";
-          on-click = "${lib.getExe pkgs.networkmanager_dmenu} -i";
+          on-click = lib.getExe' pkgs.networkmanagerapplet "nm-connection-editor";
           tooltip-format = "{ifname} via {gwaddr} 󰊗";
           tooltip-format-disconnected = "Disconnected";
           tooltip-format-ethernet = "{ifname} ";
