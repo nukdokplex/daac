@@ -42,7 +42,7 @@
     };
 
     wofi-power-menu = {
-      url = "github:szaffarano/wofi-power-menu";
+      url = "github:szaffarano/wofi-power-menu/ebfbd1700d58851b32140f6aabfead32fe7ad4db";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
