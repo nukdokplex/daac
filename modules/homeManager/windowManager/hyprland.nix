@@ -269,6 +269,7 @@ in {
         # GTK
         "GDK_BACKEND,wayland,x11"
         "QT_QPA_PLATFORM,wayland;xcb"
+        "QT_QPA_PLATFORMTHEME,qt5ct"
 
         # "SDL_VIDEODRIVER,x11"
         # "CLUTTER_BACKEND,x11"
@@ -291,6 +292,7 @@ in {
       variables = [
         "GDK_BACKEND"
         "QT_QPA_PLATFORM"
+        "QT_QPA_PLATFORMTHEME"
         # "SDL_VIDEODRIVER"
         # "CLUTTER_BACKEND"
         "DISPLAY"
