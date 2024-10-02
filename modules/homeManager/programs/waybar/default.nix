@@ -94,7 +94,7 @@ with config.lib.stylix.colors.withHashtag; {
           format = "";
           format-connected = " {num_connections}";
           format-disabled = ""; # an empty format will hide the module
-          on-clic = lib.getExe' pkgs.blueberry "blueberry";
+          on-click = lib.getExe' pkgs.blueman "blueman-manager";
           tooltip-format = "{controller_alias}	{controller_address}";
 
           tooltip-format-connected = ''
