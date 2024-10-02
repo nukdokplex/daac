@@ -25,6 +25,7 @@ in {
       _64gram
       keepassxc
       qbittorrent
+      vlc
       self.inputs.nukdokplex-nix-repository.packages.${osConfig.nixpkgs.hostPlatform.system}.KToolBox
     ];
   };
