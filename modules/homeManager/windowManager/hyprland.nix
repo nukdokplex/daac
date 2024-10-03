@@ -75,7 +75,7 @@ in {
         "$mainMod, L, exec, loginctl lock-session"
         "$mainMod, D, togglefloating"
         "$mainMod, F, fullscreen"
-        "$mainMod SHIFT, F, fakefullscreen"
+        "$mainMod SHIFT, F, fullscreenstate, 0 3"
         "$mainMod, R, exec, wofi --show drun"
         "$mainMod, V, exec, cliphist list | wofi --dmenu -p \"Select clipboard history entry...\" | cliphist decode | wl-copy"
         "$mainMod, PRINT, exec, grim -g \"$(slurp)\" -l 6 -t png - | wl-copy"

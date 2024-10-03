@@ -4,12 +4,10 @@
   osConfig,
   pkgs,
   ...
-}: let
-  pkgs-unstable = import self.inputs.nixpkgs-unstable {system = osConfig.nixpkgs.hostPlatform.system;};
-in {
+}: {
   programs.vscode = {
     enable = true;
-    package = pkgs-unstable.vscodium;
+    package = pkgs.vscodium;
 
     extensions = with self.inputs.vscode-extensions.extensions.${osConfig.nixpkgs.hostPlatform.system}.open-vsx; [
       jnoortheen.nix-ide
@@ -20,12 +18,6 @@ in {
       ms-python.black-formatter
       ms-python.debugpy
       # ms-toolsai.jupyter
-      (pkgs.vscode-utils.extensionFromVscodeMarketplace {
-        name = "jupyter";
-        publisher = "ms-toolsai";
-        version = "2024.7.0";
-        hash = "sha256-hf6Y1SjKfLGe5LQ9swbPzbOCtohQ43DzHXMZwRt2d90=";
-      })
     ];
 
     userSettings = {

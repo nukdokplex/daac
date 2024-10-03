@@ -1,6 +1,6 @@
 {
   imports = [
     ./bluetooth.nix
-    ./opengl.nix
+    ./graphics.nix
   ];
 }

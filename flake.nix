@@ -2,8 +2,9 @@
   description = "Next generation of my Desktop-as-a-Code (DaaC) implentation based on NixOS + Nix Flakes for my home hosts.";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-24.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
+
+    flake-utils.url = "github:numtide/flake-utils";
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
@@ -22,12 +23,12 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager?ref=release-24.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     stylix = {
-      url = "github:danth/stylix/993fcabd83d1e0ee5ea038b87041593cc73c1ebe";
+      url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -70,13 +71,12 @@
       "gladr"
       "testvm"
     ];
-    # genAttrs [ "foo" "bar" ] (name: "x_" + name)
-    #   => { foo = "x_foo"; bar = "x_bar"; }
   in {
-    formatter =
-      self.inputs.nixpkgs.lib.genAttrs
-      allSystems
-      (system: let pkgs = import self.inputs.nixpkgs {inherit system;}; in pkgs.alejandra);
+    formatter = self.inputs.flake-utils.lib.eachDefaultSystemPassThrough (
+      system: let
+        pkgs = import self.inputs.nixpkgs {inherit system;};
+      in {${system} = pkgs.alejandra;}
+    );
 
     modules = {
       nixos.default = ./modules/nixos;
