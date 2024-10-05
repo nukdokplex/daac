@@ -30,7 +30,7 @@ in {
         touchpad = {
           clickfinger_behavior = true;
           drag_lock = true;
-          middle_button_emulation = true;
+          # middle_button_emulation = false;
           natural_scroll = true;
           tap-to-click = true;
         };
@@ -60,7 +60,7 @@ in {
 
         border_size = config.custom.borders.width;
         layout = "dwindle";
-        allow_tearing = false;
+        allow_tearing = true;
       };
 
       # binds
