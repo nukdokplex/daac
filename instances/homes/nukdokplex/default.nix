@@ -54,6 +54,8 @@ in {
     thunderbird.enable = true;
   };
 
+  services.syncthing.enable = true;
+
   custom.gaming.enable = true;
 
   wayland.windowManager.hyprland = {
