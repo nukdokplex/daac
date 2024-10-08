@@ -27,6 +27,7 @@ in {
       qbittorrent
       vlc
       libreoffice-fresh
+      tor-browser
       self.inputs.nukdokplex-nix-repository.packages.${osConfig.nixpkgs.hostPlatform.system}.KToolBox
     ];
   };
