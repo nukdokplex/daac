@@ -60,7 +60,7 @@ in {
 
         border_size = config.custom.borders.width;
         layout = "dwindle";
-        allow_tearing = true;
+        allow_tearing = false;
       };
 
       # binds
@@ -203,6 +203,9 @@ in {
         # steam tweaks
         "stayfocused, title:^()$,class:^(steam)$"
         "minsize 1 1, title:^()$,class:^(steam)$"
+
+        # tearing
+        # "immediate, class:^(steam_app_632360)$" # risk of rain 2
       ];
 
       # appearance
