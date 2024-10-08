@@ -26,6 +26,7 @@ in {
       keepassxc
       qbittorrent
       vlc
+      libreoffice-fresh
       self.inputs.nukdokplex-nix-repository.packages.${osConfig.nixpkgs.hostPlatform.system}.KToolBox
     ];
   };
