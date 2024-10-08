@@ -21,6 +21,9 @@ in {
     reiser4progs
     reiserfsprogs
     udftools
+    cdrtools
+    cdrkit
+    dvdplusrwtools
     xfsprogs
     zfs
 
@@ -55,5 +58,6 @@ in {
     jq # cli util to work with json
     bind # dns tools like dig, nslookup, etc
     pwvucontrol
+    (python312.withPackages (ps: [ps.gspread ps.openpyxl]))
   ];
 }
