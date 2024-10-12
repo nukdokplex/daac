@@ -6,16 +6,4 @@
 
 Next generation of my Desktop-as-a-Code (DaaC) implentation based on [NixOS](https://nixos.org/) with [Nix Flakes](https://nixos.wiki/wiki/flakes) for my home hosts.
 
-## Inputs
-
- - [github:NixOS/nixpkgs](https://github.com/NixOS/nixpkgs) - Nix Packages (NixOS Core);
- - [github:nix-community/lanzaboote](https://github.com/nix-community/lanzaboote) - secure boot compatible bootloader;
- - [github:ryantm/agenix](https://github.com/ryantm/agenix) - secrets manager;
- - [github:nix-community/disko](https://github.com/nix-community/disko) - declarative disk partitioning;
- - [github:nix-community/home-manager](https://github.com/nix-community/home-manager) - user environment manager;
- - [github:danth/stylix](https://github.com/danth/stylix) - system-wide colorscheming and typography;
- - [github:Gerg-L/spicetify-nix](https://github.com/Gerg-L/spicetify-nix) - declarative Spicetify (Spotify tweaker utility);
- - [github:nukdokplex/epson_201310w](https://github.com/nukdokplex/epson_201310w) - Epson L120 printer drivers;
- - [github:szaffarano/wofi-power-menu](https://github.com/szaffarano/wofi-power-menu) - highly configurable power menu using the wofi launcher power-menu. 
-
-## 
+I think you may found some of my code useful to build your own flake so you are welcome to explore!
