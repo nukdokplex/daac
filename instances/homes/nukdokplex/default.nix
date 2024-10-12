@@ -49,7 +49,10 @@ in {
       userName = "nukdokplex";
       userEmail = "nukdokplex@nukdokplex.ru";
     };
-    pcmanfm.enable = true;
+    thunar = {
+      enable = true;
+      setDefault = true;
+    };
     waybar.enable = true;
     thunderbird.enable = true;
   };
@@ -67,7 +70,7 @@ in {
       bind = [
         "$mainMod, W, exec, ${lib.getExe pkgs.firefox}"
         "$mainMod, Q, exec, ${lib.getExe pkgs.alacritty}"
-        "$mainMod, E, exec, ${lib.getExe pkgs.pcmanfm}"
+        "$mainMod, E, exec, ${lib.getExe pkgs.xfce.thunar}"
       ];
 
       exec-once = lib.mkAfter [
