@@ -1,6 +1,6 @@
 # NukDokPlex's Desktop-as-a-Code (DaaC)
 
-[![nixpkgs 24.05](https://img.shields.io/badge/nixpkgs-24.05-blue?logo=nixos&logoSize=auto&logoColor=blue&style=for-the-badge)](https://github.com/NixOS/nixpkgs)
+[![nixpkgs unstable](https://img.shields.io/badge/nixpkgs-unstable-blue?logo=nixos&logoSize=auto&logoColor=blue&style=for-the-badge)](https://github.com/NixOS/nixpkgs)
 [![GitHub License](https://img.shields.io/github/license/nukdokplex/daac?style=for-the-badge&color=red)](https://raw.githubusercontent.com/nukdokplex/daac/master/LICENSE)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/w/nukdokplex/daac?color=green&style=for-the-badge)](https://github.com/nukdokplex/daac/commits/master/)
 
