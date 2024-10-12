@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  ...
 }: {
   options.programs.thunar = {
     enable = lib.mkOption {
@@ -21,7 +22,6 @@
 
     xdg.mimeApps.defaultApplications = {
       "inode/directory" = ["thunar.desktop"];
-      
     };
   };
 }
