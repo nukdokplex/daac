@@ -13,6 +13,7 @@ in {
     self.inputs.agenix.homeManagerModules.age
     ./secrets
     ./mail.nix
+    ./mime.nix
   ];
 
   home = {
@@ -28,6 +29,9 @@ in {
       vlc
       libreoffice-fresh
       tor-browser
+      kdePackages.k3b
+      gedit
+      shotwell
       self.inputs.nukdokplex-nix-repository.packages.${osConfig.nixpkgs.hostPlatform.system}.KToolBox
     ];
   };

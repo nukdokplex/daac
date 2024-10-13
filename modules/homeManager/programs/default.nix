@@ -3,7 +3,6 @@
     ./alacritty.nix
     ./gaming.nix
     ./git.nix
-    ./gwenview.nix
     ./lutris.nix
     ./mangohud.nix
     ./pcmanfm-qt.nix
