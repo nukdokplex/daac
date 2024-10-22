@@ -9,6 +9,5 @@ in {
   imports = [self.inputs.spicetify-nix.homeManagerModules.default];
 
   programs.spicetify = {
-    enable = true;
   };
 }

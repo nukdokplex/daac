@@ -5,7 +5,7 @@
     policies = {
       Cookies = {
         Behavior = "reject-foreign";
-        BehaviorPrivateBrowsing = "reject";
+        BehaviorPrivateBrowsing = "reject-foreign";
       };
 
       DisableAppUpdate = true;
@@ -42,10 +42,10 @@
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
           installation_mode = "force_installed";
         };
-        "FirefoxColor@mozilla.com" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/firefox-color/latest.xpi";
-          installation_mode = "force_installed";
-        };
+        # "FirefoxColor@mozilla.com" = {
+        #   install_url = "https://addons.mozilla.org/firefox/downloads/latest/firefox-color/latest.xpi";
+        #   installation_mode = "force_installed";
+        # };
         # "{207f15ad-ca52-44b2-bc01-27330dbe6889}" = {
         #   install_url = "https://addons.mozilla.org/firefox/downloads/latest/piped-redirects/latest.xpi";
         #   installation_mode = "force_installed";

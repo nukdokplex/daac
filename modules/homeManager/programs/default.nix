@@ -9,7 +9,6 @@
     ./pcmanfm.nix
     ./r2modman.nix
     ./spicetify.nix
-    ./steam.nix
     ./thunar.nix
     ./vscodium.nix
     ./waybar

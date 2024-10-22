@@ -1,0 +1,490 @@
+Running phase: qtPreHook
+@nix { "action": "setPhase", "phase": "qtPreHook" }
+Running phase: unpackPhase
+@nix { "action": "setPhase", "phase": "unpackPhase" }
+unpacking source archive /nix/store/37x93ra37f8s4w78wq0b2zf3jsr1rjaa-source
+source root is source
+Running phase: patchPhase
+@nix { "action": "setPhase", "phase": "patchPhase" }
+applying patch /nix/store/vqrs1gmjqm67p70jxn6ycb0pgbfzyc1k-macos.patch
+patching file Telegram/SourceFiles/platform/mac/overlay_widget_mac.mm
+patching file Telegram/lib_base/base/platform/mac/base_battery_saving_mac.mm
+patching file Telegram/lib_webrtc/webrtc/platform/mac/webrtc_environment_mac.mm
+patching file Telegram/lib_webview/webview/platform/mac/webview_mac.mm
+applying patch /nix/store/hai0iqclz3j8m7ayjj4ybnffxrbmf40m-macos-opengl.patch
+patching file Telegram/SourceFiles/media/view/media_view_pip.cpp
+Hunk #1 succeeded at 1331 (offset -2 lines).
+patching file Telegram/lib_ui/ui/gl/gl_detection.cpp
+Hunk #1 succeeded at 242 (offset 6 lines).
+patching file Telegram/lib_ui/ui/platform/mac/ui_window_mac.mm
+Running phase: updateAutotoolsGnuConfigScriptsPhase
+@nix { "action": "setPhase", "phase": "updateAutotoolsGnuConfigScriptsPhase" }
+Updating Autotools / GNU config script to a newer upstream version: ./Telegram/ThirdParty/jemalloc/build-aux/config.sub
+Updating Autotools / GNU config script to a newer upstream version: ./Telegram/ThirdParty/jemalloc/build-aux/config.guess
+Running phase: configurePhase
+@nix { "action": "setPhase", "phase": "configurePhase" }
+fixing cmake files...
+cmake flags: -GNinja -DCMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY=OFF -DCMAKE_FIND_USE_PACKAGE_REGISTRY=OFF -DCMAKE_EXPORT_NO_PACKAGE_REGISTRY=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DCMAKE_INSTALL_LOCALEDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/locale -DCMAKE_INSTALL_LIBEXECDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/libexec -DCMAKE_INSTALL_LIBDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/lib -DCMAKE_INSTALL_DOCDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/doc/Telegram -DCMAKE_INSTALL_INFODIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/info -DCMAKE_INSTALL_MANDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/man -DCMAKE_INSTALL_OLDINCLUDEDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/include -DCMAKE_INSTALL_INCLUDEDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/include -DCMAKE_INSTALL_SBINDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/sbin -DCMAKE_INSTALL_BINDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/bin -DCMAKE_INSTALL_NAME_DIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/lib -DCMAKE_POLICY_DEFAULT_CMP0025=NEW -DCMAKE_OSX_SYSROOT= -DCMAKE_FIND_FRAMEWORK=LAST -DCMAKE_STRIP=/nix/store/qb1x0mipbcvnkr40xwiwp24gg8lffrc0-clang-wrapper-18.1.8/bin/strip -DCMAKE_RANLIB=/nix/store/qb1x0mipbcvnkr40xwiwp24gg8lffrc0-clang-wrapper-18.1.8/bin/ranlib -DCMAKE_AR=/nix/store/qb1x0mipbcvnkr40xwiwp24gg8lffrc0-clang-wrapper-18.1.8/bin/ar -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DCMAKE_INSTALL_PREFIX=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27 -DTDESKTOP_API_TEST=ON -DKDE_INSTALL_EXECROOTDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27 -DKDE_INSTALL_BINDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/bin -DKDE_INSTALL_SBINDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/sbin -DKDE_INSTALL_LIBDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/lib -DKDE_INSTALL_LIBEXECDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/libexec -DKDE_INSTALL_CMAKEPACKAGEDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/lib/cmake -DKDE_INSTALL_QTPLUGINDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/lib/qt-6/plugins -DKDE_INSTALL_PLUGINDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/lib/qt-6/plugins -DKDE_INSTALL_QMLDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/lib/qt-6/qml -DKDE_INSTALL_INCLUDEDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/include -DKDE_INSTALL_LOCALSTATEDIR=/var -DKDE_INSTALL_SHAREDSTATEDIR=/com -DKDE_INSTALL_DATAROOTDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share -DKDE_INSTALL_DATADIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share -DKDE_INSTALL_DOCBUNDLEDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/doc/HTML -DKDE_INSTALL_KCFGDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/config.kcfg -DKDE_INSTALL_KCONFUPDATEDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/kconf_update -DKDE_INSTALL_KAPPTEMPLATESDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/kdevappwizard/templates -DKDE_INSTALL_KFILETEMPLATESDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/kdevfiletemplates/templates -DKDE_INSTALL_KXMLGUIDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/kxmlgui5 -DKDE_INSTALL_KNOTIFYRCDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/knotifications6 -DKDE_INSTALL_ICONDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/icons -DKDE_INSTALL_LOCALEDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/locale -DKDE_INSTALL_SOUNDDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/sounds -DKDE_INSTALL_TEMPLATEDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/templates -DKDE_INSTALL_WALLPAPERDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/wallpapers -DKDE_INSTALL_APPDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/applications -DKDE_INSTALL_DESKTOPDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/desktop-directories -DKDE_INSTALL_MIMEDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/mime/packages -DKDE_INSTALL_METAINFODIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/appdata -DKDE_INSTALL_QTQCHDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/doc/qch -DKDE_INSTALL_QCHDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/doc/qch -DKDE_INSTALL_MANDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/man -DKDE_INSTALL_INFODIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/info -DKDE_INSTALL_DBUSDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/dbus-1 -DKDE_INSTALL_DBUSINTERFACEDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/dbus-1/interfaces -DKDE_INSTALL_DBUSSERVICEDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/dbus-1/services -DKDE_INSTALL_DBUSSYSTEMSERVICEDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/dbus-1/system-services -DKDE_INSTALL_SYSCONFDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/etc -DKDE_INSTALL_CONFDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/etc/xdg -DKDE_INSTALL_AUTOSTARTDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/etc/xdg/autostart -DKDE_INSTALL_LOGGINGCATEGORIESDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/qlogging-categories6 -DKDE_INSTALL_SYSTEMDUNITDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/lib/systemd -DKDE_INSTALL_SYSTEMDUSERUNITDIR=/nix/store/hk795y25zacl1w2rm342srzrx8yfg0r5-kotatogram-desktop-0-unstable-2024-09-27/share/systemd/user
+[0mVersion: 5.0.6.beta[0m
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- The ASM compiler identification is GNU
+-- Found assembler: /nix/store/vh9fsdhgxcnab2qk7vdp2palkkn6j3cp-gcc-wrapper-13.3.0/bin/gcc
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /nix/store/vh9fsdhgxcnab2qk7vdp2palkkn6j3cp-gcc-wrapper-13.3.0/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /nix/store/vh9fsdhgxcnab2qk7vdp2palkkn6j3cp-gcc-wrapper-13.3.0/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Performing Test DESKTOP_APP__Wall_EXISTS
+-- Performing Test DESKTOP_APP__Wall_EXISTS - Success
+-- Performing Test DESKTOP_APP__Wextra_EXISTS
+-- Performing Test DESKTOP_APP__Wextra_EXISTS - Success
+-- Performing Test DESKTOP_APP__Wno_unused_parameter_EXISTS
+-- Performing Test DESKTOP_APP__Wno_unused_parameter_EXISTS - Success
+-- Performing Test DESKTOP_APP__Wno_switch_EXISTS
+-- Performing Test DESKTOP_APP__Wno_switch_EXISTS - Success
+-- Performing Test DESKTOP_APP__Wno_maybe_uninitialized_EXISTS
+-- Performing Test DESKTOP_APP__Wno_maybe_uninitialized_EXISTS - Success
+-- Performing Test DESKTOP_APP__Wno_missing_field_initializers_EXISTS
+-- Performing Test DESKTOP_APP__Wno_missing_field_initializers_EXISTS - Success
+-- Performing Test DESKTOP_APP__Wno_sign_compare_EXISTS
+-- Performing Test DESKTOP_APP__Wno_sign_compare_EXISTS - Success
+-- Performing Test DESKTOP_APP__Wno_deprecated_EXISTS
+-- Performing Test DESKTOP_APP__Wno_deprecated_EXISTS - Success
+-- Performing Test DESKTOP_APP__Wno_alloc_size_larger_than_EXISTS
+-- Performing Test DESKTOP_APP__Wno_alloc_size_larger_than_EXISTS - Success
+-- Performing Test DESKTOP_APP__Wno_stringop_overflow_EXISTS
+-- Performing Test DESKTOP_APP__Wno_stringop_overflow_EXISTS - Success
+-- Performing Test DESKTOP_APP__Wno_odr_EXISTS
+-- Performing Test DESKTOP_APP__Wno_odr_EXISTS - Success
+-- Performing Test DESKTOP_APP__Wno_inline_EXISTS
+-- Performing Test DESKTOP_APP__Wno_inline_EXISTS - Success
+-- Performing Test DESKTOP_APP__pthread_EXISTS
+-- Performing Test DESKTOP_APP__pthread_EXISTS - Success
+-- Performing Test DESKTOP_APP__Wl___as_needed_EXISTS
+-- Performing Test DESKTOP_APP__Wl___as_needed_EXISTS - Success
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Performing Test HAVE_STDATOMIC
+-- Performing Test HAVE_STDATOMIC - Success
+-- Found WrapAtomic: TRUE
+-- Found OpenGL: /nix/store/vpys8vaqmjlzcn12wfccym7kgl7b3fr1-libglvnd-1.7.0/lib/libOpenGL.so
+-- Found WrapOpenGL: TRUE
+-- Found XKB: /nix/store/0j2mnm88hf6ndp58jybmbiwl4wg492g9-libxkbcommon-1.7.0/lib/libxkbcommon.so (found suitable version "1.7.0", minimum required is "0.5.0")
+-- Found WrapVulkanHeaders: /nix/store/jrr54zy7h7w1lhh3rk5q4zcbfwz57r3c-vulkan-headers-1.3.290.0/include
+-- Found Wayland_Client: /nix/store/l741d824qd6gxyxbn25gg70bj0hr2nsc-wayland-1.23.1/lib/libwayland-client.so (found version "1.23.1")
+-- Found Wayland_Server: /nix/store/l741d824qd6gxyxbn25gg70bj0hr2nsc-wayland-1.23.1/lib/libwayland-server.so (found version "1.23.1")
+-- Found Wayland_Cursor: /nix/store/l741d824qd6gxyxbn25gg70bj0hr2nsc-wayland-1.23.1/lib/libwayland-cursor.so (found version "1.23.1")
+-- Found Wayland_Egl: /nix/store/l741d824qd6gxyxbn25gg70bj0hr2nsc-wayland-1.23.1/lib/libwayland-egl.so (found version "18.1.0")
+-- Found Boost: /nix/store/20z0miv70wbl9xvrx4nvq6krrhfl5942-boost-1.81.0-dev/lib/cmake/Boost-1.81.0/BoostConfig.cmake (found version "1.81.0") found components: regex
+-- Found Protobuf: /nix/store/90zvvvrx43i07iwza86pvvl94nygxf2n-protobuf-28.2/lib/libprotobuf.so (found version "5.28.2")
+-- Performing Test DESKTOP_APP__Wno_implicit_fallthrough_EXISTS
+-- Performing Test DESKTOP_APP__Wno_implicit_fallthrough_EXISTS - Success
+-- The C compiler identification is Clang 18.1.8
+-- The CXX compiler identification is Clang 18.1.8
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /nix/store/qb1x0mipbcvnkr40xwiwp24gg8lffrc0-clang-wrapper-18.1.8/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /nix/store/qb1x0mipbcvnkr40xwiwp24gg8lffrc0-clang-wrapper-18.1.8/bin/clang++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Looking for __GNU_LIBRARY__
+-- Looking for __GNU_LIBRARY__ - found
+-- Performing Test __BUILTIN_TRAP
+-- Performing Test __BUILTIN_TRAP - Success
+-- Found LibRT: /nix/store/sl141d1g77wvhr050ah87lcyz2czdxa3-glibc-2.40-36/lib/librt.so
+-- Looking for _pthread_workqueue_init
+-- Looking for _pthread_workqueue_init - not found
+-- Looking for getprogname
+-- Looking for getprogname - not found
+-- Looking for mach_absolute_time
+-- Looking for mach_absolute_time - not found
+-- Looking for mach_approximate_time
+-- Looking for mach_approximate_time - not found
+-- Looking for mach_port_construct
+-- Looking for mach_port_construct - not found
+-- Looking for malloc_create_zone
+-- Looking for malloc_create_zone - not found
+-- Looking for posix_fadvise
+-- Looking for posix_fadvise - found
+-- Looking for posix_spawnp
+-- Looking for posix_spawnp - found
+-- Looking for pthread_key_init_np
+-- Looking for pthread_key_init_np - not found
+-- Looking for pthread_attr_setcpupercent_np
+-- Looking for pthread_attr_setcpupercent_np - not found
+-- Looking for pthread_yield_np
+-- Looking for pthread_yield_np - not found
+-- Looking for pthread_main_np
+-- Looking for pthread_main_np - not found
+-- Looking for pthread_workqueue_setdispatch_np
+-- Looking for pthread_workqueue_setdispatch_np - not found
+-- Looking for strlcpy
+-- Looking for strlcpy - found
+-- Looking for sysconf
+-- Looking for sysconf - found
+-- Looking for arc4random
+-- Looking for arc4random - found
+-- Looking for include file TargetConditionals.h
+-- Looking for include file TargetConditionals.h - not found
+-- Looking for include file dlfcn.h
+-- Looking for include file dlfcn.h - found
+-- Looking for include file fcntl.h
+-- Looking for include file fcntl.h - found
+-- Looking for include file inttypes.h
+-- Looking for include file inttypes.h - found
+-- Looking for include file libkern/OSAtomic.h
+-- Looking for include file libkern/OSAtomic.h - not found
+-- Looking for include file libkern/OSCrossEndian.h
+-- Looking for include file libkern/OSCrossEndian.h - not found
+-- Looking for include file libproc_internal.h
+-- Looking for include file libproc_internal.h - not found
+-- Looking for include file mach/mach.h
+-- Looking for include file mach/mach.h - not found
+-- Looking for include file malloc/malloc.h
+-- Looking for include file malloc/malloc.h - not found
+-- Looking for include file memory.h
+-- Looking for include file memory.h - found
+-- Looking for include file pthread/qos.h
+-- Looking for include file pthread/qos.h - not found
+-- Looking for include file pthread/workqueue_private.h
+-- Looking for include file pthread/workqueue_private.h - not found
+-- Looking for include file pthread_machdep.h
+-- Looking for include file pthread_machdep.h - not found
+-- Looking for include file pthread_np.h
+-- Looking for include file pthread_np.h - not found
+-- Looking for include file pthread_workqueue.h
+-- Looking for include file pthread_workqueue.h - not found
+-- Looking for include file stdint.h
+-- Looking for include file stdint.h - found
+-- Looking for include file stdlib.h
+-- Looking for include file stdlib.h - found
+-- Looking for include file string.h
+-- Looking for include file string.h - found
+-- Looking for include file strings.h
+-- Looking for include file strings.h - found
+-- Looking for include file sys/guarded.h
+-- Looking for include file sys/guarded.h - not found
+-- Looking for include file sys/stat.h
+-- Looking for include file sys/stat.h - found
+-- Looking for include file sys/types.h
+-- Looking for include file sys/types.h - found
+-- Looking for include file objc/objc-internal.h
+-- Looking for include file objc/objc-internal.h - not found
+-- Looking for sem_init in pthread
+-- Looking for sem_init in pthread - found
+-- Looking for CLOCK_UPTIME
+-- Looking for CLOCK_UPTIME - not found
+-- Looking for CLOCK_UPTIME_FAST
+-- Looking for CLOCK_UPTIME_FAST - not found
+-- Looking for CLOCK_MONOTONIC
+-- Looking for CLOCK_MONOTONIC - found
+-- Looking for CLOCK_REALTIME
+-- Looking for CLOCK_REALTIME - found
+-- Looking for CLOCK_MONOTONIC_COARSE
+-- Looking for CLOCK_MONOTONIC_COARSE - found
+-- Looking for FD_COPY
+-- Looking for FD_COPY - not found
+-- Looking for NOTE_LOWAT
+-- Looking for NOTE_LOWAT - not found
+-- Looking for NOTE_NONE
+-- Looking for NOTE_NONE - not found
+-- Looking for NOTE_REAP
+-- Looking for NOTE_REAP - not found
+-- Looking for NOTE_REVOKE
+-- Looking for NOTE_REVOKE - not found
+-- Looking for NOTE_SIGNAL
+-- Looking for NOTE_SIGNAL - not found
+-- Looking for POSIX_SPAWN_START_SUSPENDED
+-- Looking for POSIX_SPAWN_START_SUSPENDED - not found
+-- Looking for SIGEMT
+-- Looking for SIGEMT - not found
+-- Looking for VQ_DESIRED_DISK
+-- Looking for VQ_DESIRED_DISK - not found
+-- Looking for VQ_NEARLOWDISK
+-- Looking for VQ_NEARLOWDISK - not found
+-- Looking for VQ_QUOTA
+-- Looking for VQ_QUOTA - not found
+-- Looking for VQ_UPDATE
+-- Looking for VQ_UPDATE - not found
+-- Looking for VQ_VERYLOWDISK
+-- Looking for VQ_VERYLOWDISK - not found
+-- Looking for VQ_FREE_SPACE_CHANGE
+-- Looking for VQ_FREE_SPACE_CHANGE - not found
+-- Looking for program_invocation_name
+-- Looking for program_invocation_name - found
+-- Looking for __printflike
+-- Looking for __printflike - not found
+-- Performing Test C_SUPPORTS_OMIT_LEAF_FRAME_POINTER
+-- Performing Test C_SUPPORTS_OMIT_LEAF_FRAME_POINTER - Success
+-- Configuring done (19.9s)
+-- Generating done (0.0s)
+-- Build files have been written to: /build/source/build/cmake/external/dispatch/dispatch-prefix/src/dispatch-build
+[1/29] Building C object src/CMakeFiles/dispatch.dir/introspection.c.o
+[2/29] Building C object src/BlocksRuntime/CMakeFiles/BlocksRuntime.dir/data.c.o
+[3/29] Building C object src/BlocksRuntime/CMakeFiles/BlocksRuntime.dir/runtime.c.o
+[4/29] Building C object src/CMakeFiles/dispatch.dir/mach.c.o
+[5/29] Building C object src/CMakeFiles/dispatch.dir/benchmark.c.o
+[6/29] Building C object src/CMakeFiles/dispatch.dir/allocator.c.o
+[7/29] Building C object src/CMakeFiles/dispatch.dir/object.c.o
+[8/29] Building C object src/CMakeFiles/dispatch.dir/once.c.o
+[9/29] Building C object src/CMakeFiles/dispatch.dir/semaphore.c.o
+[10/29] Building C object src/CMakeFiles/dispatch.dir/apply.c.o
+[11/29] Building C object src/CMakeFiles/dispatch.dir/data.c.o
+[12/29] Building C object src/CMakeFiles/dispatch.dir/init.c.o
+[13/29] Building C object src/CMakeFiles/dispatch.dir/time.c.o
+[14/29] Building C object src/CMakeFiles/dispatch.dir/shims.c.o
+[15/29] Linking C static library src/BlocksRuntime/libBlocksRuntime.a
+[16/29] Building C object src/CMakeFiles/dispatch.dir/voucher.c.o
+[17/29] Building C object src/CMakeFiles/dispatch.dir/source.c.o
+[18/29] Building C object src/CMakeFiles/dispatch.dir/event/event_windows.c.o
+[19/29] Building C object src/CMakeFiles/dispatch.dir/event/event_epoll.c.o
+[20/29] Building C object src/CMakeFiles/dispatch.dir/shims/yield.c.o
+[21/29] Building C object src/CMakeFiles/dispatch.dir/event/workqueue.c.o
+[22/29] Building C object src/CMakeFiles/dispatch.dir/shims/lock.c.o
+[23/29] Building C object src/CMakeFiles/dispatch.dir/transform.c.o
+[24/29] Building CXX object src/CMakeFiles/dispatch.dir/block.cpp.o
+[25/29] Building C object src/CMakeFiles/dispatch.dir/event/event_kevent.c.o
+[26/29] Building C object src/CMakeFiles/dispatch.dir/io.c.o
+[27/29] Building C object src/CMakeFiles/dispatch.dir/event/event.c.o
+[28/29] Building C object src/CMakeFiles/dispatch.dir/queue.c.o
+[29/29] Linking CXX static library src/libdispatch.a
+-- Found PkgConfig: /nix/store/mi7q9m86m3rkqmc0niyvfv25ji9fxxha-pkg-config-wrapper-0.29.2/bin/pkg-config (found version "0.29.2")
+-- Checking for module 'libavfilter'
+--   Found libavfilter, version 10.1.100
+-- Checking for module 'libavformat'
+--   Found libavformat, version 61.1.100
+-- Checking for module 'libavcodec'
+--   Found libavcodec, version 61.3.100
+-- Checking for module 'libavutil'
+--   Found libavutil, version 59.8.100
+-- Checking for module 'libswscale'
+--   Found libswscale, version 8.1.100
+-- Checking for module 'libswresample'
+--   Found libswresample, version 5.1.100
+-- Found Boost: /nix/store/20z0miv70wbl9xvrx4nvq6krrhfl5942-boost-1.81.0-dev/lib/cmake/Boost-1.81.0/BoostConfig.cmake (found suitable version "1.81.0", minimum required is "1.58")
+-- fmtlib available status: OFF
+-- std::format available status: TRUE
+-- Performing Test NEEDS_LARGE_GOT
+-- Performing Test NEEDS_LARGE_GOT - Failed
+-- example programs: 
+-- ronn manpage processor not found; not building manpage
+-- Checking for modules 'glib-2.0;gobject-2.0;gio-2.0;gio-unix-2.0'
+--   Found glib-2.0, version 2.80.4
+--   Found gobject-2.0, version 2.80.4
+--   Found gio-2.0, version 2.80.4
+--   Found gio-unix-2.0, version 2.80.4
+-- Checking for module 'hunspell'
+--   Found hunspell, version 1.7.2
+-- Checking for module 'jemalloc'
+--   Found jemalloc, version 5.3.0_0
+-- Found JPEG: /nix/store/sil9hbh5dxidwh3p6wpv77x93yfr99lc-libjpeg-turbo-3.0.3/lib/libjpeg.so (found version "62")
+-- Checking for module 'liblz4'
+--   Found liblz4, version 1.10.0
+-- Checking for module 'minizip<2.0.0'
+--   Found minizip, version 1.3.1
+-- Found OpenAL: /nix/store/sjqjc0zxj86wnkn4dq9619q5hkwaz5qa-openal-soft-1.23.1/lib/libopenal.so
+-- Found OpenSSL: /nix/store/k09x35dsjavyy4xbfda7aafi1knwqd20-openssl-3.3.2/lib/libcrypto.so (found version "3.3.2")
+-- Checking for module 'opus'
+--   Found opus, version 1.5.2
+-- Checking for module 'rnnoise'
+--   Found rnnoise, version unknown
+-- Checking for module 'vpx>=1.10.0'
+--   Found vpx, version 1.14.1
+-- Checking for module 'xcb-keysyms'
+--   Found xcb-keysyms, version 0.4.1
+-- Checking for module 'xcb-record'
+--   Found xcb-record, version 1.17.0
+-- Checking for module 'xcb-screensaver'
+--   Found xcb-screensaver, version 1.17.0
+-- Checking for module 'xcb'
+--   Found xcb, version 1.17.0
+-- Checking for module 'libxxhash'
+--   Found libxxhash, version 0.8.2
+-- Found ZLIB: /nix/store/haci0d018njygwdga95bsbx8ww2iswy7-zlib-1.3.1/lib/libz.so (found version "1.3.1")
+-- Checking for module 'tgvoip'
+--   No package 'tgvoip' found
+-- Performing Test DESKTOP_APP__Wno_unqualified_std_cast_call_EXISTS
+-- Performing Test DESKTOP_APP__Wno_unqualified_std_cast_call_EXISTS - Success
+-- Found ALSA: /nix/store/niii68v4ymgs3rk0df7vqxkxmd7y31np-alsa-lib-1.2.12/lib/libasound.so (found version "1.2.12")
+-- Checking for module 'libpulse'
+--   Found libpulse, version 17.0
+-- Performing Test DESKTOP_APP__Wno_deprecated_volatile_EXISTS
+-- Performing Test DESKTOP_APP__Wno_deprecated_volatile_EXISTS - Success
+-- Performing Test DESKTOP_APP__Wno_ambiguous_reversed_operator_EXISTS
+-- Performing Test DESKTOP_APP__Wno_ambiguous_reversed_operator_EXISTS - Success
+-- Performing Test DESKTOP_APP__Wno_deprecated_declarations_EXISTS
+-- Performing Test DESKTOP_APP__Wno_deprecated_declarations_EXISTS - Success
+-- Found Python3: /nix/store/wfbjq35kxs6x83c3ncpfxdyl5gbhdx4h-python3-3.12.6/bin/python3.12 (found version "3.12.6") found components: Interpreter
+-- Configuring done (35.5s)
+-- Generating done (0.3s)
+[33mCMake Warning:
+  Manually-specified variables were not used by the project:
+
+    CMAKE_EXPORT_NO_PACKAGE_REGISTRY
+    CMAKE_POLICY_DEFAULT_CMP0025
+    KDE_INSTALL_APPDIR
+    KDE_INSTALL_AUTOSTARTDIR
+    KDE_INSTALL_BINDIR
+    KDE_INSTALL_CMAKEPACKAGEDIR
+    KDE_INSTALL_CONFDIR
+    KDE_INSTALL_DATADIR
+    KDE_INSTALL_DATAROOTDIR
+    KDE_INSTALL_DBUSDIR
+    KDE_INSTALL_DBUSINTERFACEDIR
+    KDE_INSTALL_DBUSSERVICEDIR
+    KDE_INSTALL_DBUSSYSTEMSERVICEDIR
+    KDE_INSTALL_DESKTOPDIR
+    KDE_INSTALL_DOCBUNDLEDIR
+    KDE_INSTALL_EXECROOTDIR
+    KDE_INSTALL_ICONDIR
+    KDE_INSTALL_INCLUDEDIR
+    KDE_INSTALL_INFODIR
+    KDE_INSTALL_KAPPTEMPLATESDIR
+    KDE_INSTALL_KCFGDIR
+    KDE_INSTALL_KCONFUPDATEDIR
+    KDE_INSTALL_KFILETEMPLATESDIR
+    KDE_INSTALL_KNOTIFYRCDIR
+    KDE_INSTALL_KXMLGUIDIR
+    KDE_INSTALL_LIBDIR
+    KDE_INSTALL_LIBEXECDIR
+    KDE_INSTALL_LOCALEDIR
+    KDE_INSTALL_LOCALSTATEDIR
+    KDE_INSTALL_LOGGINGCATEGORIESDIR
+    KDE_INSTALL_MANDIR
+    KDE_INSTALL_METAINFODIR
+    KDE_INSTALL_MIMEDIR
+    KDE_INSTALL_PLUGINDIR
+    KDE_INSTALL_QCHDIR
+    KDE_INSTALL_QMLDIR
+    KDE_INSTALL_QTPLUGINDIR
+    KDE_INSTALL_QTQCHDIR
+    KDE_INSTALL_SBINDIR
+    KDE_INSTALL_SHAREDSTATEDIR
+    KDE_INSTALL_SOUNDDIR
+    KDE_INSTALL_SYSCONFDIR
+    KDE_INSTALL_SYSTEMDUNITDIR
+    KDE_INSTALL_SYSTEMDUSERUNITDIR
+    KDE_INSTALL_TEMPLATEDIR
+    KDE_INSTALL_WALLPAPERDIR
+
+[0m
+-- Build files have been written to: /build/source/build
+configurePhase completed in 37 seconds
+Running phase: buildPhase
+@nix { "action": "setPhase", "phase": "buildPhase" }
+build flags: -j12
+[1/1474] Generating D-Bus C code for XdpInhibit (lib_base)
+[2/1474] Generating D-Bus C code for XdpOpenURI (lib_base)
+[3/1474] Generating D-Bus C code for XdgDBus (lib_base)
+[4/1474] Generating D-Bus C code for XdpRequest (lib_base)
+[5/1474] Generating D-Bus C code for XdgFileManager1 (lib_base)
+[6/1474] Generating D-Bus C code for XdpSettings (lib_base)
+[7/1474] Generating D-Bus C code for MutterIdleMonitor (lib_base)
+[8/1474] Generating D-Bus C code for Mpris (lib_base)
+[9/1474] Building CXX object Telegram/lib_crl/CMakeFiles/lib_crl.dir/crl/common/crl_common_fp_exceptions.cpp.o
+[10/1474] Generating D-Bus C code for Snapcraft (lib_base)
+[11/1474] Generating D-Bus C code for XdgScreenSaver (lib_base)
+[12/1474] Building CXX object Telegram/lib_crl/CMakeFiles/lib_crl.dir/crl/dispatch/crl_dispatch_queue.cpp.o
+[13/1474] Building CXX object Telegram/lib_crl/CMakeFiles/lib_crl.dir/crl/linux/crl_linux_time.cpp.o
+[14/1474] Building CXX object Telegram/lib_crl/CMakeFiles/lib_crl.dir/crl/winapi/crl_winapi_async.cpp.o
+[15/1474] Building CXX object Telegram/lib_crl/CMakeFiles/lib_crl.dir/crl/dispatch/crl_dispatch_async.cpp.o
+[16/1474] Building CXX object Telegram/lib_crl/CMakeFiles/lib_crl.dir/crl/winapi/crl_winapi_list.cpp.o
+[17/1474] Building CXX object Telegram/lib_crl/CMakeFiles/lib_crl.dir/crl/winapi/crl_winapi_semaphore.cpp.o
+[18/1474] Building CXX object Telegram/lib_crl/CMakeFiles/lib_crl.dir/crl/winapi/crl_winapi_fp_exceptions.cpp.o
+[19/1474] Building CXX object Telegram/lib_crl/CMakeFiles/lib_crl.dir/crl/winapi/crl_winapi_time.cpp.o
+[20/1474] Building CXX object Telegram/lib_crl/CMakeFiles/lib_crl.dir/crl/crl_time.cpp.o
+[21/1474] Building CXX object Telegram/lib_crl/CMakeFiles/lib_crl.dir/crl/common/crl_common_queue.cpp.o
+[22/1474] Building CXX object Telegram/lib_crl/CMakeFiles/lib_crl.dir/crl/common/crl_common_list.cpp.o
+[23/1474] Building CXX object Telegram/lib_crl/CMakeFiles/lib_crl.dir/crl/dispatch/crl_dispatch_semaphore.cpp.o
+[24/1474] Building CXX object cmake/linux_jemalloc_helper/CMakeFiles/linux_jemalloc_helper.dir/linux_jemalloc_helper.cpp.o
+[25/1474] Building CXX object Telegram/lib_crl/CMakeFiles/lib_crl.dir/crl/common/crl_common_on_main.cpp.o
+[26/1474] Building CXX object Telegram/lib_crl/CMakeFiles/lib_crl.dir/crl/crl_object_on_thread.cpp.o
+[27/1474] Building CXX object cmake/external/glib/cppgir/CMakeFiles/cppgir.dir/tools/genutils.cpp.o
+[28/1474] Generating protobuf feature_extractor.proto (external_cld3_bundled)
+[29/1474] Generating protobuf sentence.proto (external_cld3_bundled)
+[30/1474] Generating protobuf task_spec.proto (external_cld3_bundled)
+[31/1474] Generating D-Bus C code for Webview (lib_webview)
+[32/1474] Building CXX object Telegram/codegen/codegen/common/CMakeFiles/codegen_common.dir/checked_utf8_string.cpp.o
+FAILED: Telegram/codegen/codegen/common/CMakeFiles/codegen_common.dir/checked_utf8_string.cpp.o 
+/nix/store/vh9fsdhgxcnab2qk7vdp2palkkn6j3cp-gcc-wrapper-13.3.0/bin/g++ -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x051500 -DQT_GUI_LIB -DQT_IMPLICIT_QCHAR_CONSTRUCTION -DQT_NETWORK_LIB -DQT_NO_CAST_FROM_BYTEARRAY -DQT_NO_DEBUG -DQT_NO_KEYWORDS -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QMLMETA_LIB -DQT_QMLMODELS_LIB -DQT_QMLWORKERSCRIPT_LIB -DQT_QML_LIB -DQT_QUICKWIDGETS_LIB -DQT_QUICK_LIB -DQT_SVG_LIB -DQT_WAYLANDCOMPOSITOR_LIB -DQT_WIDGETS_LIB -I/build/source/Telegram/codegen -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/mkspecs/linux-g++ -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/6.8.0 -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/6.8.0/QtCore -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtGui -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtGui/6.8.0 -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtGui/6.8.0/QtGui -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtOpenGL -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtWidgets -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtWidgets/6.8.0 -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtWidgets/6.8.0/QtWidgets -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtOpenGLWidgets -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtNetwork -isystem /nix/store/1h9clfg8d5djlgqahds4k45w3n8s44gl-qtsvg-6.8.0/include/QtSvg -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtDBus -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQuick -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQml -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQmlIntegration -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQmlMeta -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQmlModels -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQmlWorkerScript -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQuickWidgets -isystem /nix/store/hpbs9nkj2ixz5rzyqrryri9vdxcj7zm5-qtwayland-6.8.0/include/QtWaylandCompositor -O3 -DNDEBUG -std=gnu++20 -fPIC -fno-strict-aliasing -pipe -Wall -Wextra -Wno-unused-parameter -Wno-switch -Wno-maybe-uninitialized -Wno-missing-field-initializers -Wno-sign-compare -Wno-deprecated -MD -MT Telegram/codegen/codegen/common/CMakeFiles/codegen_common.dir/checked_utf8_string.cpp.o -MF Telegram/codegen/codegen/common/CMakeFiles/codegen_common.dir/checked_utf8_string.cpp.o.d -o Telegram/codegen/codegen/common/CMakeFiles/codegen_common.dir/checked_utf8_string.cpp.o -c /build/source/Telegram/codegen/codegen/common/checked_utf8_string.cpp
+In file included from /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/qstring.h:14,
+                 from /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/QString:1,
+                 from /build/source/Telegram/codegen/codegen/common/checked_utf8_string.h:9,
+                 from /build/source/Telegram/codegen/codegen/common/checked_utf8_string.cpp:7:
+/nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/qchar.h:66:2: error: #error This macro has been removed in Qt 6.8.
+   66 | #error This macro has been removed in Qt 6.8.
+      |  ^~~~~
+[33/1474] Building CXX object Telegram/codegen/codegen/common/CMakeFiles/codegen_common.dir/basic_tokenized_file.cpp.o
+FAILED: Telegram/codegen/codegen/common/CMakeFiles/codegen_common.dir/basic_tokenized_file.cpp.o 
+/nix/store/vh9fsdhgxcnab2qk7vdp2palkkn6j3cp-gcc-wrapper-13.3.0/bin/g++ -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x051500 -DQT_GUI_LIB -DQT_IMPLICIT_QCHAR_CONSTRUCTION -DQT_NETWORK_LIB -DQT_NO_CAST_FROM_BYTEARRAY -DQT_NO_DEBUG -DQT_NO_KEYWORDS -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QMLMETA_LIB -DQT_QMLMODELS_LIB -DQT_QMLWORKERSCRIPT_LIB -DQT_QML_LIB -DQT_QUICKWIDGETS_LIB -DQT_QUICK_LIB -DQT_SVG_LIB -DQT_WAYLANDCOMPOSITOR_LIB -DQT_WIDGETS_LIB -I/build/source/Telegram/codegen -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/mkspecs/linux-g++ -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/6.8.0 -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/6.8.0/QtCore -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtGui -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtGui/6.8.0 -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtGui/6.8.0/QtGui -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtOpenGL -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtWidgets -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtWidgets/6.8.0 -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtWidgets/6.8.0/QtWidgets -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtOpenGLWidgets -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtNetwork -isystem /nix/store/1h9clfg8d5djlgqahds4k45w3n8s44gl-qtsvg-6.8.0/include/QtSvg -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtDBus -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQuick -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQml -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQmlIntegration -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQmlMeta -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQmlModels -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQmlWorkerScript -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQuickWidgets -isystem /nix/store/hpbs9nkj2ixz5rzyqrryri9vdxcj7zm5-qtwayland-6.8.0/include/QtWaylandCompositor -O3 -DNDEBUG -std=gnu++20 -fPIC -fno-strict-aliasing -pipe -Wall -Wextra -Wno-unused-parameter -Wno-switch -Wno-maybe-uninitialized -Wno-missing-field-initializers -Wno-sign-compare -Wno-deprecated -MD -MT Telegram/codegen/codegen/common/CMakeFiles/codegen_common.dir/basic_tokenized_file.cpp.o -MF Telegram/codegen/codegen/common/CMakeFiles/codegen_common.dir/basic_tokenized_file.cpp.o.d -o Telegram/codegen/codegen/common/CMakeFiles/codegen_common.dir/basic_tokenized_file.cpp.o -c /build/source/Telegram/codegen/codegen/common/basic_tokenized_file.cpp
+In file included from /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/qstring.h:14,
+                 from /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/qhashfunctions.h:9,
+                 from /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/qmap.h:8,
+                 from /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/QMap:1,
+                 from /build/source/Telegram/codegen/codegen/common/basic_tokenized_file.h:10,
+                 from /build/source/Telegram/codegen/codegen/common/basic_tokenized_file.cpp:7:
+/nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/qchar.h:66:2: error: #error This macro has been removed in Qt 6.8.
+   66 | #error This macro has been removed in Qt 6.8.
+      |  ^~~~~
+[34/1474] Building CXX object cmake/external/qt/qt_static_plugins/CMakeFiles/external_qt_static_plugins.dir/qt_static_plugins.cpp.o
+FAILED: cmake/external/qt/qt_static_plugins/CMakeFiles/external_qt_static_plugins.dir/qt_static_plugins.cpp.o 
+/nix/store/vh9fsdhgxcnab2qk7vdp2palkkn6j3cp-gcc-wrapper-13.3.0/bin/g++ -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x051500 -DQT_GUI_LIB -DQT_IMPLICIT_QCHAR_CONSTRUCTION -DQT_NETWORK_LIB -DQT_NO_CAST_FROM_BYTEARRAY -DQT_NO_DEBUG -DQT_NO_KEYWORDS -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QMLMETA_LIB -DQT_QMLMODELS_LIB -DQT_QMLWORKERSCRIPT_LIB -DQT_QML_LIB -DQT_QUICKWIDGETS_LIB -DQT_QUICK_LIB -DQT_STATIC_PLUGINS_USE_PACKAGED -DQT_SVG_LIB -DQT_WAYLANDCOMPOSITOR_LIB -DQT_WIDGETS_LIB -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/mkspecs/linux-g++ -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/6.8.0 -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/6.8.0/QtCore -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtGui -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtGui/6.8.0 -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtGui/6.8.0/QtGui -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtOpenGL -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtWidgets -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtWidgets/6.8.0 -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtWidgets/6.8.0/QtWidgets -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtOpenGLWidgets -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtNetwork -isystem /nix/store/1h9clfg8d5djlgqahds4k45w3n8s44gl-qtsvg-6.8.0/include/QtSvg -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtDBus -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQuick -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQml -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQmlIntegration -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQmlMeta -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQmlModels -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQmlWorkerScript -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQuickWidgets -isystem /nix/store/hpbs9nkj2ixz5rzyqrryri9vdxcj7zm5-qtwayland-6.8.0/include/QtWaylandCompositor -O3 -DNDEBUG -std=gnu++20 -fPIC -fno-strict-aliasing -pipe -Wall -Wextra -Wno-unused-parameter -Wno-switch -Wno-maybe-uninitialized -Wno-missing-field-initializers -Wno-sign-compare -Wno-deprecated -MD -MT cmake/external/qt/qt_static_plugins/CMakeFiles/external_qt_static_plugins.dir/qt_static_plugins.cpp.o -MF cmake/external/qt/qt_static_plugins/CMakeFiles/external_qt_static_plugins.dir/qt_static_plugins.cpp.o.d -o cmake/external/qt/qt_static_plugins/CMakeFiles/external_qt_static_plugins.dir/qt_static_plugins.cpp.o -c /build/source/cmake/external/qt/qt_static_plugins/qt_static_plugins.cpp
+In file included from /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/qstring.h:14,
+                 from /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/qobject.h:11,
+                 from /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/qplugin.h:12,
+                 from /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/QtPlugin:1,
+                 from /build/source/cmake/external/qt/qt_static_plugins/qt_static_plugins.cpp:8:
+/nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/qchar.h:66:2: error: #error This macro has been removed in Qt 6.8.
+   66 | #error This macro has been removed in Qt 6.8.
+      |  ^~~~~
+[35/1474] Building CXX object Telegram/codegen/codegen/common/CMakeFiles/codegen_common.dir/cpp_file.cpp.o
+FAILED: Telegram/codegen/codegen/common/CMakeFiles/codegen_common.dir/cpp_file.cpp.o 
+/nix/store/vh9fsdhgxcnab2qk7vdp2palkkn6j3cp-gcc-wrapper-13.3.0/bin/g++ -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x051500 -DQT_GUI_LIB -DQT_IMPLICIT_QCHAR_CONSTRUCTION -DQT_NETWORK_LIB -DQT_NO_CAST_FROM_BYTEARRAY -DQT_NO_DEBUG -DQT_NO_KEYWORDS -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QMLMETA_LIB -DQT_QMLMODELS_LIB -DQT_QMLWORKERSCRIPT_LIB -DQT_QML_LIB -DQT_QUICKWIDGETS_LIB -DQT_QUICK_LIB -DQT_SVG_LIB -DQT_WAYLANDCOMPOSITOR_LIB -DQT_WIDGETS_LIB -I/build/source/Telegram/codegen -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/mkspecs/linux-g++ -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/6.8.0 -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/6.8.0/QtCore -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtGui -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtGui/6.8.0 -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtGui/6.8.0/QtGui -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtOpenGL -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtWidgets -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtWidgets/6.8.0 -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtWidgets/6.8.0/QtWidgets -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtOpenGLWidgets -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtNetwork -isystem /nix/store/1h9clfg8d5djlgqahds4k45w3n8s44gl-qtsvg-6.8.0/include/QtSvg -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtDBus -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQuick -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQml -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQmlIntegration -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQmlMeta -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQmlModels -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQmlWorkerScript -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQuickWidgets -isystem /nix/store/hpbs9nkj2ixz5rzyqrryri9vdxcj7zm5-qtwayland-6.8.0/include/QtWaylandCompositor -O3 -DNDEBUG -std=gnu++20 -fPIC -fno-strict-aliasing -pipe -Wall -Wextra -Wno-unused-parameter -Wno-switch -Wno-maybe-uninitialized -Wno-missing-field-initializers -Wno-sign-compare -Wno-deprecated -MD -MT Telegram/codegen/codegen/common/CMakeFiles/codegen_common.dir/cpp_file.cpp.o -MF Telegram/codegen/codegen/common/CMakeFiles/codegen_common.dir/cpp_file.cpp.o.d -o Telegram/codegen/codegen/common/CMakeFiles/codegen_common.dir/cpp_file.cpp.o -c /build/source/Telegram/codegen/codegen/common/cpp_file.cpp
+In file included from /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/qstring.h:14,
+                 from /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/QString:1,
+                 from /build/source/Telegram/codegen/codegen/common/cpp_file.h:9,
+                 from /build/source/Telegram/codegen/codegen/common/cpp_file.cpp:7:
+/nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/qchar.h:66:2: error: #error This macro has been removed in Qt 6.8.
+   66 | #error This macro has been removed in Qt 6.8.
+      |  ^~~~~
+[36/1474] Building CXX object Telegram/codegen/codegen/common/CMakeFiles/codegen_common.dir/clean_file.cpp.o
+FAILED: Telegram/codegen/codegen/common/CMakeFiles/codegen_common.dir/clean_file.cpp.o 
+/nix/store/vh9fsdhgxcnab2qk7vdp2palkkn6j3cp-gcc-wrapper-13.3.0/bin/g++ -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x051500 -DQT_GUI_LIB -DQT_IMPLICIT_QCHAR_CONSTRUCTION -DQT_NETWORK_LIB -DQT_NO_CAST_FROM_BYTEARRAY -DQT_NO_DEBUG -DQT_NO_KEYWORDS -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QMLMETA_LIB -DQT_QMLMODELS_LIB -DQT_QMLWORKERSCRIPT_LIB -DQT_QML_LIB -DQT_QUICKWIDGETS_LIB -DQT_QUICK_LIB -DQT_SVG_LIB -DQT_WAYLANDCOMPOSITOR_LIB -DQT_WIDGETS_LIB -I/build/source/Telegram/codegen -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/mkspecs/linux-g++ -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/6.8.0 -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/6.8.0/QtCore -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtGui -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtGui/6.8.0 -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtGui/6.8.0/QtGui -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtOpenGL -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtWidgets -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtWidgets/6.8.0 -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtWidgets/6.8.0/QtWidgets -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtOpenGLWidgets -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtNetwork -isystem /nix/store/1h9clfg8d5djlgqahds4k45w3n8s44gl-qtsvg-6.8.0/include/QtSvg -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtDBus -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQuick -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQml -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQmlIntegration -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQmlMeta -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQmlModels -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQmlWorkerScript -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQuickWidgets -isystem /nix/store/hpbs9nkj2ixz5rzyqrryri9vdxcj7zm5-qtwayland-6.8.0/include/QtWaylandCompositor -O3 -DNDEBUG -std=gnu++20 -fPIC -fno-strict-aliasing -pipe -Wall -Wextra -Wno-unused-parameter -Wno-switch -Wno-maybe-uninitialized -Wno-missing-field-initializers -Wno-sign-compare -Wno-deprecated -MD -MT Telegram/codegen/codegen/common/CMakeFiles/codegen_common.dir/clean_file.cpp.o -MF Telegram/codegen/codegen/common/CMakeFiles/codegen_common.dir/clean_file.cpp.o.d -o Telegram/codegen/codegen/common/CMakeFiles/codegen_common.dir/clean_file.cpp.o -c /build/source/Telegram/codegen/codegen/common/clean_file.cpp
+In file included from /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/qstring.h:14,
+                 from /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/QString:1,
+                 from /build/source/Telegram/codegen/codegen/common/clean_file.h:9,
+                 from /build/source/Telegram/codegen/codegen/common/clean_file.cpp:7:
+/nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/qchar.h:66:2: error: #error This macro has been removed in Qt 6.8.
+   66 | #error This macro has been removed in Qt 6.8.
+      |  ^~~~~
+[37/1474] Building CXX object Telegram/codegen/codegen/common/CMakeFiles/codegen_common.dir/logging.cpp.o
+FAILED: Telegram/codegen/codegen/common/CMakeFiles/codegen_common.dir/logging.cpp.o 
+/nix/store/vh9fsdhgxcnab2qk7vdp2palkkn6j3cp-gcc-wrapper-13.3.0/bin/g++ -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x051500 -DQT_GUI_LIB -DQT_IMPLICIT_QCHAR_CONSTRUCTION -DQT_NETWORK_LIB -DQT_NO_CAST_FROM_BYTEARRAY -DQT_NO_DEBUG -DQT_NO_KEYWORDS -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QMLMETA_LIB -DQT_QMLMODELS_LIB -DQT_QMLWORKERSCRIPT_LIB -DQT_QML_LIB -DQT_QUICKWIDGETS_LIB -DQT_QUICK_LIB -DQT_SVG_LIB -DQT_WAYLANDCOMPOSITOR_LIB -DQT_WIDGETS_LIB -I/build/source/Telegram/codegen -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/mkspecs/linux-g++ -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/6.8.0 -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/6.8.0/QtCore -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtGui -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtGui/6.8.0 -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtGui/6.8.0/QtGui -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtOpenGL -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtWidgets -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtWidgets/6.8.0 -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtWidgets/6.8.0/QtWidgets -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtOpenGLWidgets -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtNetwork -isystem /nix/store/1h9clfg8d5djlgqahds4k45w3n8s44gl-qtsvg-6.8.0/include/QtSvg -isystem /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtDBus -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQuick -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQml -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQmlIntegration -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQmlMeta -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQmlModels -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQmlWorkerScript -isystem /nix/store/2biis6mazil27rfn0cg75jz6xg241h3n-qtdeclarative-6.8.0/include/QtQuickWidgets -isystem /nix/store/hpbs9nkj2ixz5rzyqrryri9vdxcj7zm5-qtwayland-6.8.0/include/QtWaylandCompositor -O3 -DNDEBUG -std=gnu++20 -fPIC -fno-strict-aliasing -pipe -Wall -Wextra -Wno-unused-parameter -Wno-switch -Wno-maybe-uninitialized -Wno-missing-field-initializers -Wno-sign-compare -Wno-deprecated -MD -MT Telegram/codegen/codegen/common/CMakeFiles/codegen_common.dir/logging.cpp.o -MF Telegram/codegen/codegen/common/CMakeFiles/codegen_common.dir/logging.cpp.o.d -o Telegram/codegen/codegen/common/CMakeFiles/codegen_common.dir/logging.cpp.o -c /build/source/Telegram/codegen/codegen/common/logging.cpp
+In file included from /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/qstring.h:14,
+                 from /nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/QString:1,
+                 from /build/source/Telegram/codegen/codegen/common/logging.h:9,
+                 from /build/source/Telegram/codegen/codegen/common/logging.cpp:7:
+/nix/store/bgfalfi93kbn8j1wfwz0x0dnk1wx9wdp-qtbase-6.8.0/include/QtCore/qchar.h:66:2: error: #error This macro has been removed in Qt 6.8.
+   66 | #error This macro has been removed in Qt 6.8.
+      |  ^~~~~
+[38/1474] Building CXX object cmake/external/cld3/CMakeFiles/external_cld3_bundled.dir/gen/cld_3/protos/feature_extractor.pb.cc.o
+[39/1474] Building CXX object cmake/external/glib/cppgir/CMakeFiles/cppgir.dir/tools/genbase.cpp.o
+[40/1474] Building CXX object cmake/external/glib/cppgir/CMakeFiles/cppgir.dir/tools/repository.cpp.o
+[41/1474] Building CXX object cmake/external/glib/cppgir/CMakeFiles/cppgir.dir/tools/cppgir.cpp.o
+[42/1474] Building CXX object cmake/external/glib/cppgir/CMakeFiles/cppgir.dir/tools/function.cpp.o
+[43/1474] Building CXX object cmake/external/glib/cppgir/CMakeFiles/cppgir.dir/tools/genns.cpp.o
+ninja: build stopped: subcommand failed.

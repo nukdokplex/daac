@@ -43,7 +43,7 @@
     };
 
     wofi-power-menu = {
-      url = "github:szaffarano/wofi-power-menu/ebfbd1700d58851b32140f6aabfead32fe7ad4db";
+      url = "github:szaffarano/wofi-power-menu/v0.2.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -59,13 +59,6 @@
   };
 
   outputs = {self, ...}: let
-    allSystems = [
-      "aarch64-linux"
-      "x86_64-linux"
-      "aarch64-darwin"
-      "x86_64-darwin"
-    ];
-
     allHosts = [
       "sleipnir"
       "gladr"

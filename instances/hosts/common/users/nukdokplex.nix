@@ -15,6 +15,8 @@
       ];
     };
 
+    nix.settings.trusted-users = ["nukdokplex"];
+
     home-manager.users.nukdokplex = self.instances.homes.nukdokplex;
   };
 }

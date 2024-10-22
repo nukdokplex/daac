@@ -118,6 +118,8 @@ in {
     }
   ];
 
+  programs.steam.enable = true;
+
   services.pipewire.extraConfig.pipewire."99-latency-settings" = {
     "context.properties" = {
       "default.clock.rate" = 48000;

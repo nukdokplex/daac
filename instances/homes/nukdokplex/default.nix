@@ -11,9 +11,8 @@ in {
   imports = [
     self.modules.homeManager.default
     self.inputs.agenix.homeManagerModules.age
-    ./secrets
-    ./mail.nix
     ./mime.nix
+    ./mail.nix
   ];
 
   home = {
@@ -23,7 +22,7 @@ in {
 
     packages = with pkgs; [
       vesktop
-      _64gram
+      telegram-desktop
       keepassxc
       qbittorrent
       vlc
@@ -32,6 +31,8 @@ in {
       kdePackages.k3b
       gedit
       shotwell
+      peazip
+      kdePackages.kdenlive
       self.inputs.nukdokplex-nix-repository.packages.${osConfig.nixpkgs.hostPlatform.system}.KToolBox
     ];
   };
@@ -59,6 +60,10 @@ in {
     };
     waybar.enable = true;
     thunderbird.enable = true;
+    spicetify.enable = true;
+    neovim = {
+      enable = true;
+    };
   };
 
   services.syncthing.enable = true;
@@ -72,9 +77,9 @@ in {
 
     settings = {
       bind = [
-        "$mainMod, W, exec, ${lib.getExe pkgs.firefox}"
+        "$mainMod, W, exec, firefox"
         "$mainMod, Q, exec, ${lib.getExe pkgs.alacritty}"
-        "$mainMod, E, exec, ${lib.getExe pkgs.xfce.thunar}"
+        "$mainMod, E, exec, thunar"
       ];
 
       exec-once = lib.mkAfter [
@@ -83,10 +88,10 @@ in {
         "[workspace 2 silent] telegram-desktop"
         "[workspace 2 silent] vesktop"
         "[workspace 3 silent] codium"
-        "[workspace 4 silent] pcmanfm"
+        "[workspace 4 silent] thunar"
         "[workspace 5 silent] betterbird"
         "[workspace 7 silent] keepassxc"
-        "[workspace 10 silent] spotify"
+        # "[workspace 10 silent] spotify"
       ];
 
       windowrulev2 = [

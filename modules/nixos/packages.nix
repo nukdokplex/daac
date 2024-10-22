@@ -67,5 +67,6 @@ in {
     python2
     wget
     vim
+    nix-index
   ];
 }

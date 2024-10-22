@@ -17,7 +17,11 @@
 
   config = lib.mkIf config.programs.thunar.enable {
     home.packages = [
-      pkgs.xfce.thunar
+      (pkgs.xfce.thunar.override {
+        thunarPlugins = [
+          pkgs.xfce.thunar-archive-plugin
+        ];
+      })
     ];
 
     xdg.mimeApps.defaultApplications = {

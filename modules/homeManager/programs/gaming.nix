@@ -14,7 +14,6 @@
     lutris.enable = true;
     mangohud.enable = true;
     r2modman.enable = true;
-    steam.enable = true;
     wine.enable = true;
   };
 }

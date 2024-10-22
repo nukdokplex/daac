@@ -4,8 +4,6 @@
   pkgs,
   ...
 }: let
-  cat = lib.getExe' pkgs.coreutils "cat";
-  mkPasswordCommand = secret: "${cat} ${secret}";
   defaultThunderbirdProfileName = "nukdokplex";
 in {
   accounts.email.accounts = let
@@ -16,7 +14,6 @@ in {
     in {
       inherit address realName;
       userName = address;
-      passwordCommand = mkPasswordCommand config.age.secrets.${address}.path;
       primary = true;
       thunderbird = {
         enable = true;
@@ -38,7 +35,6 @@ in {
     in {
       inherit address realName;
       userName = address;
-      passwordCommand = mkPasswordCommand config.age.secrets.${address}.path;
       thunderbird = {
         enable = true;
         profiles = [defaultThunderbirdProfileName];
@@ -50,7 +46,6 @@ in {
     in {
       inherit address realName;
       userName = address;
-      passwordCommand = mkPasswordCommand config.age.secrets.${address}.path;
       thunderbird = {
         enable = true;
         profiles = [defaultThunderbirdProfileName];
@@ -62,7 +57,6 @@ in {
     in {
       inherit address realName;
       userName = address;
-      passwordCommand = mkPasswordCommand config.age.secrets.${address}.path;
       thunderbird = {
         enable = true;
         profiles = [defaultThunderbirdProfileName];
