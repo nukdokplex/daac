@@ -12,7 +12,6 @@ in {
     self.modules.homeManager.default
     self.inputs.agenix.homeManagerModules.age
     ./mime.nix
-    ./mail.nix
   ];
 
   home = {
@@ -29,6 +28,7 @@ in {
       libreoffice-fresh
       tor-browser
       kdePackages.k3b
+      betterbird
       gedit
       shotwell
       peazip
@@ -59,7 +59,6 @@ in {
       setDefault = true;
     };
     waybar.enable = true;
-    thunderbird.enable = true;
     spicetify.enable = true;
     neovim = {
       enable = true;
