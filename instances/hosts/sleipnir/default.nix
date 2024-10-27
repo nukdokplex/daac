@@ -39,6 +39,7 @@ in {
       };
     };
   };
+  services.greetd.enable = true;
 
   services.greetd.settings = {
     initial_session = {
