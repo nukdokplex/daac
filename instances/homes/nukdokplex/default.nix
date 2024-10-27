@@ -54,6 +54,9 @@ in {
       userName = "nukdokplex";
       userEmail = "nukdokplex@nukdokplex.ru";
     };
+    gpg = {
+      enable = true;
+    };
     thunar = {
       enable = true;
       setDefault = true;
