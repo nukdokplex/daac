@@ -1,14 +1,15 @@
-{
-  self,
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+{ self
+, config
+, lib
+, pkgs
+, ...
+}:
+let
   rgb = color: "rgb(${color})";
   rgba = color: alpha: "rgba(${color}${alpha})";
   wofi-power-menu = lib.getExe' self.inputs.wofi-power-menu.packages.${pkgs.system}.wofi-power-menu "wofi-power-menu";
-in {
+in
+{
   config.wayland.windowManager.hyprland = {
     settings = {
       "$mainMod" = "SUPER";
@@ -64,94 +65,96 @@ in {
       };
 
       # binds
-      bind = let
-        jq = lib.getExe pkgs.jq;
-      in [
-        "$mainMod, C, killactive"
-        "$mainMod SHIFT, C, exec, hyprctl reload"
-        "$mainMod, M, exit"
-        "$mainMod, P, pseudo"
-        "$mainMod, Z, togglesplit"
-        "$mainMod, L, exec, loginctl lock-session"
-        "$mainMod, D, togglefloating"
-        "$mainMod, F, fullscreen"
-        "$mainMod SHIFT, F, fullscreenstate, 0 3"
-        "$mainMod, R, exec, wofi --show drun"
-        "$mainMod, V, exec, cliphist list | wofi --dmenu -p \"Select clipboard history entry...\" | cliphist decode | wl-copy"
-        "$mainMod, PRINT, exec, grim -g \"$(slurp)\" -l 6 -t png - | wl-copy"
-        ", PRINT, exec, grim -c -l 6 -t png -o \"$(hyprctl activeworkspace -j | ${jq} -r .monitor)\" - | wl-copy"
-        "CTRL ALT, DELETE, exec, ${wofi-power-menu}"
+      bind =
+        let
+          jq = lib.getExe pkgs.jq;
+        in
+        [
+          "$mainMod, C, killactive"
+          "$mainMod SHIFT, C, exec, hyprctl reload"
+          "$mainMod, M, exit"
+          "$mainMod, P, pseudo"
+          "$mainMod, Z, togglesplit"
+          "$mainMod, L, exec, loginctl lock-session"
+          "$mainMod, D, togglefloating"
+          "$mainMod, F, fullscreen"
+          "$mainMod SHIFT, F, fullscreenstate, 0 3"
+          "$mainMod, R, exec, wofi --show drun"
+          "$mainMod, V, exec, cliphist list | wofi --dmenu -p \"Select clipboard history entry...\" | cliphist decode | wl-copy"
+          "$mainMod, PRINT, exec, grim -g \"$(slurp)\" -l 6 -t png - | wl-copy"
+          ", PRINT, exec, grim -c -l 6 -t png -o \"$(hyprctl activeworkspace -j | ${jq} -r .monitor)\" - | wl-copy"
+          "CTRL ALT, DELETE, exec, ${wofi-power-menu}"
 
-        # Move focus with mainMod + arrow keys
-        "$mainMod, left, movefocus, l"
-        "$mainMod, right, movefocus, r"
-        "$mainMod, up, movefocus, u"
-        "$mainMod, down, movefocus, d"
+          # Move focus with mainMod + arrow keys
+          "$mainMod, left, movefocus, l"
+          "$mainMod, right, movefocus, r"
+          "$mainMod, up, movefocus, u"
+          "$mainMod, down, movefocus, d"
 
-        # Moving windows
-        "$mainMod SHIFT, left,  swapwindow, l"
-        "$mainMod SHIFT, right, swapwindow, r"
-        "$mainMod SHIFT, up,    swapwindow, u"
-        "$mainMod SHIFT, down,  swapwindow, d"
+          # Moving windows
+          "$mainMod SHIFT, left,  swapwindow, l"
+          "$mainMod SHIFT, right, swapwindow, r"
+          "$mainMod SHIFT, up,    swapwindow, u"
+          "$mainMod SHIFT, down,  swapwindow, d"
 
-        # Window resizing                     X  Y
-        "$mainMod CTRL, left, resizeactive, -60 0"
-        "$mainMod CTRL, right, resizeactive, 60 0"
-        "$mainMod CTRL, up, resizeactive, 0 -60"
-        "$mainMod CTRL, down, resizeactive, 0 60"
+          # Window resizing                     X  Y
+          "$mainMod CTRL, left, resizeactive, -60 0"
+          "$mainMod CTRL, right, resizeactive, 60 0"
+          "$mainMod CTRL, up, resizeactive, 0 -60"
+          "$mainMod CTRL, down, resizeactive, 0 60"
 
-        # Switch workspaces with mainMod + [0-9]
-        "$mainMod, 1, workspace, 1"
-        "$mainMod, 2, workspace, 2"
-        "$mainMod, 3, workspace, 3"
-        "$mainMod, 4, workspace, 4"
-        "$mainMod, 5, workspace, 5"
-        "$mainMod, 6, workspace, 6"
-        "$mainMod, 7, workspace, 7"
-        "$mainMod, 8, workspace, 8"
-        "$mainMod, 9, workspace, 9"
-        "$mainMod, 0, workspace, 10"
+          # Switch workspaces with mainMod + [0-9]
+          "$mainMod, 1, workspace, 1"
+          "$mainMod, 2, workspace, 2"
+          "$mainMod, 3, workspace, 3"
+          "$mainMod, 4, workspace, 4"
+          "$mainMod, 5, workspace, 5"
+          "$mainMod, 6, workspace, 6"
+          "$mainMod, 7, workspace, 7"
+          "$mainMod, 8, workspace, 8"
+          "$mainMod, 9, workspace, 9"
+          "$mainMod, 0, workspace, 10"
 
-        # Switch workspaces with mainMod + numpad [0-9]
-        "$mainMod, KP_End, workspace, 1"
-        "$mainMod, KP_Down, workspace, 2"
-        "$mainMod, KP_Next, workspace, 3"
-        "$mainMod, KP_Left, workspace, 4"
-        "$mainMod, KP_Begin, workspace, 5"
-        "$mainMod, KP_Right, workspace, 6"
-        "$mainMod, KP_Home, workspace, 7"
-        "$mainMod, KP_Up, workspace, 8"
-        "$mainMod, KP_Prior, workspace, 9"
-        "$mainMod, KP_Insert, workspace, 10"
+          # Switch workspaces with mainMod + numpad [0-9]
+          "$mainMod, KP_End, workspace, 1"
+          "$mainMod, KP_Down, workspace, 2"
+          "$mainMod, KP_Next, workspace, 3"
+          "$mainMod, KP_Left, workspace, 4"
+          "$mainMod, KP_Begin, workspace, 5"
+          "$mainMod, KP_Right, workspace, 6"
+          "$mainMod, KP_Home, workspace, 7"
+          "$mainMod, KP_Up, workspace, 8"
+          "$mainMod, KP_Prior, workspace, 9"
+          "$mainMod, KP_Insert, workspace, 10"
 
-        # Move active window to a workspace with mainMod + SHIFT + [0-9]
-        "$mainMod SHIFT, 1, movetoworkspace, 1"
-        "$mainMod SHIFT, 2, movetoworkspace, 2"
-        "$mainMod SHIFT, 3, movetoworkspace, 3"
-        "$mainMod SHIFT, 4, movetoworkspace, 4"
-        "$mainMod SHIFT, 5, movetoworkspace, 5"
-        "$mainMod SHIFT, 6, movetoworkspace, 6"
-        "$mainMod SHIFT, 7, movetoworkspace, 7"
-        "$mainMod SHIFT, 8, movetoworkspace, 8"
-        "$mainMod SHIFT, 9, movetoworkspace, 9"
-        "$mainMod SHIFT, 0, movetoworkspace, 10"
+          # Move active window to a workspace with mainMod + SHIFT + [0-9]
+          "$mainMod SHIFT, 1, movetoworkspace, 1"
+          "$mainMod SHIFT, 2, movetoworkspace, 2"
+          "$mainMod SHIFT, 3, movetoworkspace, 3"
+          "$mainMod SHIFT, 4, movetoworkspace, 4"
+          "$mainMod SHIFT, 5, movetoworkspace, 5"
+          "$mainMod SHIFT, 6, movetoworkspace, 6"
+          "$mainMod SHIFT, 7, movetoworkspace, 7"
+          "$mainMod SHIFT, 8, movetoworkspace, 8"
+          "$mainMod SHIFT, 9, movetoworkspace, 9"
+          "$mainMod SHIFT, 0, movetoworkspace, 10"
 
-        # Move active window to a workspace with mainMod + SHIFT + Numpad [0-9]
-        "$mainMod SHIFT, KP_End, movetoworkspace, 1"
-        "$mainMod SHIFT, KP_Down, movetoworkspace, 2"
-        "$mainMod SHIFT, KP_Next, movetoworkspace, 3"
-        "$mainMod SHIFT, KP_Left, movetoworkspace, 4"
-        "$mainMod SHIFT, KP_Begin, movetoworkspace, 5"
-        "$mainMod SHIFT, KP_Right, movetoworkspace, 6"
-        "$mainMod SHIFT, KP_Home, movetoworkspace, 7"
-        "$mainMod SHIFT, KP_Up, movetoworkspace, 8"
-        "$mainMod SHIFT, KP_Prior, movetoworkspace, 9"
-        "$mainMod SHIFT, KP_Insert, movetoworkspace, 10"
+          # Move active window to a workspace with mainMod + SHIFT + Numpad [0-9]
+          "$mainMod SHIFT, KP_End, movetoworkspace, 1"
+          "$mainMod SHIFT, KP_Down, movetoworkspace, 2"
+          "$mainMod SHIFT, KP_Next, movetoworkspace, 3"
+          "$mainMod SHIFT, KP_Left, movetoworkspace, 4"
+          "$mainMod SHIFT, KP_Begin, movetoworkspace, 5"
+          "$mainMod SHIFT, KP_Right, movetoworkspace, 6"
+          "$mainMod SHIFT, KP_Home, movetoworkspace, 7"
+          "$mainMod SHIFT, KP_Up, movetoworkspace, 8"
+          "$mainMod SHIFT, KP_Prior, movetoworkspace, 9"
+          "$mainMod SHIFT, KP_Insert, movetoworkspace, 10"
 
-        # Scroll through existing workspaces with mainMod + scroll
-        "$mainMod, mouse_down, workspace, e+1"
-        "$mainMod, mouse_up, workspace, e-1"
-      ];
+          # Scroll through existing workspaces with mainMod + scroll
+          "$mainMod, mouse_down, workspace, e+1"
+          "$mainMod, mouse_up, workspace, e-1"
+        ];
 
       bindm = [
         # Move/resize windows with mainMod + LMB/RMB and dragging
@@ -335,7 +338,7 @@ in {
   config.xdg.configFile."wofi-power-menu.toml" = lib.mkIf config.wayland.windowManager.hyprland.enable {
     enable = true;
     target = "wofi-power-menu.toml";
-    source = (pkgs.formats.toml {}).generate "wofi-power-menu.toml" {
+    source = (pkgs.formats.toml { }).generate "wofi-power-menu.toml" {
       wofi = {
         path = lib.getExe pkgs.wofi;
       };
@@ -394,10 +397,11 @@ in {
         after_sleep_cmd = "hyprctl dispatch dpms on"; # to avoid having to press a key twice to turn on the display.
       };
 
-      listener = let
-        cfg = config.idling-settings;
-      in
-        []
+      listener =
+        let
+          cfg = config.idling-settings;
+        in
+        [ ]
         ++ (lib.optional (cfg.lockSessionTimeout > -1) {
           timeout = cfg.lockSessionTimeout;
           on-timeout = "loginctl lock-session";

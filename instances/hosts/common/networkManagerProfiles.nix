@@ -1,4 +1,4 @@
-{config, ...}: {
+{ config, ... }: {
   networking.networkmanager.ensureProfiles = {
     environmentFiles = [
       config.age.secrets.wifi_passwords.path

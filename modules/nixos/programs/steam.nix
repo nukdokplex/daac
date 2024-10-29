@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   programs.steam = {
     extraPackages = with pkgs; [
       gamescope

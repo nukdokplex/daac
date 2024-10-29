@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   stylix = {
     enable = true;
     # https://www.pixel4k.com/wp-content/uploads/2018/09/tokyo-night-city-skyscrapers-4k_1538067528.jpg
@@ -13,19 +13,21 @@
       hash = "sha256-Ak/wZYbqmTxSq/U0e31HzAH5KZKqQJIKFEMLZCZNSC8=";
     };
 
-    cursor = let
-      themeVariant = "Dracula";
-      colorVariant = "Green";
+    cursor =
+      let
+        themeVariant = "Dracula";
+        colorVariant = "Green";
 
-      package = pkgs.afterglow-cursors-recolored.override {
-        themeVariants = [themeVariant];
-        draculaColorVariants = [colorVariant];
+        package = pkgs.afterglow-cursors-recolored.override {
+          themeVariants = [ themeVariant ];
+          draculaColorVariants = [ colorVariant ];
+        };
+      in
+      {
+        inherit package;
+        name = "Afterglow-Recolored-${themeVariant}-${colorVariant}";
+        size = 32;
       };
-    in {
-      inherit package;
-      name = "Afterglow-Recolored-${themeVariant}-${colorVariant}";
-      size = 32;
-    };
 
     fonts = {
       serif = {
@@ -40,7 +42,7 @@
 
       monospace = {
         package = pkgs.nerdfonts.override {
-          fonts = ["DejaVuSansMono"];
+          fonts = [ "DejaVuSansMono" ];
         };
         name = "DejaVuSansM Nerd Font Mono";
       };

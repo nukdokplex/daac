@@ -1,4 +1,4 @@
-{self, ...}: {
+{ self, ... }: {
   config = {
     users.users.nukdokplex = {
       isNormalUser = true;
@@ -15,7 +15,7 @@
       ];
     };
 
-    nix.settings.trusted-users = ["nukdokplex"];
+    nix.settings.trusted-users = [ "nukdokplex" ];
 
     home-manager.users.nukdokplex = self.instances.homes.nukdokplex;
   };

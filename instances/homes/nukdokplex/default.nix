@@ -1,13 +1,14 @@
-{
-  self,
-  config,
-  osConfig,
-  lib,
-  pkgs,
-  ...
-}: let
+{ self
+, config
+, osConfig
+, lib
+, pkgs
+, ...
+}:
+let
   username = "nukdokplex";
-in {
+in
+{
   imports = [
     self.modules.homeManager.default
     self.inputs.agenix.homeManagerModules.age

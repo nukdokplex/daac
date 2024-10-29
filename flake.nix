@@ -56,67 +56,100 @@
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    pre-commit-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = {self, ...}: let
-    allHosts = [
-      "sleipnir"
-      "gladr"
-      "testvm"
-    ];
-  in {
-    formatter = self.inputs.flake-utils.lib.eachDefaultSystemPassThrough (
-      system: let
-        pkgs = import self.inputs.nixpkgs {inherit system;};
-      in {${system} = pkgs.alejandra;}
-    );
+  outputs = { self, ... }:
+    let
+      allHosts = [
+        "sleipnir"
+        "gladr"
+        "testvm"
+      ];
+    in
+    {
 
-    modules = {
-      nixos.default = ./modules/nixos;
-      homeManager.default = ./modules/homeManager;
-    };
-
-    instances = {
-      hosts = {
-        sleipnir = ./instances/hosts/sleipnir;
-        gladr = ./instances/hosts/gladr;
-        testvm = ./instances/hosts/testvm;
-      };
-
-      homes = {
-        nukdokplex = ./instances/homes/nukdokplex;
-      };
-    };
-
-    nixosConfigurations =
-      self.inputs.nixpkgs.lib.genAttrs
-      allHosts
-      (host:
-        self.inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit self;
-            hostname = host;
+      checks = self.inputs.flake-utils.lib.eachDefaultSystemPassThrough (
+        system:
+        {
+          ${system}.pre-commit-check = self.inputs.pre-commit-hooks.lib.${system}.run {
+            src = ./.;
+            hooks = {
+              nixpkgs-fmt.enable = true;
+            };
           };
-          modules = [
-            self.modules.nixos.default
-            self.inputs.disko.nixosModules.default
-            self.inputs.home-manager.nixosModules.home-manager
-            self.inputs.agenix.nixosModules.default
-            self.inputs.stylix.nixosModules.stylix
-            self.instances.hosts.${host}
-            {
-              nixpkgs.config.allowUnfree = true;
+        }
+      );
+      devShells = self.inputs.flake-utils.lib.eachDefaultSystemPassThrough (
+        system:
+        let
+          pkgs = import self.inputs.nixpkgs { inherit system; };
+        in
+        {
+          ${system}.default = pkgs.mkShell {
+            inherit (self.checks.${system}.pre-commit-check) shellHook;
+            buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
+          };
+        }
+      );
+      formatter = self.inputs.flake-utils.lib.eachDefaultSystemPassThrough (
+        system:
+        let
+          pkgs = import self.inputs.nixpkgs { inherit system; };
+        in
+        { ${system} = pkgs.nixpkgs-fmt; }
+      );
 
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                extraSpecialArgs = {
-                  inherit self;
-                  hostname = host;
-                };
+      modules = {
+        nixos.default = ./modules/nixos;
+        homeManager.default = ./modules/homeManager;
+      };
+
+      instances = {
+        hosts = {
+          sleipnir = ./instances/hosts/sleipnir;
+          gladr = ./instances/hosts/gladr;
+          testvm = ./instances/hosts/testvm;
+        };
+
+        homes = {
+          nukdokplex = ./instances/homes/nukdokplex;
+        };
+      };
+
+      nixosConfigurations =
+        self.inputs.nixpkgs.lib.genAttrs
+          allHosts
+          (host:
+            self.inputs.nixpkgs.lib.nixosSystem {
+              specialArgs = {
+                inherit self;
+                hostname = host;
               };
-            }
-          ];
-        });
-  };
+              modules = [
+                self.modules.nixos.default
+                self.inputs.disko.nixosModules.default
+                self.inputs.home-manager.nixosModules.home-manager
+                self.inputs.agenix.nixosModules.default
+                self.inputs.stylix.nixosModules.stylix
+                self.instances.hosts.${host}
+                {
+                  nixpkgs.config.allowUnfree = true;
+
+                  home-manager = {
+                    useGlobalPkgs = true;
+                    useUserPackages = true;
+                    extraSpecialArgs = {
+                      inherit self;
+                      hostname = host;
+                    };
+                  };
+                }
+              ];
+            });
+    };
 }

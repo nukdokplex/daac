@@ -1,12 +1,13 @@
-{
-  self,
-  config,
-  pkgs,
-  ...
-}: let
+{ self
+, config
+, pkgs
+, ...
+}:
+let
   agenix = self.inputs.agenix.packages.${config.nixpkgs.hostPlatform.system}.agenix;
   alejandra = self.inputs.alejandra.defaultPackage.${config.nixpkgs.hostPlatform.system};
-in {
+in
+{
   nixpkgs.config.permittedInsecurePackages = [
     "python-2.7.18.8"
   ];
@@ -63,10 +64,11 @@ in {
     libwebp
     bind # dns tools like dig, nslookup, etc
     pwvucontrol
-    (python312.withPackages (ps: [ps.gspread ps.openpyxl]))
+    (python312.withPackages (ps: [ ps.gspread ps.openpyxl ]))
     python2
     wget
     vim
     nix-index
+    devenv
   ];
 }

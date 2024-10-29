@@ -1,7 +1,6 @@
-{
-  self,
-  lib,
-  ...
+{ self
+, lib
+, ...
 }: {
   imports = [
     ../common
@@ -16,13 +15,13 @@
 
   boot = {
     initrd = {
-      availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod"];
-      kernelModules = [];
+      availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod" ];
+      kernelModules = [ ];
       systemd.enable = true;
     };
 
-    kernelModules = ["kvm-amd"];
-    extraModulePackages = [];
+    kernelModules = [ "kvm-amd" ];
+    extraModulePackages = [ ];
 
     lanzaboote = {
       enable = true;
