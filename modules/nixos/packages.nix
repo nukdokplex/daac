@@ -69,6 +69,6 @@ in
     wget
     vim
     nix-index
-    devenv
+    cachix
   ];
 }
