@@ -67,6 +67,7 @@
     let
       allHosts = [
         "sleipnir"
+        "sleipnir-vm"
         "gladr"
         "testvm"
       ];
@@ -112,6 +113,7 @@
       instances = {
         hosts = {
           sleipnir = ./instances/hosts/sleipnir;
+          sleipnir-vm = ./instances/hosts/sleipnir-vm;
           gladr = ./instances/hosts/gladr;
           testvm = ./instances/hosts/testvm;
         };
