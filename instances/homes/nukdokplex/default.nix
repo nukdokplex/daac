@@ -94,7 +94,7 @@ in
         "[workspace 4 silent] thunar"
         "[workspace 5 silent] thunderbird"
         "[workspace 7 silent] keepassxc"
-        # "[workspace 10 silent] spotify"
+        "[workspace 10 silent] spotify"
       ];
 
       windowrulev2 = [
