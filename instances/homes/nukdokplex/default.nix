@@ -29,7 +29,7 @@ in
       libreoffice-fresh
       tor-browser
       kdePackages.k3b
-      betterbird
+      thunderbird
       gedit
       shotwell
       peazip
@@ -92,7 +92,7 @@ in
         "[workspace 2 silent] vesktop"
         "[workspace 3 silent] codium"
         "[workspace 4 silent] thunar"
-        "[workspace 5 silent] betterbird"
+        "[workspace 5 silent] thunderbird"
         "[workspace 7 silent] keepassxc"
         # "[workspace 10 silent] spotify"
       ];
