@@ -16,7 +16,7 @@
         ipv6.method = "disabled";
         proxy = { };
         wifi = {
-          mode = "ifrastructure";
+          mode = "infrastructure";
           ssid = "yggdrasils";
           mtu = 1476;
         };
