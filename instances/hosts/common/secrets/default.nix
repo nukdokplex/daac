@@ -46,6 +46,6 @@
       group = "root";
     };
 
-    wifi_passwords.file = ./wifi_passwords.age;
+    networkmanager_environment.file = ./networkmanager_environment.age;
   };
 }
