@@ -81,6 +81,11 @@ in
     ];
   };
 
+  networking.networkmanager.ensureProfiles.profiles = {
+    yggdrasils-wifi.connection.autoconnect = "false";
+    yggdrasils-eth.ethernet.mac-address = "$sleipnir_25geth_mac";
+  };
+
   systemd.mounts = [
     {
       name = "data-archive.mount";
@@ -120,37 +125,11 @@ in
     }
   ];
 
-  programs.steam.enable = true;
-
-  services.pipewire.extraConfig.pipewire."99-latency-settings" = {
-    "context.properties" = {
-      "default.clock.rate" = 48000;
-      "default.clock.force-quantum" = 256;
-      "default.clock.min-quantum" = 32;
-      "default.clock.max-quantum" = 8192;
-    };
-  };
-
-  # services.pipewire.extraConfig.pipewire-pulse."99-latency-settings" = {
-  #   context.modules = [
-  #     {
-  #       name = "libpipewire-module-protocol-pulse";
-  #       args = {
-  #         pulse.min.req = "1024/48000";
-  #         pulse.default.req = "1024/48000";
-  #         pulse.max.req = "1024/48000";
-  #         pulse.min.quantum = "1024/48000";
-  #         pulse.max.quantum = "1024/48000";
-  #       };
-  #     }
-  #   ];
-  #   stream.properties = {
-  #     node.latency = "1024/48000";
-  #     resample.quality = 1;
-  #   };
-  # };
-
   environment.etc.crypttab.text = ''
     passport /dev/disk/by-label/PASSPORT none
   '';
+
+  programs.steam.enable = true;
+
+  virtualisation.libvirtd.enable = true;
 }

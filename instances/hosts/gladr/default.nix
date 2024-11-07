@@ -46,6 +46,11 @@
     };
   };
 
+  networking.networkmanager.ensureProfiles.profiles = {
+    yggdrasils-wifi.wifi.mac-address = "$gladr_wifi_mac";
+    yggdrasils-eth.ethernet.mac-address = "$tplink_ue200_mac";
+  };
+
   environment.etc.secureboot-GUID = {
     source = ./GUID;
     target = "secureboot/GUID";

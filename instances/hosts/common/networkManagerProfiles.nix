@@ -1,45 +1,41 @@
 { config, ... }: {
   networking.networkmanager.ensureProfiles = {
     environmentFiles = [
-      config.age.secrets.wifi_passwords.path
+      config.age.secrets.networkmanager_environment.path
     ];
 
     profiles = {
-      ndp-home-2 = {
+      # use this neat program to generate profiles:
+      # https://github.com/Janik-Haag/nm2nix
+      yggdrasils-wifi = {
         connection = {
-          id = "ndp-home-2";
+          id = "yggdrasils-wifi";
           type = "wifi";
-        };
-
-        wifi = {
-          ssid = "ndp-home-2";
-          mode = "infrastructure";
-        };
-
-        wifi-security = {
-          key-mgmt = "wpa-psk";
-          psk = "$YGGDRASILS_PSK";
         };
         ipv4.method = "auto";
         ipv6.method = "disabled";
+        proxy = { };
+        wifi = {
+          mode = "ifrastructure";
+          ssid = "yggdrasils";
+          mtu = 1476;
+        };
+        wifi-security = {
+          key-mgmt = "sae";
+          psk = "$yggdrasils_wifi_secret";
+        };
       };
-      ndp-home-5 = {
+      yggdrasils-eth = {
         connection = {
-          id = "ndp-home-5";
-          type = "wifi";
-        };
-
-        wifi = {
-          ssid = "ndp-home-5";
-          mode = "infrastructure";
-        };
-
-        wifi-security = {
-          key-mgmt = "wpa-psk";
-          psk = "$YGGDRASILS_PSK";
+          id = "yggdrasils-eth";
+          type = "ethernet";
         };
         ipv4.method = "auto";
         ipv6.method = "disabled";
+        proxy = { };
+        ethernet = {
+          mtu = 1476;
+        };
       };
     };
   };
