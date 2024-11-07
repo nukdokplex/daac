@@ -34,7 +34,6 @@ in
       shotwell
       peazip
       kdePackages.kdenlive
-      self.inputs.nukdokplex-nix-repository.packages.${osConfig.nixpkgs.hostPlatform.system}.KToolBox
     ];
   };
 

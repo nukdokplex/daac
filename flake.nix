@@ -37,8 +37,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nukdokplex-nix-repository = {
-      url = "github:nukdokplex/nukdokplex-nix-repository";
+    nukdokplex-nix-packages = {
+      url = "github:nukdokplex/nix-packages";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
