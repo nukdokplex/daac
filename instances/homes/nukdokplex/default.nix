@@ -34,6 +34,8 @@ in
       shotwell
       peazip
       kdePackages.kdenlive
+      osu-lazer-bin
+      opentabletdriver
     ];
   };
 
@@ -76,6 +78,8 @@ in
   };
 
   services.syncthing.enable = true;
+
+  services.arrpc.enable = true;
 
   custom.gaming.enable = true;
 

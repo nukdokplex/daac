@@ -81,6 +81,11 @@ in
     ];
   };
 
+  hardware.opentabletdriver = {
+    enable = true;
+    daemon.enable = true;
+  };
+
   networking.networkmanager.ensureProfiles.profiles = {
     yggdrasils-wifi.connection.autoconnect = "false";
     yggdrasils-eth.ethernet.mac-address = "$sleipnir_25geth_mac";
