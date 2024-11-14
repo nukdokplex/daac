@@ -25,12 +25,15 @@ in
     ntfs3g
     reiser4progs
     reiserfsprogs
-    udftools
-    cdrtools
-    cdrkit
-    dvdplusrwtools
     xfsprogs
     zfs
+
+    # optical disks
+    udftools
+    cdrtools
+    cdrdao
+    cdrkit
+    dvdplusrwtools
 
     # archives
     zip
@@ -72,4 +75,23 @@ in
     cachix
     ffmpeg
   ];
+
+  # fix cdrdao and cdrecord doesn't have permission to cd rom
+  # that fixes issues with programs such as k3b also
+  security.wrappers = {
+    cdrdao = {
+      setuid = true;
+      owner = "root";
+      group = "cdrom";
+      permissions = "u+wrx,g+x";
+      source = "${pkgs.cdrdao}/bin/cdrdao";
+    };
+    cdrecord = {
+      setuid = true;
+      owner = "root";
+      group = "cdrom";
+      permissions = "u+wrx,g+x";
+      source = "${pkgs.cdrtools}/bin/cdrecord";
+    };
+  };
 }
