@@ -79,8 +79,6 @@ in
 
   services.syncthing.enable = true;
 
-  services.arrpc.enable = true;
-
   custom.gaming.enable = true;
 
   wayland.windowManager.hyprland = {
