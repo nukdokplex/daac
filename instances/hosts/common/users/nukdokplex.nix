@@ -12,6 +12,7 @@
         "docker"
         "vboxusers"
         "adbusers"
+        "cdrom"
       ];
     };
 
