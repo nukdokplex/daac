@@ -70,5 +70,6 @@ in
     vim
     nix-index
     cachix
+    ffmpeg
   ];
 }
