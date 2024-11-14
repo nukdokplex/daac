@@ -114,6 +114,7 @@ in
           "default.clock.min-quantum" = "32";
           "default.clock.max-quantum" = "2048";
           "default.clock.quantum" = "1024";
+          "default.cloce.force-quantum" = "1024";
         };
       };
     };
