@@ -1,7 +1,4 @@
-{ self
-, pkgs
-, ...
-}: {
+{ self, pkgs, config, ... }: {
   imports = [
     ../common
     ./disko.nix
@@ -37,11 +34,18 @@
     };
   };
 
+  programs.hyprland = {
+    enable = true;
+    package = self.inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    # make sure to also set the portal package, so that they are in sync
+    portalPackage = self.inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  };
+
   services.greetd.enable = true;
 
   services.greetd.settings = {
     initial_session = {
-      command = "${pkgs.hyprland}/bin/Hyprland";
+      command = "${config.programs.hyprlans.package}/bin/Hyprland";
       user = "nukdokplex";
     };
   };
