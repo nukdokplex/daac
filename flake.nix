@@ -28,7 +28,7 @@
     };
 
     stylix = {
-      url = "github:danth/stylix/04afcfc0684d9bbb24bb1dc77afda7c1843ec93b";
+      url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -60,6 +60,10 @@
     pre-commit-hooks = {
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
     };
   };
 
@@ -138,6 +142,7 @@
                 self.inputs.home-manager.nixosModules.home-manager
                 self.inputs.agenix.nixosModules.default
                 self.inputs.stylix.nixosModules.stylix
+                self.inputs.hyprland.nixosModules.default
                 self.instances.hosts.${host}
                 {
                   nixpkgs.config.allowUnfree = true;
@@ -149,6 +154,9 @@
                       inherit self;
                       hostname = host;
                     };
+                    sharedModules = [
+                      self.inputs.hyprland.homeManagerModules.default
+                    ];
                   };
                 }
               ];

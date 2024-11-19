@@ -1,10 +1,8 @@
 { self
 , pkgs
+, config
 , ...
 }:
-let
-  system = "x86_64-linux";
-in
 {
   imports = [
     ../common
@@ -12,7 +10,7 @@ in
     self.inputs.lanzaboote.nixosModules.lanzaboote
   ];
 
-  nixpkgs.hostPlatform = system;
+  nixpkgs.hostPlatform = "x86_64-linux";
   networking.hostName = "sleipnir";
   time.timeZone = "Asia/Yekaterinburg";
   i18n.defaultLocale = "ru_RU.UTF-8";
@@ -42,9 +40,16 @@ in
   };
   services.greetd.enable = true;
 
+  programs.hyprland = {
+    enable = true;
+    package = self.inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    # make sure to also set the portal package, so that they are in sync
+    portalPackage = self.inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  };
+
   services.greetd.settings = {
     initial_session = {
-      command = "${pkgs.hyprland}/bin/Hyprland";
+      command = "${config.programs.hyprland.package}/bin/Hyprland";
       user = "nukdokplex";
     };
   };
@@ -67,7 +72,7 @@ in
   ];
 
   services.printing.drivers = [
-    self.inputs.nukdokplex-nix-packages.packages.${system}.epson_201310w
+    self.inputs.nukdokplex-nix-packages.packages.${pkgs.stdenv.hostPlatform.system}.epson_201310w
   ];
 
   hardware.printers = {

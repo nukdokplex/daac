@@ -6,6 +6,7 @@
     ./users
     ./secrets
     ./networkManagerProfiles.nix
+    ./stylix.nix
   ];
 
   hardware.enableRedistributableFirmware = true;

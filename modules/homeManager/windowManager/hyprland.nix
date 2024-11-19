@@ -222,9 +222,11 @@ in
           new_optimizations = true;
         };
 
-        drop_shadow = false;
-        shadow_range = 15;
-        shadow_render_power = 3;
+        # drop_shadow = false;
+        # shadow_range = 15;
+        # shadow_render_power = 3;
+
+        shadow.enabled = false;
 
         dim_inactive = false;
         dim_strength = 0.2;
