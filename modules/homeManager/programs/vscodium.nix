@@ -1,6 +1,5 @@
 { self
 , lib
-, osConfig
 , pkgs
 , ...
 }: {
@@ -8,7 +7,7 @@
     enable = true;
     package = pkgs.vscodium;
 
-    extensions = with self.inputs.vscode-extensions.extensions.${osConfig.nixpkgs.hostPlatform.system}.open-vsx; [
+    extensions = with self.inputs.vscode-extensions.extensions.${pkgs.stdenv.hostPlatform.system}.open-vsx; [
       jnoortheen.nix-ide
       naumovs.color-highlight
       leonardssh.vscord
@@ -16,6 +15,7 @@
       ms-python.python
       ms-python.black-formatter
       ms-python.debugpy
+      vue.volar
       # ms-toolsai.jupyter
     ];
 
