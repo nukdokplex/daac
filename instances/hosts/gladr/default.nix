@@ -45,7 +45,7 @@
 
   services.greetd.settings = {
     initial_session = {
-      command = "${config.programs.hyprlans.package}/bin/Hyprland";
+      command = "${config.programs.hyprland.package}/bin/Hyprland";
       user = "nukdokplex";
     };
   };
