@@ -39,7 +39,7 @@
       "nix.serverPath" = lib.getExe pkgs.nixd;
       "nix.serverSettings" = {
         nixd.formatting = {
-          command = [ (lib.getExe self.formatter.${osConfig.nixpkgs.hostPlatform.system}) ];
+          command = [ (lib.getExe self.formatter.${pkgs.stdenv.hostPlatform.system}) ];
         };
       };
 
