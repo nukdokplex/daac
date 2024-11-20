@@ -32,6 +32,7 @@ in
       thunderbird
       gedit
       shotwell
+      chromium
       peazip
       kdePackages.kdenlive
       osu-lazer-bin
