@@ -69,6 +69,9 @@ in
     neovim = {
       enable = true;
     };
+    kodi = {
+      enable = true;
+    };
   };
 
   services.gpg-agent = {
