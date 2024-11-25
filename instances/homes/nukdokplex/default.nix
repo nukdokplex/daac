@@ -74,14 +74,16 @@ in
     };
   };
 
-  services.gpg-agent = {
-    enable = true;
-    enableZshIntegration = true;
-    enableSshSupport = true;
-    pinentryPackage = pkgs.pinentry-qt;
+  services = {
+    gpg-agent = {
+      enable = true;
+      enableZshIntegration = true;
+      enableSshSupport = true;
+      pinentryPackage = pkgs.pinentry-qt;
+    };
+    syncthing.enable = true;
+    arrpc.enable = true;
   };
-
-  services.syncthing.enable = true;
 
   custom.gaming.enable = true;
 
