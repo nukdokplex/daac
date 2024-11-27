@@ -92,7 +92,8 @@
   };
 
   networking.networkmanager.ensureProfiles.profiles = {
-    yggdrasils-wifi.connection.autoconnect = "false";
+    yggdrasils-wifi4.connection.autoconnect = "false";
+    yggdrasils-wifi5.connection.autoconnect = "false";
     yggdrasils-eth.ethernet.mac-address = "$sleipnir_25geth_mac";
   };
 
