@@ -51,7 +51,8 @@
   };
 
   networking.networkmanager.ensureProfiles.profiles = {
-    yggdrasils-wifi.wifi.mac-address = "$gladr_wifi_mac";
+    yggdrasils-wifi4.wifi.mac-address = "$gladr_wifi_mac";
+    yggdrasils-wifi5.wifi.mac-address = "$gladr_wifi_mac";
     yggdrasils-eth.ethernet.mac-address = "$tplink_ue200_mac";
   };
 
