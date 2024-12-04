@@ -57,6 +57,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     pre-commit-hooks = {
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -156,6 +161,7 @@
                     };
                     sharedModules = [
                       self.inputs.hyprland.homeManagerModules.default
+                      self.inputs.nixvim.homeManagerModules.default
                     ];
                   };
                 }

@@ -75,7 +75,6 @@ in
           "$mainMod, M, exit"
           "$mainMod, P, pseudo"
           "$mainMod, Z, togglesplit"
-          "$mainMod, L, exec, loginctl lock-session"
           "$mainMod, D, togglefloating"
           "$mainMod, F, fullscreen"
           "$mainMod SHIFT, F, fullscreenstate, 0 3"
@@ -91,17 +90,32 @@ in
           "$mainMod, up, movefocus, u"
           "$mainMod, down, movefocus, d"
 
+          "$mainMod, H, movefocus, l"
+          "$mainMod, J, movefocus, d"
+          "$mainMod, K, movefocus, u"
+          "$mainMod, L, movefocus, r"
+
           # Moving windows
           "$mainMod SHIFT, left,  swapwindow, l"
           "$mainMod SHIFT, right, swapwindow, r"
           "$mainMod SHIFT, up,    swapwindow, u"
           "$mainMod SHIFT, down,  swapwindow, d"
 
+          "$mainMod SHIFT, h,  swapwindow, l"
+          "$mainMod SHIFT, j, swapwindow, d"
+          "$mainMod SHIFT, k,    swapwindow, u"
+          "$mainMod SHIFT, l,  swapwindow, r"
+
           # Window resizing                     X  Y
           "$mainMod CTRL, left, resizeactive, -60 0"
           "$mainMod CTRL, right, resizeactive, 60 0"
           "$mainMod CTRL, up, resizeactive, 0 -60"
           "$mainMod CTRL, down, resizeactive, 0 60"
+
+          "$mainMod CTRL, h, resizeactive, -60 0"
+          "$mainMod CTRL, l, resizeactive, 60 0"
+          "$mainMod CTRL, k, resizeactive, 0 -60"
+          "$mainMod CTRL, j, resizeactive, 0 60"
 
           # Switch workspaces with mainMod + [0-9]
           "$mainMod, 1, workspace, 1"

@@ -15,6 +15,8 @@
   programs.gamemode.enable = lib.mkDefault true;
   programs.hyprland.enable = lib.mkDefault true;
 
+  services.blueman.enable = true;
+
   services.greetd.settings = {
     default_session = {
       command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd ${pkgs.hyprland}/bin/Hyprland";

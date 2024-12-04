@@ -66,8 +66,9 @@ in
     };
     waybar.enable = true;
     spicetify.enable = true;
-    neovim = {
+    nixvim = {
       enable = true;
+      # hello world! 
     };
     kodi = {
       enable = true;
