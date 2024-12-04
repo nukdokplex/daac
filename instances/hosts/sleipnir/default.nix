@@ -54,6 +54,10 @@
     };
   };
 
+  services.hardware.openrgb = {
+    enable = true;
+  };
+
   environment.etc.secureboot-GUID = {
     source = ./GUID;
     target = "secureboot/GUID";
