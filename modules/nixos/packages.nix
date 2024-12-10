@@ -74,6 +74,7 @@ in
     nix-index
     cachix
     ffmpeg
+    qmk
   ];
 
   # fix cdrdao and cdrecord doesn't have permission to cd rom
