@@ -64,7 +64,7 @@
       };
 
       monospace = {
-        package = pkgs.nerd-fonts.DejaVuSansMono;
+        package = pkgs.nerd-fonts.dejavu-sans-mono;
         name = "DejaVuSansM Nerd Font Mono";
       };
 

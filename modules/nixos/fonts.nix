@@ -7,6 +7,7 @@
     noto-fonts-cjk-serif
     noto-fonts-color-emoji
     noto-fonts-extra
-    nerd-fonts.NerdFontsSymbolsOnly
+    nerd-fonts.symbols-only
+    nerd-fonts.dejavu-sans-mono
   ];
 }
