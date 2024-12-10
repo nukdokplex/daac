@@ -72,7 +72,6 @@ in
         [
           "$mainMod, C, killactive"
           "$mainMod SHIFT, C, exec, hyprctl reload"
-          "$mainMod, M, exit"
           "$mainMod, P, pseudo"
           "$mainMod, Z, togglesplit"
           "$mainMod, D, togglefloating"
@@ -188,6 +187,7 @@ in
         ", XF86AudioPlay, exec, playerctl play-pause"
         ", XF86AudioPrev, exec, playerctl previous"
         ", XF86AudioNext, exec, playerctl next"
+        "$mainMod, M, exec, wpctl set-mute @DEFAULT_AUDIO_SOURSE@ toggle"
       ];
 
       layerrule = [
