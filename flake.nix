@@ -43,7 +43,7 @@
     };
 
     wofi-power-menu = {
-      url = "github:szaffarano/wofi-power-menu/v0.2.2";
+      url = "github:szaffarano/wofi-power-menu/v0.2.3";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
