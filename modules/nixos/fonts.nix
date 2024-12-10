@@ -7,6 +7,6 @@
     noto-fonts-cjk-serif
     noto-fonts-color-emoji
     noto-fonts-extra
-    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+    nerd-fonts.NerdFontsSymbolsOnly
   ];
 }
