@@ -3,9 +3,9 @@
     enable = true;
 
     shellAliases = {
-      nrt = "nixos-rebuild test --flake path:$HOME/daac#${osConfig.networking.hostName}";
-      nrb = "nixos-rebuild boot --flake path:$HOME/daac#sleipnir";
-      nrs = "nixos-rebuild switch --flake path:$HOME/daac#sleipnir";
+      nrt = "sudo nixos-rebuild test --flake path:$HOME/daac#${osConfig.networking.hostName}";
+      nrb = "sudo nixos-rebuild boot --flake path:$HOME/daac#${osConfig.networking.hostName}";
+      nrs = "sudo nixos-rebuild switch --flake path:$HOME/daac#${osConfig.networking.hostName}";
     };
 
     oh-my-zsh = {
