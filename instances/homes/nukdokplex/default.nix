@@ -37,6 +37,7 @@ in
       kdePackages.kdenlive
       osu-lazer-bin
       opentabletdriver
+      yt-dlp
     ];
   };
 
@@ -68,7 +69,9 @@ in
     spicetify.enable = true;
     nixvim = {
       enable = true;
-      # hello world! 
+      plugins = {
+        nix-develop.enable = true;
+      };
     };
     kodi = {
       enable = true;
@@ -105,7 +108,6 @@ in
         "[workspace 1 silent] firefox"
         "[workspace 2 silent] telegram-desktop"
         "[workspace 2 silent] vesktop"
-        "[workspace 3 silent] codium"
         "[workspace 4 silent] thunar"
         "[workspace 5 silent] thunderbird"
         "[workspace 7 silent] keepassxc"
