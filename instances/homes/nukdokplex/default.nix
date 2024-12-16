@@ -65,6 +65,15 @@ in
       enable = true;
       setDefault = true;
     };
+    ranger = {
+      enable = true;
+      package = pkgs.ranger.override {
+        imagePreviewSupport = true;
+        sixelPreviewSupport = true;
+        neoVimSupport = true;
+        improvedEncodingDetection = true;
+      };
+    };
     waybar.enable = true;
     spicetify.enable = true;
     nixvim = {
@@ -143,5 +152,10 @@ in
       target = "documents";
       source = config.lib.file.mkOutOfStoreSymlink "/data/archive/documents";
     };
+  };
+
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    NIXPKGS_ALLOW_UNFREE = 1;
   };
 }
