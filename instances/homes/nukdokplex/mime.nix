@@ -1,32 +1,25 @@
-{
+{ pkgs, lib, ... }:
+let open-tui = pkgs.writeShellScript "open-tui" (builtins.readFile ./scripts/open-tui.sh); in {
   xdg.mime = {
     enable = true;
   };
 
   xdg.mimeApps.defaultApplications = {
-    "text/plain" = [ "gvim.desktop" ];
-    "x-scheme-handler/http" = [ "firefox.desktop" ];
-    "x-scheme-handler/https" = [ "firefox.desktop" ];
-    "x-scheme-handler/chrome" = [ "firefox.desktop" ];
-    "text/html" = [ "firefox.desktop" ];
-    "application/x-extension-htm" = [ "firefox.desktop" ];
-    "application/x-extension-html" = [ "firefox.desktop" ];
-    "application/x-extension-shtml" = [ "firefox.desktop" ];
-    "application/xhtml+xml" = [ "firefox.desktop" ];
-    "application/x-extension-xhtml" = [ "firefox.desktop" ];
-    "application/x-extension-xht" = [ "firefox.desktop" ];
+    "text/plain" = "nvim.desktop";
+    "image/*" = "imv-folder.desktop";
+    "audio/*" = "mpv.desktop";
+    "video/*" = "mpv.desktop";
+    "inode/directory" = "xranger.desktop";
   };
 
-  xdg.mimeApps.associations.added = {
-    "x-scheme-handler/http" = [ "firefox.desktop" ];
-    "x-scheme-handler/https" = [ "firefox.desktop" ];
-    "x-scheme-handler/chrome" = [ "firefox.desktop" ];
-    "text/html" = [ "firefox.desktop" ];
-    "application/x-extension-htm" = [ "firefox.desktop" ];
-    "application/x-extension-html" = [ "firefox.desktop" ];
-    "application/x-extension-shtml" = [ "firefox.desktop" ];
-    "application/xhtml+xml" = [ "firefox.desktop" ];
-    "application/x-extension-xhtml" = [ "firefox.desktop" ];
-    "application/x-extension-xht" = [ "firefox.desktop" ];
+  xdg.desktopEntries.xranger = {
+    name = "xranger";
+    type = "Application";
+    terminal = false;
+    exec = "${lib.getExe open-tui} ranger %F";
+    icon = "utilities-terminal";
+    mimeType = [ "inode/directory" ];
+    categories = [ "System" "FileTools" "FileManager" ];
+    comment = "Launches the Ranger file manager";
   };
 }

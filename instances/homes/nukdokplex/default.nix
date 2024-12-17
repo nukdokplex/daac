@@ -26,18 +26,18 @@ in
       keepassxc
       qbittorrent
       vlc
+      mpv
       libreoffice-fresh
       tor-browser
       kdePackages.k3b
       thunderbird
       gedit
-      shotwell
       chromium
-      peazip
       kdePackages.kdenlive
       osu-lazer-bin
       opentabletdriver
       yt-dlp
+      imv
     ];
   };
 
@@ -60,10 +60,6 @@ in
     };
     gpg = {
       enable = true;
-    };
-    thunar = {
-      enable = true;
-      setDefault = true;
     };
     ranger = {
       enable = true;
@@ -102,22 +98,17 @@ in
 
   wayland.windowManager.hyprland = {
     enable = true;
-
-    # TODO: these packages are hardcoded
-
     settings = {
       bind = [
-        "$mainMod, W, exec, firefox"
-        "$mainMod, Q, exec, ${lib.getExe pkgs.alacritty}"
-        "$mainMod, E, exec, thunar"
+        "$mainMod, U, exec, firefox"
+        "$mainMod, I, exec, alacritty"
+        "$mainMod, N, exec, alacritty -- ranger"
       ];
 
       exec-once = lib.mkAfter [
-        "[workspace 1 silent] alacritty"
         "[workspace 1 silent] firefox"
         "[workspace 2 silent] telegram-desktop"
         "[workspace 2 silent] vesktop"
-        "[workspace 4 silent] thunar"
         "[workspace 5 silent] thunderbird"
         "[workspace 7 silent] keepassxc"
         "[workspace 10 silent] spotify"
