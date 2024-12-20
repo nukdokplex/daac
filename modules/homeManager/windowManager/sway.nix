@@ -16,9 +16,15 @@ in
       floating.border = window.border;
       keybindings = lib.mkOptionDefault {
         "Ctrl+Alt+Delete" = "exec '${lib.getExe' wofi-power-menu "wofi-power-menu"}'";
-        "${modifier}+P" = "exec '${lib.getExe pkgs.grim}' -g $('${lib.getExe pkgs.slurp}') -l 6 -t png - | '${lib.getExe' pkgs.wl-clipboard "wl-copy"}'";
-        "${modifier}+Shift+P" = "exec ${lib.getExe pkgs.grim} -c -l 6 -t png -o \"$('${lib.getExe' pkgs.sway "swaymsg"}') -t get_workspaces | jq -r '.[] | select(.focused==true).output')\" - | '${lib.getExe' pkgs.wl-clipboard "wl-copy"}'";
+        "${modifier}+p" = "exec '${lib.getExe pkgs.grim}' -g $('${lib.getExe pkgs.slurp}') -l 6 -t png - | '${lib.getExe' pkgs.wl-clipboard "wl-copy"}'";
+        "${modifier}+Shift+p" = "exec ${lib.getExe pkgs.grim} -c -l 6 -t png -o \"$('${lib.getExe' pkgs.sway "swaymsg"}') -t get_workspaces | '${lib.getExe pkgs.jq}' -r '.[] | select(.focused==true).output')\" - | '${lib.getExe' pkgs.wl-clipboard "wl-copy"}'";
         "${modifier}+v" = "exec '${lib.getExe pkgs.cliphist}' list | '${lib.getExe pkgs.wofi}' --dmenu -p \"Select clipboard history entry...\" | '${lib.getExe pkgs.cliphist}' decode | '${lib.getExe' pkgs.wl-clipboard "wl-copy"}'";
+        "${modifier}+Insert" = "mode passthrough; floating_modifier none";
+      };
+      modes = {
+        passthrough = {
+          "${modifier}+Insert" = "mode default; floating_modifier ${modifier} normal";
+        };
       };
       startup = [
         { command = "'${lib.getExe pkgs.soteria}'"; }
