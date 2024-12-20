@@ -97,7 +97,6 @@ in
   custom.gaming.enable = true;
 
   wayland.windowManager.hyprland = {
-    enable = true;
     settings = {
       bind = [
         "$mainMod, U, exec, firefox"

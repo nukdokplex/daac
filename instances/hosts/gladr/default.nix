@@ -1,4 +1,4 @@
-{ self, pkgs, config, ... }: {
+{ self, pkgs, config, lib, ... }: {
   imports = [
     ../common
     ./disko.nix
@@ -44,8 +44,9 @@
   services.greetd.enable = true;
 
   services.greetd.settings = {
+    default_session.command = "${lib.getExe pkgs.greetd.tuigreet} --time --cmd '${lib.getExe pkgs.sway}'";
     initial_session = {
-      command = "${config.programs.hyprland.package}/bin/Hyprland";
+      command = "${pkgs.sway}/bin/sway";
       user = "nukdokplex";
     };
   };
@@ -69,7 +70,11 @@
       wayland.windowManager.hyprland.settings.monitor = [
         "desc:LG Display 0x05F6, 1920x1080, 0x0, 1.25"
       ];
+      wayland.windowManager.sway.config.output."LG Display 0x05F6 Unknown" = {
+        scale = "1.25";
+      };
       custom.usesBattery = true;
+      wayland.windowManager.sway.enable = true;
     }
   ];
 }
