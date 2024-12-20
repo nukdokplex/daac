@@ -17,7 +17,10 @@ in
       window.border = config.custom.borders.width;
       floating.border = window.border;
       keybindings = lib.mkOptionDefault {
-        "Ctrl+Alt+Delete" = "exec ${wofi-power-menu}";
+        "Ctrl+Alt+Delete" = "exec '${wofi-power-menu}'";
+        "${modifier}+P" = "exec '${lib.getExe pkgs.grim}' -g $('${lib.getExe pkgs.slurp}') -l 6 -t png - | '${lib.getExe' pkgs.wl-clipboard "wl-copy"}'";
+        "${modifier}+Shift+P" = "exec ${lib.getExe pkgs.grim} -c -l 6 -t png -o \"$('${lib.getExe' pkgs.sway "swaymsg"}') -t get_workspaces | jq -r '.[] | select(.focused==true).output')\" - | '${lib.getExe' pkgs.wl-clipboard "wl-copy"}'";
+        "${modifier}+v" = "exec '${lib.getExe pkgs.cliphist}' list | '${lib.getExe pkgs.wofi}' --dmenu -p \"Select clipboard history entry...\" | '${lib.getExe pkgs.cliphist}' decode | '${lib.getExe' pkgs.wl-clipboard "wl-copy"}'";
       };
       startup = [
         { command = soteria; }

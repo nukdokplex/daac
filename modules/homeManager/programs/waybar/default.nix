@@ -37,6 +37,7 @@ with config.lib.stylix.colors.withHashtag; {
         };
         "hyprland/window" = {
           format = "{class}";
+          all-outputs = true;
         };
         "sway/workspaces" = {
           all-outputs = false;
@@ -45,7 +46,8 @@ with config.lib.stylix.colors.withHashtag; {
           disable-click = false;
         };
         "sway/window" = {
-          format = "{class}";
+          format = "{title} ({class}}";
+          tooltip = false;
         };
         "sway/mode" = {
           format = " {}";
