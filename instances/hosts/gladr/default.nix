@@ -46,7 +46,7 @@
   services.greetd.settings = {
     default_session.command = "${lib.getExe pkgs.greetd.tuigreet} --time --cmd '${lib.getExe pkgs.sway}'";
     initial_session = {
-      command = "${pkgs.sway}/bin/sway";
+      command = lib.getExe pkgs.sway;
       user = "nukdokplex";
     };
   };

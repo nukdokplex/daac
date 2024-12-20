@@ -49,7 +49,7 @@
 
   services.greetd.settings = {
     initial_session = {
-      command = "${pkgs.sway}/bin/sway";
+      command = lib.getExe pkgs.sway;
       user = "nukdokplex";
     };
   };
