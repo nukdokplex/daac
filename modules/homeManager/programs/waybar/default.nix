@@ -87,9 +87,10 @@ with config.lib.stylix.colors.withHashtag; {
           format-ru = "RU";
         };
         "sway/language" = {
-          format = "{}";
-          format-en = "EN";
-          format-ru = "RU";
+          format = "{flag}";
+          tooltip = true;
+          tooltip-format = "{long} {flag} | {variant}";
+          on-click = "${lib.getExe' pkgs.sway "swaymsg"} input type:keyboard xkb_switch_layout next";
         };
         "network" = {
           format-disabled = "󰀝";

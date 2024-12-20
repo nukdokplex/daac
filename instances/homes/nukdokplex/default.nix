@@ -119,6 +119,12 @@ in
       ];
     };
   };
+  wayland.windowManager.sway.config.input = {
+    "type:keyboard" = {
+      "xkb_layout" = "us,ru";
+      "xkb_options" = "grp:win_space_toggle";
+    };
+  };
 
   # TODO: dehardcodify
   home.file = lib.mkIf (osConfig.networking.hostName == "sleipnir") {
