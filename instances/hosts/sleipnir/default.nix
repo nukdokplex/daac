@@ -49,7 +49,7 @@
 
   services.greetd.settings = {
     initial_session = {
-      command = "${config.programs.hyprland.package}/bin/Hyprland";
+      command = "${pkgs.sway}/bin/sway";
       user = "nukdokplex";
     };
   };
@@ -71,6 +71,7 @@
       wayland.windowManager.hyprland.settings.monitor = [
         "desc:LG Electronics LG ULTRAWIDE 0x00000459, 2560x1080@60.00000, 0x0, 1.00"
       ];
+      wayland.windowManager.sway.enable = true;
       custom.usesBattery = false;
     }
   ];
