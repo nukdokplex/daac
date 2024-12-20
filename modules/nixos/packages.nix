@@ -76,6 +76,7 @@ in
     ffmpeg
     qmk
     w3m
+    tigervnc
   ];
 
   # fix cdrdao and cdrecord doesn't have permission to cd rom
