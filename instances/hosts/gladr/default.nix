@@ -38,11 +38,11 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${lib.getExe pkgs.greetd.tuigreet} --cmd ${lib.getExe pkgs.sway} --time --user-menu --user-menu-min-uid 1000";
+        command = "'${lib.getExe pkgs.greetd.tuigreet}' --cmd '${lib.getExe pkgs.sway}' --time --user-menu --user-menu-min-uid 1000";
         user = "greeter";
       };
       initial_session = {
-        command = lib.getExe pkgs.sway;
+        command = "'${lib.getExe pkgs.sway}'";
         user = "nukdokplex";
       };
     };
