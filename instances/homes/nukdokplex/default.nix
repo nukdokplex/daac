@@ -119,10 +119,30 @@ in
       ];
     };
   };
-  wayland.windowManager.sway.config.input = {
-    "type:keyboard" = {
-      "xkb_layout" = "us,ru";
-      "xkb_options" = "grp:win_space_toggle";
+  wayland.windowManager.sway.config = {
+    input = {
+      "type:keyboard" = {
+        "xkb_layout" = "us,ru";
+        "xkb_options" = "grp:ctrl_space_toggle,compose:ralt";
+      };
+    };
+    startup = lib.mkAfter [
+      { command = "firefox"; }
+      { command = "telegram-desktop"; }
+      { command = "vesktop"; }
+      { command = "thunderbird"; }
+      { command = "keepassxc"; }
+      { command = "spotify"; }
+    ];
+    assigns = {
+      "1" = [{ app_id = "firefox"; }];
+      "2" = [{ app_id = "org.telegram.desktop"; } { class = "vesktop"; }];
+      "5" = [{ app_id = "thunderbird"; }];
+      "7" = [{ app_id = "org.keepassxc.KeePassXC"; }];
+      "10" = [{ class = "Spotify"; }];
+    };
+    keybindings = with config.wayland.windowManager.sway.config; {
+      "${modifier}+u" = "exec firefox";
     };
   };
 

@@ -8,18 +8,91 @@ in
   config.wayland.windowManager.sway = {
     config = rec {
       modifier = "Mod4";
+      left = "h";
+      right = "l";
+      up = "k";
+      down = "j";
       terminal = "alacritty";
+      menu = "'${lib.getExe pkgs.wofi}' --show drum";
+
       gaps.inner = 10;
       gaps.outer = 10;
       bars = [ ];
       window.border = config.custom.borders.width;
       floating.border = window.border;
-      keybindings = lib.mkOptionDefault {
+
+      bindkeysToCode = true;
+      keybindings = {
         "Ctrl+Alt+Delete" = "exec '${lib.getExe' wofi-power-menu "wofi-power-menu"}'";
         "${modifier}+p" = "exec '${lib.getExe pkgs.grim}' -g $('${lib.getExe pkgs.slurp}') -l 6 -t png - | '${lib.getExe' pkgs.wl-clipboard "wl-copy"}'";
         "${modifier}+Shift+p" = "exec ${lib.getExe pkgs.grim} -c -l 6 -t png -o \"$('${lib.getExe' pkgs.sway "swaymsg"}') -t get_workspaces | '${lib.getExe pkgs.jq}' -r '.[] | select(.focused==true).output')\" - | '${lib.getExe' pkgs.wl-clipboard "wl-copy"}'";
-        "${modifier}+v" = "exec '${lib.getExe pkgs.cliphist}' list | '${lib.getExe pkgs.wofi}' --dmenu -p \"Select clipboard history entry...\" | '${lib.getExe pkgs.cliphist}' decode | '${lib.getExe' pkgs.wl-clipboard "wl-copy"}'";
+        "${modifier}+t" = "exec '${lib.getExe pkgs.cliphist}' list | '${lib.getExe pkgs.wofi}' --dmenu -p \"Select clipboard history entry...\" | '${lib.getExe pkgs.cliphist}' decode | '${lib.getExe' pkgs.wl-clipboard "wl-copy"}'";
         "${modifier}+Insert" = "mode passthrough; floating_modifier none";
+
+        "${modifier}+Return" = "exec ${terminal}";
+        "${modifier}+Shift+q" = "kill";
+        "${modifier}+d" = "exec ${menu}";
+
+        "${modifier}+${left}" = "focus left";
+        "${modifier}+${down}" = "focus down";
+        "${modifier}+${up}" = "focus up";
+        "${modifier}+${right}" = "focus right";
+
+        "${modifier}+Left" = "focus left";
+        "${modifier}+Down" = "focus down";
+        "${modifier}+Up" = "focus up";
+        "${modifier}+Right" = "focus right";
+
+        "${modifier}+Shift+${left}" = "move left";
+        "${modifier}+Shift+${down}" = "move down";
+        "${modifier}+Shift+${up}" = "move up";
+        "${modifier}+Shift+${right}" = "move right";
+
+        "${modifier}+Shift+Left" = "move left";
+        "${modifier}+Shift+Down" = "move down";
+        "${modifier}+Shift+Up" = "move up";
+        "${modifier}+Shift+Right" = "move right";
+
+        "${modifier}+b" = "splith";
+        "${modifier}+v" = "splitv";
+        "${modifier}+f" = "fullscreen toggle";
+        "${modifier}+a" = "focus parent";
+
+        "${modifier}+s" = "layout stacking";
+        "${modifier}+w" = "layout tabbed";
+        "${modifier}+e" = "layout toggle split";
+
+        "${modifier}+Shift+space" = "floating toggle";
+        "${modifier}+space" = "focus mode_toggle";
+
+        "${modifier}+1" = "workspace number 1";
+        "${modifier}+2" = "workspace number 2";
+        "${modifier}+3" = "workspace number 3";
+        "${modifier}+4" = "workspace number 4";
+        "${modifier}+5" = "workspace number 5";
+        "${modifier}+6" = "workspace number 6";
+        "${modifier}+7" = "workspace number 7";
+        "${modifier}+8" = "workspace number 8";
+        "${modifier}+9" = "workspace number 9";
+        "${modifier}+0" = "workspace number 10";
+
+        "${modifier}+Shift+1" = "move container to workspace number 1";
+        "${modifier}+Shift+2" = "move container to workspace number 2";
+        "${modifier}+Shift+3" = "move container to workspace number 3";
+        "${modifier}+Shift+4" = "move container to workspace number 4";
+        "${modifier}+Shift+5" = "move container to workspace number 5";
+        "${modifier}+Shift+6" = "move container to workspace number 6";
+        "${modifier}+Shift+7" = "move container to workspace number 7";
+        "${modifier}+Shift+8" = "move container to workspace number 8";
+        "${modifier}+Shift+9" = "move container to workspace number 9";
+        "${modifier}+Shift+0" = "move container to workspace number 10";
+
+        "${modifier}+Shift+minus" = "move scratchpad";
+        "${modifier}+minus" = "scratchpad show";
+
+        "${modifier}+Shift+c" = "reload";
+
+        "${modifier}+r" = "mode resize";
       };
       modes = {
         passthrough = {
