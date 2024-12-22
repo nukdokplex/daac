@@ -28,29 +28,5 @@
 
       package = pkgs.papirus-icon-theme;
     };
-
-    stylix.targets.gtk.extraCss = ''
-      window.background { border-radius: ${toString config.custom.borders.radius}; }
-
-      tooltip {
-        &.background {
-          background-color: alpha(${config.lib.stylix.colors.withHashtag.base00}, ${builtins.toString config.stylix.opacity.popups});
-          border: 1px solid ${config.lib.stylix.colors.withHashtag.base0D};
-        }
-
-        background-color: alpha(${config.lib.stylix.colors.withHashtag.base00}, ${builtins.toString config.stylix.opacity.popups});
-        border-radius: ${toString config.custom.borders.radius};
-        border: 1px solid ${config.lib.stylix.colors.withHashtag.base0D};
-        color: white;
-      }
-
-      ${
-        lib.optionalString (config.stylix.polarity == "light") "
-        tooltip {
-          &.background { background-color: alpha(${config.lib.stylix.colors.withHashtag.base05}, ${builtins.toString config.stylix.opacity.popups}); }
-          background-color: alpha(${config.lib.stylix.colors.withHashtag.base05}, ${builtins.toString config.stylix.opacity.popups});
-        }"
-      }
-    '';
   };
 }

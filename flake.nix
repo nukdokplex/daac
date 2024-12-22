@@ -42,13 +42,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    wofi-power-menu = {
-      url = "github:szaffarano/wofi-power-menu/v0.2.3";
+    nur = {
+      url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    alejandra = {
-      url = "github:kamadorueda/alejandra/3.0.0";
+    wofi-power-menu = {
+      url = "github:szaffarano/wofi-power-menu/v0.2.3";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -139,6 +139,7 @@
                 self.inputs.home-manager.nixosModules.home-manager
                 self.inputs.agenix.nixosModules.default
                 self.inputs.stylix.nixosModules.stylix
+                self.inputs.nur.modules.nixos.default
                 self.instances.hosts.${host}
                 {
                   nixpkgs.config.allowUnfree = true;
@@ -152,6 +153,7 @@
                     };
                     sharedModules = [
                       self.inputs.nixvim.homeManagerModules.default
+                      self.inputs.nur.modules.homeManager.default
                     ];
                   };
                 }
