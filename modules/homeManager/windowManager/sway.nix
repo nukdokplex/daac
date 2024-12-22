@@ -13,7 +13,7 @@ in
       up = "k";
       down = "j";
       terminal = "alacritty";
-      menu = "'${lib.getExe pkgs.wofi}' --show drum";
+      menu = "'${lib.getExe pkgs.wofi}' --show drun";
       defaultWorkspace = "1";
 
       gaps.inner = 10;
@@ -96,6 +96,18 @@ in
         "${modifier}+r" = "mode resize";
       };
       modes = {
+        resize = {
+          "${left}" = "resize shrink width 10 px";
+          "${down}" = "resize grow height 10 px";
+          "${up}" = "resize shrink height 10 px";
+          "${right}" = "resize grow width 10 px";
+          "Left" = "resize shrink width 10 px";
+          "Down" = "resize grow height 10 px";
+          "Up" = "resize shrink height 10 px";
+          "Right" = "resize grow width 10 px";
+          "Escape" = "mode default";
+          "Return" = "mode default";
+        };
         passthrough = {
           "${modifier}+Insert" = "mode default; floating_modifier ${modifier} normal";
         };
