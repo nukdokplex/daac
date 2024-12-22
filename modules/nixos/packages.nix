@@ -5,7 +5,6 @@
 }:
 let
   agenix = self.inputs.agenix.packages.${config.nixpkgs.hostPlatform.system}.agenix;
-  alejandra = self.inputs.alejandra.defaultPackage.${config.nixpkgs.hostPlatform.system};
 in
 {
   nixpkgs.config.permittedInsecurePackages = [
@@ -56,7 +55,6 @@ in
     inotify-tools
     psmisc
     nixpkgs-fmt
-    alejandra
     nix-search-cli
     agenix
     btop
