@@ -34,22 +34,20 @@
     };
   };
 
-  programs.hyprland = {
+  services.greetd = {
     enable = true;
-    package = self.inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    # make sure to also set the portal package, so that they are in sync
-    portalPackage = self.inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-  };
-
-  services.greetd.enable = true;
-
-  services.greetd.settings = {
-    default_session.command = "${lib.getExe pkgs.greetd.tuigreet} --time --cmd '${lib.getExe pkgs.sway}'";
-    initial_session = {
-      command = lib.getExe pkgs.sway;
-      user = "nukdokplex";
+    settings = {
+      default_session = {
+        command = "${lib.getExe pkgs.greetd.tuigreet} --cmd ${lib.getExe pkgs.sway} --time --user-menu --user-menu-min-uid 1000";
+        user = "greeter";
+      };
+      initial_session = {
+        command = lib.getExe pkgs.sway;
+        user = "nukdokplex";
+      };
     };
   };
+
 
   networking.networkmanager.ensureProfiles.profiles = {
     yggdrasils-wifi4.wifi.mac-address = "$gladr_wifi_mac";

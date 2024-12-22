@@ -14,6 +14,7 @@ in
       down = "j";
       terminal = "alacritty";
       menu = "'${lib.getExe pkgs.wofi}' --show drum";
+      defaultWorkspace = "1";
 
       gaps.inner = 10;
       gaps.outer = 10;

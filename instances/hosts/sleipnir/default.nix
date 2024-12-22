@@ -39,26 +39,20 @@
       };
     };
   };
-  services.greetd.enable = true;
 
-  programs.hyprland = {
+  services.greetd = {
     enable = true;
-    package = self.inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    # make sure to also set the portal package, so that they are in sync
-    portalPackage = self.inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-  };
-
-  services.greetd.settings = {
-    default_session = {
-      command = "${lib.getExe pkgs.greetd.tuigreet} --cmd ${lib.getExe pkgs.sway} --time --user-menu --user-menu-min-uid 1000";
-      user = "greeter";
-    };
-    initial_session = {
-      command = lib.getExe pkgs.sway;
-      user = "nukdokplex";
+    settings = {
+      default_session = {
+        command = "${lib.getExe pkgs.greetd.tuigreet} --cmd ${lib.getExe pkgs.sway} --time --user-menu --user-menu-min-uid 1000";
+        user = "greeter";
+      };
+      initial_session = {
+        command = lib.getExe pkgs.sway;
+        user = "nukdokplex";
+      };
     };
   };
-
   services.hardware.openrgb = {
     enable = true;
   };

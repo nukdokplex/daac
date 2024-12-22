@@ -17,13 +17,6 @@
 
     services.blueman.enable = true;
 
-    services.greetd.settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd ${pkgs.hyprland}/bin/Hyprland";
-        user = "greeter";
-      };
-    };
-
     nix = {
       gc = {
         automatic = true;

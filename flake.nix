@@ -66,19 +66,13 @@
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-    };
   };
 
   outputs = { self, ... }:
     let
       allHosts = [
         "sleipnir"
-        "sleipnir-vm"
         "gladr"
-        "testvm"
       ];
     in
     {
@@ -122,9 +116,7 @@
       instances = {
         hosts = {
           sleipnir = ./instances/hosts/sleipnir;
-          sleipnir-vm = ./instances/hosts/sleipnir-vm;
           gladr = ./instances/hosts/gladr;
-          testvm = ./instances/hosts/testvm;
         };
 
         homes = {
@@ -147,7 +139,6 @@
                 self.inputs.home-manager.nixosModules.home-manager
                 self.inputs.agenix.nixosModules.default
                 self.inputs.stylix.nixosModules.stylix
-                self.inputs.hyprland.nixosModules.default
                 self.instances.hosts.${host}
                 {
                   nixpkgs.config.allowUnfree = true;
@@ -160,7 +151,6 @@
                       hostname = host;
                     };
                     sharedModules = [
-                      self.inputs.hyprland.homeManagerModules.default
                       self.inputs.nixvim.homeManagerModules.default
                     ];
                   };
