@@ -151,7 +151,7 @@ in
       };
     };
     startup = [
-      { command = "'${config.programs.wpaperd.package}' -d"; }
+      { command = "'${lib.getExe config.programs.wpaperd.package}' -d"; }
       { command = "firefox"; }
       { command = "telegram-desktop"; }
       { command = "vesktop"; }
