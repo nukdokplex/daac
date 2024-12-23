@@ -86,21 +86,19 @@ in
       settings = {
         "LG Electronics LG ULTRAWIDE 0x00000459" = {
           path = "${pkgs.nur.repos.nukdokplex.gruvbox-wallpapers.irl}";
-          duration = "30s";
+          duration = "3m";
           sorting = "random";
           mode = "center";
           transition-time = 1000;
           queue-size = 40;
-          initial-transition = true;
         };
-        "LG Display 0x05F6 Unknown" = {
-          path = "${pkgs.nur.repos.nukdokplex.gruvbox-wallpapers.anime}";
-          duration = "30s";
+        "LG Display 0x05F6" = {
+          path = "${pkgs.nur.repos.nukdokplex.gruvbox-wallpapers.irl}";
+          duration = "3m";
           sorting = "random";
           mode = "center";
           transition-time = 1000;
           queue-size = 40;
-          initial-transition = true;
         };
       };
     };
