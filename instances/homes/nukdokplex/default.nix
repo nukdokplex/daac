@@ -81,6 +81,29 @@ in
     kodi = {
       enable = true;
     };
+    wpaperd = {
+      enable = true;
+      settings = {
+        "LG Electronics LG ULTRAWIDE 0x00000459" = {
+          path = "${pkgs.nur.repos.nukdokplex.gruvbox-wallpapers.irl}";
+          duration = "30s";
+          sorting = "random";
+          mode = "center";
+          transition-time = 1000;
+          queue-size = 40;
+          initial-transition = true;
+        };
+        "LG Display 0x05F6 Unknown" = {
+          path = "${pkgs.nur.repos.nukdokplex.gruvbox-wallpapers.anime}";
+          duration = "30s";
+          sorting = "random";
+          mode = "center";
+          transition-time = 1000;
+          queue-size = 40;
+          initial-transition = true;
+        };
+      };
+    };
   };
 
   services = {
@@ -119,6 +142,7 @@ in
       ];
     };
   };
+  stylix.targets.wpaperd.enable = false;
   wayland.windowManager.sway.config = {
     input = {
       "type:keyboard" = {
@@ -126,7 +150,8 @@ in
         "xkb_options" = "grp:ctrl_space_toggle,compose:ralt";
       };
     };
-    startup = lib.mkAfter [
+    startup = [
+      { command = "'${config.programs.wpaperd.package}' -d"; }
       { command = "firefox"; }
       { command = "telegram-desktop"; }
       { command = "vesktop"; }

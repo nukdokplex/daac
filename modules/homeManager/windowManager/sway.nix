@@ -122,7 +122,7 @@ in
           "${modifier}+Insert" = "mode default; floating_modifier ${modifier} normal";
         };
       };
-      startup = [
+      startup = lib.mkBefore [
         { command = "'${lib.getExe pkgs.soteria}'"; }
         { command = "'${lib.getExe pkgs.wayvnc}' -r 127.0.0.1"; }
       ];
