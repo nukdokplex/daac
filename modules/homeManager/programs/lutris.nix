@@ -22,7 +22,7 @@
           wineWowPackages.stableFull
           libgudev
           libvdpau
-          libsoup
+          libsoup_2_4
           libusb1
           speex
         ];

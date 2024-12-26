@@ -14,7 +14,7 @@ in
       down = "j";
       terminal = "alacritty";
       menu = "'${lib.getExe pkgs.wofi}' --show drun";
-      defaultWorkspace = "number 1";
+      defaultWorkspace = "workspace number 1";
 
       gaps.inner = 10;
       gaps.outer = 10;
