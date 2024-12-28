@@ -33,6 +33,9 @@
         };
       };
     };
+    fzf-lua = {
+      enable = true;
+    };
     nix.enable = true;
     nvim-surround.enable = true;
     web-devicons = {
