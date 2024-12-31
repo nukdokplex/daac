@@ -4,6 +4,11 @@
       gamescope
       gamemode
       mangohud
+      libgudev
+      libvdpau
+      libsoup_2_4
+      libusb1
+      speex
     ];
 
     extraCompatPackages = with pkgs; [
