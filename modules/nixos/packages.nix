@@ -22,7 +22,6 @@ in
     f2fs-tools
     hfsprogs
     ntfs3g
-    reiser4progs
     reiserfsprogs
     xfsprogs
     zfs
