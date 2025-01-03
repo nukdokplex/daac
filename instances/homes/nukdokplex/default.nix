@@ -34,7 +34,7 @@ in
       pqiv
       libreoffice-fresh
       tor-browser
-      kdePackages.k3b
+      (kdePackages.k3b.override { transcode = null; })
       thunderbird
       gedit
       chromium
