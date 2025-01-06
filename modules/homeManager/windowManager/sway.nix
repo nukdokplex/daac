@@ -29,6 +29,7 @@ in
         "${modifier}+Shift+p" = "exec '${lib.getExe pkgs.grim}' -c -l 6 -t png -o \"$('${lib.getExe' pkgs.sway "swaymsg"}' -t get_workspaces | '${lib.getExe pkgs.jq}' -r '.[] | select(.focused==true).output')\" - | '${lib.getExe' pkgs.wl-clipboard "wl-copy"}'";
         "${modifier}+t" = "exec '${lib.getExe pkgs.cliphist}' list | '${lib.getExe pkgs.wofi}' --dmenu -p \"Select clipboard history entry...\" | '${lib.getExe pkgs.cliphist}' decode | '${lib.getExe' pkgs.wl-clipboard "wl-copy"}'";
         "${modifier}+Insert" = "mode passthrough; floating_modifier none";
+        "${modifier}+o" = "exec '${lib.getExe pkgs.xfce.thunar}'";
 
         "${modifier}+Return" = "exec ${terminal}";
         "${modifier}+Shift+q" = "kill";

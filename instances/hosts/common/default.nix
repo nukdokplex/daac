@@ -13,9 +13,18 @@
     hardware.enableAllFirmware = true;
 
     programs.gamemode.enable = true;
-    programs.hyprland.enable = true;
 
     services.blueman.enable = true;
+
+    programs.thunar = {
+      enable = true;
+      plugins = with pkgs.xfce; [
+        thunar-volman
+        thunar-archive-plugin
+        thunar-media-tags-plugin
+      ];
+    };
+    services.tumbler.enable = true;
 
     nix = {
       gc = {

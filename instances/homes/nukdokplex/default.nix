@@ -46,6 +46,10 @@ in
     ];
   };
 
+  xfconf.settings.thunar = {
+    misc-single-click = false;
+    default-view = "ThunarDetailsView";
+  };
 
   programs = {
     git = {
