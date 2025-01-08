@@ -1,5 +1,6 @@
 { pkgs, lib, ... }: {
   imports = [
-    ./plugins.nix
+    ./plugins
+    ./keymappings.nix
   ];
 }
