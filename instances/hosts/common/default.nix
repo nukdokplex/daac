@@ -25,7 +25,7 @@
       ];
     };
     services.tumbler.enable = true;
-
+    programs.via.enable = true;
     nix = {
       gc = {
         automatic = true;

@@ -5,5 +5,6 @@
     ./nix-ld.nix
     ./steam.nix
     ./zsh.nix
+    ./via.nix
   ];
 }
