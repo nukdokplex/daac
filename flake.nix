@@ -1,5 +1,5 @@
 {
-  description = "Next generation of my Desktop-as-a-Code (DaaC) implentation based on NixOS + Nix Flakes for my home hosts.";
+  description = "Next generation of my Desktop-as-a-Code (DaaC) implementation based on NixOS + Nix Flakes for my home hosts.";
 
   nixConfig = {
     extra-substituters = [
