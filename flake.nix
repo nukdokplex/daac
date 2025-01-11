@@ -1,6 +1,17 @@
 {
   description = "Next generation of my Desktop-as-a-Code (DaaC) implentation based on NixOS + Nix Flakes for my home hosts.";
 
+  nixConfig = {
+    extra-substituters = [
+      "https://nukdokplex.cachix.org"
+      "https://nix-community.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nukdokplex.cachix.org-1:yLUFm5kbNrwexi9tBzqACj7fF0clQJ+lG7Qpb4BaEa0="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
 
