@@ -101,6 +101,8 @@
     yggdrasils-eth.ethernet.mac-address = "$sleipnir_25geth_mac";
   };
 
+  networking.interfaces.enp42s0.wakeOnLan.enable = true;
+
   services.pipewire = {
     wireplumber.extraConfig = {
       "alc1220-settings" = {
