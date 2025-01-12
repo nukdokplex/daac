@@ -13,6 +13,7 @@
     hardware.enableRedistributableFirmware = true;
     hardware.enableAllFirmware = true;
 
+    hardware.usb-modeswitch.enable = true; # i need this because i have huawei e8372 wingle
     programs.gamemode.enable = true;
 
     services.blueman.enable = true;

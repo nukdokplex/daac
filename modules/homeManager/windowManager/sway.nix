@@ -198,8 +198,8 @@ in
   config.services.swayidle = lib.mkIf isEnabled {
     enable = true;
     events = [
-      { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -fF"; }
-      { event = "lock"; command = "lock"; }
+      { event = "before-sleep"; command = "'${lib.getExe' pkgs.systemd "loginctl"}' lock && '${lib.getExe' pkgs.coreutils "sleep"}' 5"; }
+      { event = "lock"; command = "'${lib.getExe pkgs.swaylock}' -fFk"; }
     ];
   };
 
