@@ -7,6 +7,7 @@
     ./secrets
     ./networkManagerProfiles.nix
     ./stylix.nix
+    ./zapret.nix
   ];
   config = lib.mkDefault {
     hardware.enableRedistributableFirmware = true;
