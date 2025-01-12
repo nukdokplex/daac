@@ -25,3 +25,23 @@ jobs:
           signingKey: "${{ secrets.CACHIX_SIGNING_KEY }}"
       - name: Build sleipnir
         run: nix build --accept-flake-config .#nixosConfigurations.sleipnir.config.system.build.toplevel
+  gladr-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Free disk space on ubuntu runner 
+        uses: jlumbroso/free-disk-space@main
+      - name: Checkout
+        uses: action/checkout@main
+        with:
+          fetch-depth: 1
+      - name: Install Nix package manager
+        uses: DeterminateSystems/nix-installer-action@main
+      - name: Use magic nix cache
+        uses: DeterminateSystems/magic-nix-cache-action@main
+      - name: Setup Cachix
+        uses: cachix/cachix-action@main
+        with:
+          name: nukdokplex
+          signingKey: "${{ secrets.CACHIX_SIGNING_KEY }}"
+      - name: Build gladr
+        run: nix build --accept-flake-config .#nixosConfigurations.gladr.config.system.build.toplevel
