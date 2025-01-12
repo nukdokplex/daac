@@ -87,7 +87,6 @@
       ];
     in
     {
-
       checks = self.inputs.flake-utils.lib.eachDefaultSystemPassThrough (
         system:
         {
