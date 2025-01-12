@@ -19,7 +19,7 @@ jobs:
       - name: Use magic nix cache
         uses: DeterminateSystems/magic-nix-cache-action@main
       - name: Setup Cachix
-        uses: cachix/cachix-action@main
+        uses: cachix/cachix-action@master
         with:
           name: nukdokplex
           signingKey: "${{ secrets.CACHIX_SIGNING_KEY }}"
@@ -39,7 +39,7 @@ jobs:
       - name: Use magic nix cache
         uses: DeterminateSystems/magic-nix-cache-action@main
       - name: Setup Cachix
-        uses: cachix/cachix-action@main
+        uses: cachix/cachix-action@master
         with:
           name: nukdokplex
           signingKey: "${{ secrets.CACHIX_SIGNING_KEY }}"
