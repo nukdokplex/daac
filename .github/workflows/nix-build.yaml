@@ -4,6 +4,7 @@ on:
     paths-ignore:
       - '**/*.md'
       - '.github/**'
+  workflow_dispatch:
 jobs:
   sleipnir-build:
     runs-on: ubuntu-latest
