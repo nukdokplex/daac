@@ -12,7 +12,7 @@ jobs:
       - name: Free disk space on ubuntu runner 
         uses: jlumbroso/free-disk-space@main
       - name: Checkout
-        uses: action/checkout@main
+        uses: actions/checkout@main
         with:
           fetch-depth: 1
       - name: Install Nix package manager
@@ -32,7 +32,7 @@ jobs:
       - name: Free disk space on ubuntu runner 
         uses: jlumbroso/free-disk-space@main
       - name: Checkout
-        uses: action/checkout@main
+        uses: actions/checkout@main
         with:
           fetch-depth: 1
       - name: Install Nix package manager
