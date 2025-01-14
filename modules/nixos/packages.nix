@@ -33,6 +33,11 @@ in
     cdrkit
     dvdplusrwtools
 
+    # usb
+    usbutils
+    usb-modeswitch
+    usb-modeswitch-data
+
     # archives
     zip
     unzip
