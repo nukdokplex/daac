@@ -32,6 +32,7 @@ in
     cdrdao
     cdrkit
     dvdplusrwtools
+    kdePackages.k3b
 
     # usb
     usbutils
@@ -80,4 +81,21 @@ in
     w3m
     tigervnc
   ];
+
+  security.wrappers = {
+    cdrdao = {
+      setuid = true;
+      owner = "root";
+      group = "cdrom";
+      permissions "u+wrx,g+x";
+      source = lib.getExe' pkgs.cdrdao "cdrdao";
+    };
+    cdrecord = {
+      setuid = true;
+      owner = "root";
+      group = "cdrom";
+      permissions = "u+wrx,g+x";
+      source = lib.getExe' pkgs.cdrtools "cdrecord";
+    };
+  };
 }
