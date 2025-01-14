@@ -27,6 +27,7 @@
         thunar-media-tags-plugin
       ];
     };
+    programs.k3b.enable = true; # adds k3b and some security wrappers for cdrdao and cdrecord
     services.tumbler.enable = true;
     programs.via.enable = true;
     nix = {
