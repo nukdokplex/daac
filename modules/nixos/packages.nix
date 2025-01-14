@@ -1,8 +1,4 @@
-{ self
-, config
-, pkgs
-, ...
-}:
+{ self, config, pkgs, lib, ... }:
 let
   agenix = self.inputs.agenix.packages.${config.nixpkgs.hostPlatform.system}.agenix;
 in
@@ -87,7 +83,7 @@ in
       setuid = true;
       owner = "root";
       group = "cdrom";
-      permissions "u+wrx,g+x";
+      permissions = "u+wrx,g+x";
       source = lib.getExe' pkgs.cdrdao "cdrdao";
     };
     cdrecord = {
