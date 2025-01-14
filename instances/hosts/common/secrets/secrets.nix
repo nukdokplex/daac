@@ -11,4 +11,7 @@ in
   "secureboot/PK/PK.key.age".publicKeys = hostPublicKeys;
   "secureboot/PK/PK.pem.age".publicKeys = hostPublicKeys;
   "networkmanager_environment.age".publicKeys = hostPublicKeys;
+
+  "sing-box/vless-out-ip.age".publicKeys = hostPublicKeys;
+  "sing-box/vless-out-public_key.age".publicKeys = hostPublicKeys;
 }

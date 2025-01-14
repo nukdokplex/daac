@@ -2,6 +2,7 @@
   imports = [
     ../common
     ./disko.nix
+    ./secrets
     self.inputs.lanzaboote.nixosModules.lanzaboote
   ];
 

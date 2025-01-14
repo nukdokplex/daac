@@ -1,6 +1,5 @@
-{
+{ lib, pkgs, ... }: {
   age.secrets = {
-    # secureboot stuff
     sb_db_pem = {
       file = ./secureboot/db/db.pem.age;
       path = "/etc/secureboot/keys/db/db.pem";
@@ -47,5 +46,20 @@
     };
 
     networkmanager_environment.file = ./networkmanager_environment.age;
+
+    sing-box-vless-out-ip = {
+      file = ./sing-box/vless-out-ip.age;
+      path = "/etc/sing-box/secrets/vless-out/ip";
+      mode = "400";
+      owner = "root";
+      group = "root";
+    };
+    sing-box-vless-out-public_key = {
+      file = ./sing-box/vless-out-public_key.age;
+      path = "/etc/sing-box/secrets/vless-out/public_key";
+      mode = "400";
+      owner = "root";
+      group = "root";
+    };
   };
 }

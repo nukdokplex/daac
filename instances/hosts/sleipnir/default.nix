@@ -1,13 +1,9 @@
-{ self
-, pkgs
-, config
-, lib
-, ...
-}:
+{ self, pkgs, config, lib, ... }:
 {
   imports = [
     ../common
     ./disko.nix
+    ./secrets
     self.inputs.lanzaboote.nixosModules.lanzaboote
   ];
 
@@ -70,7 +66,48 @@
       wayland.windowManager.hyprland.settings.monitor = [
         "desc:LG Electronics LG ULTRAWIDE 0x00000459, 2560x1080@60.00000, 0x0, 1.00"
       ];
-      wayland.windowManager.sway.enable = true;
+      wayland.windowManager.sway = {
+        enable = true;
+        config = {
+          startup = lib.mkAfter [
+            { command = "'${lib.getExe' pkgs.sway "swaymsg"}' create_output"; }
+          ];
+          output = {
+            "LG Electronics LG ULTRAWIDE 0x00000459" = {
+              mode = "2560x1080@60Hz";
+              scale = "1.0";
+              pos = "1920 0";
+            };
+            "HEADLESS-1" = {
+              res = "1920x1080";
+              scale = "1.0";
+              pos = "0 0";
+            };
+          };
+          workspaceOutputAssign = [
+            { output = "LG Electronics LG ULTRAWIDE 0x00000459"; workspace = "1"; }
+            { output = "LG Electronics LG ULTRAWIDE 0x00000459"; workspace = "2"; }
+            { output = "LG Electronics LG ULTRAWIDE 0x00000459"; workspace = "3"; }
+            { output = "LG Electronics LG ULTRAWIDE 0x00000459"; workspace = "4"; }
+            { output = "LG Electronics LG ULTRAWIDE 0x00000459"; workspace = "5"; }
+            { output = "LG Electronics LG ULTRAWIDE 0x00000459"; workspace = "6"; }
+            { output = "LG Electronics LG ULTRAWIDE 0x00000459"; workspace = "7"; }
+            { output = "LG Electronics LG ULTRAWIDE 0x00000459"; workspace = "8"; }
+            { output = "LG Electronics LG ULTRAWIDE 0x00000459"; workspace = "9"; }
+            { output = "LG Electronics LG ULTRAWIDE 0x00000459"; workspace = "10"; }
+            { output = "HEADLESS-1"; workspace = "11"; }
+            { output = "HEADLESS-1"; workspace = "12"; }
+            { output = "HEADLESS-1"; workspace = "13"; }
+            { output = "HEADLESS-1"; workspace = "14"; }
+            { output = "HEADLESS-1"; workspace = "15"; }
+            { output = "HEADLESS-1"; workspace = "16"; }
+            { output = "HEADLESS-1"; workspace = "17"; }
+            { output = "HEADLESS-1"; workspace = "18"; }
+            { output = "HEADLESS-1"; workspace = "19"; }
+            { output = "HEADLESS-1"; workspace = "20"; }
+          ];
+        };
+      };
       custom.usesBattery = false;
     }
   ];
@@ -131,8 +168,6 @@
       };
     };
   };
-
-
 
   systemd.mounts = [
     {
