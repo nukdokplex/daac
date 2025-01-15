@@ -140,35 +140,6 @@
 
   networking.interfaces.enp42s0.wakeOnLan.enable = true;
 
-  services.pipewire = {
-    wireplumber.extraConfig = {
-      "alc1220-settings" = {
-        "monitor.alsa.rules" = {
-          matches = [
-            {
-              "node.name" = "alsa_output.pci-0000_2f_00.4";
-            }
-          ];
-          actions.update-props = {
-            "device.restore-profile" = true;
-          };
-        };
-      };
-    };
-
-    extraConfig.pipewire = {
-      "10-clock-rate" = {
-        "context.properties" = {
-          "default.clock.rate" = 48000;
-          "default.clock.min-quantum" = "32";
-          "default.clock.max-quantum" = "2048";
-          "default.clock.quantum" = "1024";
-          "default.cloce.force-quantum" = "512";
-        };
-      };
-    };
-  };
-
   systemd.mounts = [
     {
       name = "data-archive.mount";

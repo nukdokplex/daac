@@ -28,7 +28,26 @@
       ];
     };
     services.tumbler.enable = true;
+
     programs.via.enable = true;
+
+    services.pipewire = {
+      enable = true;
+      jack.enable = true;
+      alsa.enable = true;
+      pulse.enable = true;
+      wireplumber = {
+        enable = true;
+        extraConfig = {
+          "common-settings" = {
+            "context.properties" = {
+              "log.level" = "D";
+              "device.restore-profile" = true;
+            };
+          };
+        };
+      };
+    };
     nix = {
       gc = {
         automatic = true;
