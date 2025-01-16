@@ -21,6 +21,7 @@ in
     reiserfsprogs
     xfsprogs
     zfs
+    ventoy-full
 
     # optical disks
     udftools
@@ -48,6 +49,7 @@ in
     scrcpy
 
     # misc
+    tmux
     cmatrix
     kittysay
     ponysay
