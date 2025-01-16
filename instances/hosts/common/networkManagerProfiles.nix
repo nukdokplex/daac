@@ -13,7 +13,7 @@
           type = "wifi";
         };
         ipv4.method = "auto";
-        ipv6.method = "disabled";
+        ipv6.method = "auto";
         proxy = { };
         wifi = {
           mode = "infrastructure";
@@ -31,7 +31,7 @@
           type = "wifi";
         };
         ipv4.method = "auto";
-        ipv6.method = "disabled";
+        ipv6.method = "auto";
         proxy = { };
         wifi = {
           mode = "infrastructure";
@@ -49,7 +49,7 @@
           type = "ethernet";
         };
         ipv4.method = "auto";
-        ipv6.method = "disabled";
+        ipv6.method = "auto";
         proxy = { };
         ethernet = {
           mtu = 1476;
