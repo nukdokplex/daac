@@ -1,6 +1,7 @@
-{ pkgs, lib, ... }: {
+{
   imports = [
     ./plugins
     ./keymappings.nix
+    ./autoCmd.nix
   ];
 }

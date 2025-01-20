@@ -6,5 +6,9 @@
     ./nvim-surround.nix
     ./treesitter.nix
     ./web-devicons.nix
+    ./barbar.nix
+    ./lualine.nix
+    ./lsp.nix
+    ./floaterm.nix
   ];
 }
