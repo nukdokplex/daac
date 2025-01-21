@@ -13,6 +13,7 @@
         "vboxusers"
         "adbusers"
         "cdrom"
+        "libvirtd"
       ];
     };
 
