@@ -5,10 +5,12 @@
     extra-substituters = [
       "https://nukdokplex.cachix.org"
       "https://nix-community.cachix.org"
+      "https://hyprland.cachix.org"
     ];
     extra-trusted-public-keys = [
       "nukdokplex.cachix.org-1:yLUFm5kbNrwexi9tBzqACj7fF0clQJ+lG7Qpb4BaEa0="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
   };
 
@@ -43,13 +45,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
     };
 
-    nukdokplex-nix-packages = {
-      url = "github:nukdokplex/nix-packages";
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -60,11 +61,6 @@
 
     wofi-power-menu = {
       url = "github:szaffarano/wofi-power-menu/v0.2.3";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

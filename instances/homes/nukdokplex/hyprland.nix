@@ -1,10 +1,16 @@
-{ pkgs, lib, ... }: {
+{ lib, ... }: {
   wayland.windowManager.hyprland = {
     settings = {
-      bind = [
-        "$mainMod, U, exec, firefox"
-        "$mainMod, I, exec, alacritty"
-        "$mainMod, N, exec, alacritty -- ranger"
+      input = {
+        kb_layout = "us,ru";
+        kb_variant = "";
+        kb_model = "";
+        kb_options = "grp:ctrl_space_toggle,compose:ralt";
+        kb_rules = "";
+      };
+
+      bindd = [
+        "$mainMod, U, Run browser, exec, firefox"
       ];
 
       exec-once = lib.mkAfter [
@@ -18,7 +24,6 @@
 
       windowrulev2 = [
         "workspace 2 silent, class:(vesktop)"
-        "workspace 3 silent, class:(codium-url-handler)"
       ];
     };
   };

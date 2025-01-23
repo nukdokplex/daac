@@ -1,7 +1,4 @@
-{ lib
-, pkgs
-, ...
-}: {
+{ lib, pkgs, self, ... }: {
   imports = [
     ./users
     ./secrets
@@ -48,6 +45,12 @@
         };
       };
     };
+
+    programs.hyprland = let system = pkgs.stdenv.hostPlatform.system; in {
+      package = self.inputs.hyprland.packages.${system}.hyprland;
+      portalPackage = self.inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland;
+    };
+
     nix = {
       gc = {
         automatic = true;

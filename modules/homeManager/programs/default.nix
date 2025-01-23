@@ -7,7 +7,6 @@
     ./mangohud.nix
     ./r2modman.nix
     ./spicetify.nix
-    ./vscodium.nix
     ./waybar
     ./wine.nix
     ./zsh.nix

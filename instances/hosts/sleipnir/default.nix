@@ -40,18 +40,16 @@
     enable = true;
     settings = {
       default_session = {
-        command = "'${lib.getExe pkgs.greetd.tuigreet}' --cmd '${lib.getExe pkgs.sway}' --time --user-menu --user-menu-min-uid 1000";
+        command = "'${lib.getExe pkgs.greetd.tuigreet}' --time --user-menu --user-menu-min-uid 1000 --cmd '${lib.getExe config.programs.hyprland.package}'";
         user = "greeter";
       };
       # initial_session = {
-      #  command = "'${lib.getExe pkgs.sway}'";
+      #  command = "'${lib.getExe config.programs.hyprland.package}'";
       #  user = "nukdokplex";
       # };
     };
   };
-  services.hardware.openrgb = {
-    enable = true;
-  };
+  services.hardware.openrgb.enable = true;
 
   environment.etc.secureboot-GUID = {
     source = ./GUID;
@@ -60,6 +58,8 @@
     user = "root";
     group = "root";
   };
+
+  programs.hyprland.enable = true;
 
   home-manager.sharedModules = [
     {
@@ -178,10 +178,6 @@
       options = "rw,nosuid,nodev,relatime,errors=remount-ro,x-mount.mkdir=0755";
     }
   ];
-
-  environment.etc.crypttab.text = ''
-    passport /dev/disk/by-label/PASSPORT none
-  '';
 
   programs.steam.enable = true;
 
