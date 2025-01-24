@@ -49,6 +49,14 @@
       url = "github:hyprwm/Hyprland";
     };
 
+    hyprlock = {
+      url = "github:hyprwm/hyprlock";
+    };
+
+    hypridle = {
+      url = "github:hyprwm/hypridle";
+    };
+
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";

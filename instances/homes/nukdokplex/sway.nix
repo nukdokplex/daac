@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }: {
+{ lib, config, ... }: {
   wayland.windowManager.sway.config = {
     input = {
       "type:keyboard" = {

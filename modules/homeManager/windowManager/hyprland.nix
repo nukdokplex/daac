@@ -29,67 +29,13 @@ let
   };
   resizeModifier = 60;
   generateDirectionBinds = fn:
-    (lib.attrsets.mapAttrsToList (key: props: (fn: { inherit key; inherit (props) direction; resizeX = props.resizeVector.x * resizeModifier; resizeY = props.resizeVector.y * resizeModifier; })) keySynonims.directions;
-      generateWorkspaceBinds = fn: ((lib.lists.imap1 (i: key: (fn i key)) keySynonims.numbersNormal) ++ (lib.lists.imap1 (i: key: (fn i key)) keySynonims.numbersNumpad));
+    (lib.attrsets.mapAttrsToList (key: props: (fn: { inherit key; inherit (props) direction; resizeX = props.resizeVector.x * resizeModifier; resizeY = props.resizeVector.y * resizeModifier; })) keySynonims.directions);
+  generateWorkspaceBinds = fn: ((lib.lists.imap1 (i: key: (fn i key)) keySynonims.numbersNormal) ++ (lib.lists.imap1 (i: key: (fn i key)) keySynonims.numbersNumpad));
 in
 {
   options.custom.hyprland.enable = lib.mkEnableOption "Hyprland configuration";
 
   config = lib.mkIf config.custom.hyprland.enable {
-    service.cliphist = {
-      enable = true;
-      allowImages = true;
-    };
-    programs.wofi.enable = true;
-    config.xdg.configFile."wofi-power-menu.toml" =
-      let
-        systemctl = lib.getExe' pkgs.systemd "systemctl";
-        hyprctl = lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl";
-        loginctl = lib.getExe' pkgs.systemd "loginctl";
-      in
-      {
-        enable = true;
-        target = "wofi-power-menu.toml";
-        source = (pkgs.formats.toml { }).generate "wofi-power-menu.toml" {
-          menu = {
-            shutdown = {
-              enabled = true;
-              title = "Power off";
-              cmd = "'${systemctl}' poweroff";
-            };
-
-            reboot = {
-              enabled = true;
-              title = "Reboot";
-              cmd = "'${systemctl}' reboot";
-            };
-
-            suspend = {
-              enabled = true;
-              title = "Suspend";
-              cmd = "'${systemctl}' suspend";
-            };
-
-            hibernate = {
-              enabled = true;
-              title = "Hibernate";
-              cmd = "'${systemctl}' hibernate";
-            };
-
-            logout = {
-              enabled = true;
-              title = "Logout";
-              cmd = "'${hyprctl}' dispatch exit";
-            };
-
-            lock-screen = {
-              enabled = true;
-              title = "Lock";
-              cmd = "'${loginctl}' lock-session";
-            };
-          };
-        };
-      };
     wayland.windowManager.hyprland = {
       settings = {
         "$mainMod" = "SUPER";
@@ -298,5 +244,144 @@ in
         ];
       };
     };
+    services.cliphist.enable = true;
+    programs.hyprlock = {
+      enable = true;
+      package = self.inputs.hyprlock.packages.${pkgs.stdenv.hostPlatform.system}.hyprlock;
+      settings = {
+        general = {
+          disable_loading_bar = true;
+          grace = 300;
+          hide_cursor = true;
+          no_fade_in = false;
+        };
+
+        background = [
+          {
+            path = "screenshot";
+            blur_passes = 3;
+            blur_size = 8;
+          }
+        ];
+
+        input-field = [
+          {
+            size = "200, 50";
+            position = "0, -80";
+            monitor = "";
+            dots_center = true;
+            fade_on_empty = false;
+            font_color = "rgb(202, 211, 245)";
+            inner_color = "rgb(91, 96, 120)";
+            outer_color = "rgb(24, 25, 38)";
+            outline_thickness = 5;
+            placeholder_text = "Password...";
+            shadow_passes = 2;
+          }
+        ];
+      };
+    };
+    programs.waybar = {
+      enable = true;
+      systemd.enable = true;
+      settings = {
+        modules-left = lib.mkBefore [
+          "hyprland/workspaces"
+          "hyprland/window"
+        ];
+        modules-right = lib.mkAfter [
+          "hyprland/language"
+        ];
+      };
+    };
+    services.swaync.enable = true;
+    programs.wofi.enable = true;
+    services.hypridle = {
+      enable = true;
+      package = self.inputs.hypridle.packages.${pkgs.stdenv.hostPlatform.system}.hypridle;
+      settings = {
+        general = {
+          after_sleep_cmd = "hyprctl dispatch dpms on";
+          ignore_dbus_inhibit = false;
+          lock_cmd = "hyprlock --immediate --no-fade-in";
+        };
+        listener =
+          let
+            cfg = config.custom.hypridle.timeouts;
+          in
+          [ ]
+          ++ lib.optional (cfg.kbd_backlight > -1) {
+            timeout = cfg.kbd_backlight;
+            on-timeout = "'${lib.getExe pkgs.brightnessctl}' -sd chromeos::kbd_backlight set 0";
+            on-resume = "'${lib.getExe pkgs.brightnessctl}' -rd chromeos::kbd_backlight";
+          }
+          ++ lib.optional (cfg.dim_backlight > -1) {
+            timeout = cfg.dim_backlight;
+            on-timeout = "'${lib.getExe pkgs.brightnessctl}' -s set 10";
+            on-resume = "'${lib.getExe pkgs.brightnessctl}' -r";
+          }
+          ++ lib.optional (cfg.off_backlight > -1) {
+            timeout = cfg.off_backlight;
+            on-timeout = "'${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"}' dispatch dpms off";
+          }
+          ++ lib.optional (cfg.lock > -1) {
+            timeout = cfg.lock;
+            on-timeout = "'${lib.getExe config.programs.hyprlock.package}'";
+          }
+          ++ lib.optional (cfg.suspend > -1) {
+            timeout = cfg.suspend;
+            on-timeout = "'${lib.getExe' pkgs.systemd "systemctl"}' suspend";
+          };
+      };
+    };
+    config.xdg.configFile."wofi-power-menu.toml" =
+      let
+        systemctl = lib.getExe' pkgs.systemd "systemctl";
+        hyprctl = lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl";
+        loginctl = lib.getExe' pkgs.systemd "loginctl";
+      in
+      {
+        enable = true;
+        target = "wofi-power-menu.toml";
+        source = (pkgs.formats.toml { }).generate "wofi-power-menu.toml" {
+          menu = {
+            shutdown = {
+              enabled = true;
+              title = "Power off";
+              cmd = "'${systemctl}' poweroff";
+            };
+
+            reboot = {
+              enabled = true;
+              title = "Reboot";
+              cmd = "'${systemctl}' reboot";
+            };
+
+            suspend = {
+              enabled = true;
+              title = "Suspend";
+              cmd = "'${systemctl}' suspend";
+            };
+
+            hibernate = {
+              enabled = true;
+              title = "Hibernate";
+              cmd = "'${systemctl}' hibernate";
+            };
+
+            logout = {
+              enabled = true;
+              title = "Logout";
+              cmd = "'${hyprctl}' dispatch exit";
+            };
+
+            lock-screen = {
+              enabled = true;
+              title = "Lock";
+              cmd = "'${loginctl}' lock-session";
+            };
+          };
+        };
+      };
   };
 }

@@ -60,9 +60,17 @@
   };
 
   programs.hyprland.enable = true;
+  security.pam.services.hyprlock = { };
 
   home-manager.sharedModules = [
     {
+      custom.hyprland.enable = true;
+      custom.hypridle.timeouts = {
+        off_backlight = 90;
+        lock = 180;
+        suspend = 1800;
+      };
+
       wayland.windowManager.hyprland.settings.monitor = [
         "desc:LG Electronics LG ULTRAWIDE 0x00000459, 2560x1080@60.00000, 0x0, 1.00"
       ];
@@ -165,15 +173,6 @@
       wantedBy = [ "multi-user.target" ];
       what = "/dev/disk/by-label/FASTEXT";
       where = "/data/fastext";
-      type = "ext4";
-      options = "rw,nosuid,nodev,relatime,errors=remount-ro,x-mount.mkdir=0755";
-    }
-    {
-      name = "data-passport.mount";
-      enable = true;
-      wantedBy = [ "multi-user.target" ];
-      what = "/dev/mapper/passport";
-      where = "/data/passport";
       type = "ext4";
       options = "rw,nosuid,nodev,relatime,errors=remount-ro,x-mount.mkdir=0755";
     }
