@@ -279,6 +279,7 @@ in
       settings = {
         general = {
           after_sleep_cmd = "hyprctl dispatch dpms on";
+          before_sleep_cmd = "loginctl lock-session";
           ignore_dbus_inhibit = false;
           lock_cmd = "hyprlock --immediate --no-fade-in";
         };
@@ -324,37 +325,37 @@ in
         source = (pkgs.formats.toml { }).generate "wofi-power-menu.toml" {
           menu = {
             shutdown = {
-              enabled = true;
+              enabled = "true";
               title = "Power off";
               cmd = "'${systemctl}' poweroff";
             };
 
             reboot = {
-              enabled = true;
+              enabled = "true";
               title = "Reboot";
               cmd = "'${systemctl}' reboot";
             };
 
             suspend = {
-              enabled = true;
+              enabled = "true";
               title = "Suspend";
               cmd = "'${systemctl}' suspend";
             };
 
             hibernate = {
-              enabled = true;
+              enabled = "true";
               title = "Hibernate";
               cmd = "'${systemctl}' hibernate";
             };
 
             logout = {
-              enabled = true;
+              enabled = "true";
               title = "Logout";
               cmd = "'${hyprctl}' dispatch exit";
             };
 
             lock-screen = {
-              enabled = true;
+              enabled = "true";
               title = "Lock";
               cmd = "'${loginctl}' lock-session";
             };

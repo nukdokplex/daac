@@ -35,19 +35,6 @@
     };
   };
 
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "'${lib.getExe pkgs.greetd.tuigreet}' --cmd '${lib.getExe pkgs.sway}' --time --user-menu --user-menu-min-uid 1000";
-        user = "greeter";
-      };
-      initial_session = {
-        command = "'${lib.getExe pkgs.sway}'";
-        user = "nukdokplex";
-      };
-    };
-  };
 
 
   networking.networkmanager.ensureProfiles.profiles = {
@@ -64,8 +51,32 @@
     group = "root";
   };
 
+  programs.hyprland.enable = true;
+  security.pam.services.hyprlock = { };
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "'${lib.getExe pkgs.greetd.tuigreet}' --cmd '${lib.getExe config.programs.hyprland.package}' --time --user-menu --user-menu-min-uid 1000";
+        user = "greeter";
+      };
+      initial_session = {
+        command = "'${lib.getExe config.programs.hyprland.package}'";
+        user = "nukdokplex";
+      };
+    };
+  };
+
   home-manager.sharedModules = [
     {
+      custom.hyprland.enable = true;
+      custom.hypridle.timeouts = {
+        dim_backlight = 30;
+        off_backlight = 60;
+        lock = 90;
+        suspend = 600;
+      };
       wayland.windowManager.hyprland.settings.monitor = [
         "desc:LG Display 0x05F6, 1920x1080, 0x0, 1.25"
       ];
