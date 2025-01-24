@@ -75,7 +75,6 @@
         "desc:LG Electronics LG ULTRAWIDE 0x00000459, 2560x1080@60.00000, 0x0, 1.00"
       ];
       wayland.windowManager.sway = {
-        enable = true;
         config = {
           startup = lib.mkAfter [
             { command = "'${lib.getExe' pkgs.sway "swaymsg"}' create_output"; }
@@ -121,7 +120,7 @@
   ];
 
   services.printing.drivers = [
-    self.inputs.nukdokplex-nix-packages.packages.${pkgs.stdenv.hostPlatform.system}.epson_201310w
+    pkgs.nur.repos.nukdokplex.epson_201310w
   ];
 
   hardware.printers = {

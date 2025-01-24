@@ -1,4 +1,4 @@
-{ pkgs, lib, config, osConfig, ... }:
+{ lib, config, osConfig, ... }:
 {
   # i don't like standard user dirs names because they have spaces and capital letters
   # those are just fine
@@ -16,10 +16,6 @@
 
   # symlinks to external drive on "sleipnir" host
   home.file = lib.mkIf (osConfig.networking.hostName == "sleipnir") {
-    "dotssh-dir-symlink" = {
-      target = ".ssh";
-      source = config.lib.file.mkOutOfStoreSymlink "/data/passport/ssh";
-    };
     "music-dir-symlink" = {
       target = "music";
       source = config.lib.file.mkOutOfStoreSymlink "/data/archive/music";

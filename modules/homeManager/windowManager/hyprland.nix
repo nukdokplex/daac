@@ -28,8 +28,7 @@ let
     numbersNumpad = [ "KP_End" "KP_Down" "KP_Next" "KP_Left" "KP_Begin" "KP_Right" "KP_Home" "KP_Up" "KP_Prior" "KP_Insert" ];
   };
   resizeModifier = 60;
-  generateDirectionBinds = fn:
-    (lib.attrsets.mapAttrsToList (key: props: (fn: { inherit key; inherit (props) direction; resizeX = props.resizeVector.x * resizeModifier; resizeY = props.resizeVector.y * resizeModifier; })) keySynonims.directions);
+  generateDirectionBinds = fn: (lib.attrsets.mapAttrsToList (key: props: (fn { inherit key; inherit (props) direction; resizeX = builtins.toString (props.resizeVector.x * resizeModifier); resizeY = builtins.toString (props.resizeVector.y * resizeModifier); })) keySynonims.directions);
   generateWorkspaceBinds = fn: ((lib.lists.imap1 (i: key: (fn i key)) keySynonims.numbersNormal) ++ (lib.lists.imap1 (i: key: (fn i key)) keySynonims.numbersNumpad));
 in
 {
@@ -37,6 +36,8 @@ in
 
   config = lib.mkIf config.custom.hyprland.enable {
     wayland.windowManager.hyprland = {
+      enable = true;
+      package = self.inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
       settings = {
         "$mainMod" = "SUPER";
         # autostarts
@@ -86,24 +87,24 @@ in
           "Control_L Alt_L, Delete, Open power menu, exec, '${lib.getExe' wofi-power-menu "wofi-power-menu"}'"
           "$mainMod, P, Screenshot screen region, exec, '${lib.getExe pkgs.grim}' -g \"$('${lib.getExe pkgs.slurp}')\" -l 6 -t png - | '${lib.getExe' pkgs.wl-clipboard "wl-copy"}'"
           "$mainMod Shift_L, P, Screenshot active output, exec, '${lib.getExe pkgs.grim}' -c -l 6 -t png -o \"$('${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"}' activeworkspace -j | '${lib.getExe pkgs.jq}' -r .monitor))\" - | '${lib.getExe' pkgs.wl-clipboard "wl-copy"}'"
-          "$mainMod, T, Open clipboard history, exec, '${lib.getExe config.services.cliphist.package}' list | '${lib.getExe config.programs.wofi.packages}' --dmenu -p 'Select clipboard history entry...' | '${lib.getExe config.services.cliphist.package}' decode | '${lib.getExe' pkgs.wl-clipboard "wl-copy"}'"
+          "$mainMod, T, Open clipboard history, exec, '${lib.getExe config.services.cliphist.package}' list | '${lib.getExe config.programs.wofi.package}' --dmenu -p 'Select clipboard history entry...' | '${lib.getExe config.services.cliphist.package}' decode | '${lib.getExe' pkgs.wl-clipboard "wl-copy"}'"
           "$mainMod, Insert, Enable passthrough mode (disable all binds except this one to disable), submap, passthrough"
           "$mainMod, O, Open file manager, exec, '${lib.getExe pkgs.xfce.thunar}'"
           "$mainMod, Return, Open console, exec, '${lib.getExe config.programs.alacritty.package}'"
           "$mainMod Shift_L, Q, Close active window, killactive"
           "$mainMod, Z, Toggle split (top/side) of the current window, togglesplit"
           "$mainMod, F, Toggle window fullscreen, fullscreen"
-          "$mainMod Shift_L, F, fullscreenstate, 0 3"
+          "$mainMod Shift_L, F, Toggle fake fullscreen, fullscreenstate, 0 3"
           "$mainMod, Space, Toggle window floating, togglefloating"
           "$mainMod, D, Run drun menu, exec, '${lib.getExe config.programs.wofi.package}' --show drun"
         ]
         ++ generateDirectionBinds ({ key, direction, ... }: "$mainMod, ${key}, Move focus, movefocus, ${direction}")
         ++ generateDirectionBinds ({ key, direction, ... }: "$mainMod Shift_L, ${key}, Move window around, swapwindow, ${direction}")
-        ++ generateDirectionBinds ({ key, resizeX, resizeY, ... }: "$mainMod Control_L, ${key}, Resize window, resizeactive, ${resizeX} ${resizeY}")
-        ++ generateWorkspaceBinds (i: key: "$mainMod, ${key}, Switch to workspace ${i}, workspace, ${i}")
-        ++ generateWorkspaceBinds (i: key: "$mainMod Alt_L, ${key}, Switch to workspace ${10+i}, workspace, ${10+i}")
-        ++ generateWorkspaceBinds (i: key: "$mainMod Shift_L, ${key}, Move active window to workspace ${i}, movetoworkspace, ${i}")
-        ++ generateWorkspaceBinds (i: key: "$mainMod Shift_L Alt_L, ${key}, Move window to workspace ${10+i}, movetoworkspace, ${10+i}");
+        ++ generateDirectionBinds ({ key, resizeX, resizeY, ... }: "$mainMod Control_L, ${key}, Resize window, resizeactive, ${builtins.toString resizeX} ${builtins.toString resizeY}")
+        ++ generateWorkspaceBinds (i: key: "$mainMod, ${key}, Switch to workspace ${builtins.toString i}, workspace, ${builtins.toString i}")
+        ++ generateWorkspaceBinds (i: key: "$mainMod Alt_L, ${key}, Switch to workspace ${builtins.toString (10+i)}, workspace, ${builtins.toString (10+i)}")
+        ++ generateWorkspaceBinds (i: key: "$mainMod Shift_L, ${key}, Move active window to workspace ${builtins.toString i}, movetoworkspace, ${builtins.toString i}")
+        ++ generateWorkspaceBinds (i: key: "$mainMod Shift_L Alt_L, ${key}, Move window to workspace ${builtins.toString (10+i)}, movetoworkspace, ${builtins.toString (10+i)}");
 
         # binds
         binddm = [
@@ -255,36 +256,12 @@ in
           hide_cursor = true;
           no_fade_in = false;
         };
-
-        background = [
-          {
-            path = "screenshot";
-            blur_passes = 3;
-            blur_size = 8;
-          }
-        ];
-
-        input-field = [
-          {
-            size = "200, 50";
-            position = "0, -80";
-            monitor = "";
-            dots_center = true;
-            fade_on_empty = false;
-            font_color = "rgb(202, 211, 245)";
-            inner_color = "rgb(91, 96, 120)";
-            outer_color = "rgb(24, 25, 38)";
-            outline_thickness = 5;
-            placeholder_text = "Password...";
-            shadow_passes = 2;
-          }
-        ];
       };
     };
     programs.waybar = {
       enable = true;
       systemd.enable = true;
-      settings = {
+      settings.mainBar = {
         modules-left = lib.mkBefore [
           "hyprland/workspaces"
           "hyprland/window"
@@ -323,10 +300,11 @@ in
           ++ lib.optional (cfg.off_backlight > -1) {
             timeout = cfg.off_backlight;
             on-timeout = "'${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"}' dispatch dpms off";
+            on-resume = "'${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"}' dispatch dpms on";
           }
           ++ lib.optional (cfg.lock > -1) {
             timeout = cfg.lock;
-            on-timeout = "'${lib.getExe config.programs.hyprlock.package}'";
+            on-timeout = "'${lib.getExe' pkgs.systemd "loginctl"}' lock-session";
           }
           ++ lib.optional (cfg.suspend > -1) {
             timeout = cfg.suspend;
@@ -334,7 +312,7 @@ in
           };
       };
     };
-    config.xdg.configFile."wofi-power-menu.toml" =
+    xdg.configFile."wofi-power-menu.toml" =
       let
         systemctl = lib.getExe' pkgs.systemd "systemctl";
         hyprctl = lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl";

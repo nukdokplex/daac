@@ -1,7 +1,4 @@
-{ lib
-, config
-, ...
-}: {
+{ lib, config, ... }: {
   options.custom.gaming = {
     enable = lib.mkOption {
       default = false;
