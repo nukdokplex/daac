@@ -42,6 +42,7 @@ in
       opentabletdriver
       yt-dlp
       nur.repos.nukdokplex.SonixFlasherC
+      obs-cli
     ];
   };
 
@@ -83,6 +84,21 @@ in
           queue-size = 40;
         };
       };
+    };
+    obs-studio = {
+      enable = true;
+      plugins = with pkgs.obs-studio-plugins; [
+        wlrobs
+        input-overlay
+        waveform
+        obs-websocket
+        obs-backgroundremoval
+        obs-tuna
+        obs-vaapi
+        obs-vkcapture
+        obs-gstreamer
+        obs-pipewire-audio-capture
+      ];
     };
   };
 

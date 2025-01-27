@@ -66,9 +66,9 @@
     {
       custom.hyprland.enable = true;
       custom.hypridle.timeouts = {
-        off_backlight = 90;
-        lock = 180;
-        suspend = 1800;
+        off_backlight = 300;
+        lock = 360;
+        suspend = 3600;
       };
 
       wayland.windowManager.hyprland.settings.monitor = [

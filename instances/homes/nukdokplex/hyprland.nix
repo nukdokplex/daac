@@ -11,6 +11,7 @@
 
       bindd = [
         "$mainMod, U, Run browser, exec, firefox"
+        "$mainMod, semicolon, Save replay buffer, exec, obs-cli replaybuffer save"
       ];
 
       exec-once = lib.mkAfter [

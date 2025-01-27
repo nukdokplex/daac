@@ -313,54 +313,48 @@ in
           };
       };
     };
-    xdg.configFile."wofi-power-menu.toml" =
-      let
-        systemctl = lib.getExe' pkgs.systemd "systemctl";
-        hyprctl = lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl";
-        loginctl = lib.getExe' pkgs.systemd "loginctl";
-      in
-      {
-        enable = true;
-        target = "wofi-power-menu.toml";
-        source = (pkgs.formats.toml { }).generate "wofi-power-menu.toml" {
-          menu = {
-            shutdown = {
-              enabled = "true";
-              title = "Power off";
-              cmd = "'${systemctl}' poweroff";
-            };
+    xdg.configFile."wofi-power-menu.toml" = {
+      enable = true;
+      target = "wofi-power-menu.toml";
+      source = (pkgs.formats.toml { }).generate "wofi-power-menu.toml" {
+        menu = {
+          shutdown = {
+            enabled = "true";
+            title = "Power off";
+            cmd = "systemctl poweroff";
+          };
 
-            reboot = {
-              enabled = "true";
-              title = "Reboot";
-              cmd = "'${systemctl}' reboot";
-            };
+          reboot = {
+            enabled = "true";
+            title = "Reboot";
+            cmd = "systemctl reboot";
+          };
 
-            suspend = {
-              enabled = "true";
-              title = "Suspend";
-              cmd = "'${systemctl}' suspend";
-            };
+          suspend = {
+            enabled = "true";
+            title = "Suspend";
+            cmd = "systemctl suspend";
+          };
 
-            hibernate = {
-              enabled = "true";
-              title = "Hibernate";
-              cmd = "'${systemctl}' hibernate";
-            };
+          hibernate = {
+            enabled = "true";
+            title = "Hibernate";
+            cmd = "systemctl hibernate";
+          };
 
-            logout = {
-              enabled = "true";
-              title = "Logout";
-              cmd = "'${hyprctl}' dispatch exit";
-            };
+          logout = {
+            enabled = "true";
+            title = "Logout";
+            cmd = "hyprctl dispatch exit";
+          };
 
-            lock-screen = {
-              enabled = "true";
-              title = "Lock";
-              cmd = "'${loginctl}' lock-session";
-            };
+          lock-screen = {
+            enabled = "true";
+            title = "Lock";
+            cmd = "loginctl lock-session";
           };
         };
       };
+    };
   };
 }
