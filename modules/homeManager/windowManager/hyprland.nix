@@ -340,5 +340,7 @@ in
         };
       };
     };
+
+    custom.wofi.enable = lib.mkDefault true;
   };
 }

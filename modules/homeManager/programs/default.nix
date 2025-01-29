@@ -8,6 +8,7 @@
     ./r2modman.nix
     ./spicetify.nix
     ./waybar
+    ./wofi.nix
     ./wine.nix
     ./zsh.nix
   ];
