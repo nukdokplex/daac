@@ -134,27 +134,11 @@ in
 
         # window rules
         windowrulev2 = [
-          # xwaylandvideobridge
-          "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
-          "noanim,class:^(xwaylandvideobridge)$"
-          "noinitialfocus,class:^(xwaylandvideobridge)$"
-          "maxsize 1 1,class:^(xwaylandvideobridge)$"
-          "noblur,class:^(xwaylandvideobridge)$"
-
-          # firefox picture-in-picture
-          "float, class:(firefox), title:^(Picture-in-Picture)$"
-          "pin, class:(firefox), title:^(Picture-in-Picture)$"
-          "bordercolor rgba(ff0000ff), class:(firefox), title:^(Picture-in-Picture)$"
-          "float, class:(firefox), title:^(Картинка в картинке)$"
-          "pin, class:(firefox), title:^(Картинка в картинке)$"
-          "bordercolor rgba(ff0000ff), class:(firefox), title:^(Картинка в картинкеx)$"
-
           # network manager applet
-          "float, class:(nm-connection-editor)"
+          "float, class:nm-connection-editor"
 
-          # steam tweaks
-          "stayfocused, title:^()$,class:^(steam)$"
-          "minsize 1 1, title:^()$,class:^(steam)$"
+          # qbittorrent
+          "float, class:org.qbittorrent.qBittorrent, title:negative:(qBittorrent)(.*)"
         ];
 
         # appearance
