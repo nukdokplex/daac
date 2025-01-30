@@ -177,7 +177,7 @@
     }
   ];
 
-  programs.steam.enable = true;
+  custom.steam.enable = true;
 
   virtualisation.libvirtd = {
     enable = true;
