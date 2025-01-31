@@ -139,6 +139,9 @@ in
 
           # qbittorrent
           "float, class:org.qbittorrent.qBittorrent, title:negative:(qBittorrent)(.*)"
+
+          # steam
+          "float, class:steam, initialTitle:negative:^(Steam)$"
         ];
 
         # appearance

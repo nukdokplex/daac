@@ -61,9 +61,12 @@ in
     ranger = {
       enable = true;
     };
+    kodi = {
+      enable = true;
+      package = pkgs.kodi-wayland.withPackages (exts: [ ]);
+    };
     waybar.enable = true;
     spicetify.enable = true;
-    kodi.enable = true;
     wpaperd = {
       enable = true;
       settings = {
