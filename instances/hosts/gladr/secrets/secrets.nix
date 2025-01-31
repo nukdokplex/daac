@@ -4,6 +4,5 @@ let
   ];
 in
 {
-  "sing-box/vless-out-uuid.age".publicKeys = hostPublicKeys;
-  "sing-box/vless-out-short_id.age".publicKeys = hostPublicKeys;
+  "yggdrasil.age".publicKeys = hostPublicKeys;
 }

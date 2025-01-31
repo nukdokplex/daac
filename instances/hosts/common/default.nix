@@ -5,9 +5,8 @@
     ./networkManagerProfiles.nix
     ./stylix.nix
     ./zapret.nix
-    ./sing-box.nix
   ];
-  config = lib.mkDefault {
+  config = {
     hardware.enableRedistributableFirmware = true;
     hardware.enableAllFirmware = true;
 
@@ -50,6 +49,18 @@
       package = self.inputs.hyprland.packages.${system}.hyprland;
       portalPackage = self.inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland;
     };
+
+    services.yggdrasil = {
+      enable = true;
+      openMulticastPort = true;
+      settings = {
+        Peers = [ ];
+        IntefacePeers = { };
+        Listen = [ "tls://[::]:33777" ];
+      };
+    };
+
+    networking.firewall.allowedTCPPorts = [ 33777 ];
 
     nix = {
       gc = {
