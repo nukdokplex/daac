@@ -1,10 +1,4 @@
-{ self
-, config
-, osConfig
-, lib
-, pkgs
-, ...
-}:
+{ self, pkgs, ... }:
 let
   username = "nukdokplex";
 in
@@ -12,7 +6,6 @@ in
   imports = [
     self.modules.homeManager.default
     self.inputs.agenix.homeManagerModules.age
-    ./mime.nix
     ./nixvim
     ./sway.nix
     ./hyprland.nix
@@ -20,7 +13,7 @@ in
   ];
 
   home = {
-    stateVersion = "24.05"; # TODO: dehardcodify
+    stateVersion = "24.05";
     homeDirectory = "/home/${username}";
     inherit username;
 
@@ -41,7 +34,6 @@ in
       osu-lazer-bin
       opentabletdriver
       yt-dlp
-      nur.repos.nukdokplex.SonixFlasherC
       obs-cli
     ];
   };

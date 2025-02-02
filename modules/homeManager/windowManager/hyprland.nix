@@ -1,6 +1,5 @@
-{ self, config, lib, pkgs, ... }:
+{ self, config, osConfig, lib, pkgs, ... }:
 let
-  wofi-power-menu = self.inputs.wofi-power-menu.packages.${pkgs.system}.wofi-power-menu;
   keySynonims = {
     directions = rec {
       Left = {
@@ -37,7 +36,11 @@ in
   config = lib.mkIf config.custom.hyprland.enable {
     wayland.windowManager.hyprland = {
       enable = true;
-      package = self.inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      package = osConfig.programs.hyprland.package;
+      plugins = with self.inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}; [
+        hyprbars
+        hyprexpo
+      ];
       settings = {
         "$mainMod" = "SUPER";
         # autostarts
@@ -73,6 +76,34 @@ in
           force_split = 2;
         };
 
+        # plugins
+        plugin = {
+          hyprbars = {
+            bar_color = "rgb(${config.lib.stylix.colors.base01})";
+            bar_height = 20;
+            bar_text_size = 12;
+            bar_text_font = config.stylix.fonts.sansSerif.name;
+            bar_text_align = "left";
+            bar_buttons_alignment = "right";
+            bar_part_of_window = true;
+            hyprbars-button = [
+              "rgb(${config.lib.stylix.colors.base08}), 15, 󰖭, hyprctl dispatch killactive, rgb(${config.lib.stylix.colors.base05})"
+              "rgb(${config.lib.stylix.colors.base0A}), 15, , hyprctl dispatch fullscreen 1, rgb(${config.lib.stylix.colors.base05})"
+            ];
+          };
+          hyprexpo = {
+            columns = 5;
+            gap_size = 5;
+            bg_col = "rgb(${config.lib.stylix.colors.base00})";
+            workspace_method = "first 1";
+
+            enable_gesture = true;
+            gesture_fingers = 3;
+            gesture_distance = 300;
+            gesture_positive = true; # positive = swipe down. Negative = swipe up.
+          };
+        };
+
         # general
         general = {
           gaps_in = 5;
@@ -84,7 +115,7 @@ in
         };
 
         bindd = [
-          "Control_L Alt_L, Delete, Open power menu, exec, '${lib.getExe' wofi-power-menu "wofi-power-menu"}'"
+          "Control_L Alt_L, Delete, Open power menu, exec, '${lib.getExe pkgs.wofi-power-menu }'"
           "$mainMod, P, Screenshot screen region, exec, '${lib.getExe pkgs.grim}' -g \"$('${lib.getExe pkgs.slurp}')\" -l 6 -t png - | '${lib.getExe' pkgs.wl-clipboard "wl-copy"}'"
           "$mainMod Shift_L, P, Screenshot active output, exec, '${lib.getExe pkgs.grim}' -c -l 6 -t png -o \"$('${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"}' activeworkspace -j | '${lib.getExe pkgs.jq}' -r .monitor))\" - | '${lib.getExe' pkgs.wl-clipboard "wl-copy"}'"
           "$mainMod, T, Open clipboard history, exec, '${lib.getExe config.services.cliphist.package}' list | '${lib.getExe config.programs.wofi.package}' --dmenu -p 'Select clipboard history entry...' | '${lib.getExe config.services.cliphist.package}' decode | '${lib.getExe' pkgs.wl-clipboard "wl-copy"}'"
@@ -97,6 +128,7 @@ in
           "$mainMod Shift_L, F, Toggle fake fullscreen, fullscreenstate, 0 3"
           "$mainMod, Space, Toggle window floating, togglefloating"
           "$mainMod, D, Run drun menu, exec, '${lib.getExe config.programs.wofi.package}' --show drun"
+          "$mainMod, Grave, Expo, hyprexpo:expo, toggle"
         ]
         ++ generateDirectionBinds ({ key, direction, ... }: "$mainMod, ${key}, Move focus, movefocus, ${direction}")
         ++ generateDirectionBinds ({ key, direction, ... }: "$mainMod Shift_L, ${key}, Move window around, swapwindow, ${direction}")
@@ -146,8 +178,6 @@ in
 
         # appearance
         decoration = {
-          rounding = config.custom.borders.radius;
-
           blur = {
             enabled = true;
             size = 5;
@@ -232,10 +262,12 @@ in
         ];
       };
     };
+    home.packages = with pkgs; [
+      wl-clipboard
+    ];
     services.cliphist.enable = true;
     programs.hyprlock = {
       enable = true;
-      package = self.inputs.hyprlock.packages.${pkgs.stdenv.hostPlatform.system}.hyprlock;
       settings = {
         general = {
           disable_loading_bar = true;
@@ -262,7 +294,6 @@ in
     programs.wofi.enable = true;
     services.hypridle = {
       enable = true;
-      package = self.inputs.hypridle.packages.${pkgs.stdenv.hostPlatform.system}.hypridle;
       settings = {
         general = {
           after_sleep_cmd = "hyprctl dispatch dpms on";
