@@ -4,6 +4,7 @@
     ../common
     ./disko.nix
     ./secrets
+    ./sing-box.nix
     self.inputs.lanzaboote.nixosModules.lanzaboote
   ];
 

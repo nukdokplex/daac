@@ -1,7 +1,7 @@
 { lib, ... }:
 {
   services.zapret = lib.mkDefault {
-    enable = true;
+    enable = false;
     udpSupport = true;
     udpPorts = [ "50000:50099" ];
     params = [

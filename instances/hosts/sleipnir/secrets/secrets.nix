@@ -5,4 +5,8 @@ let
 in
 {
   "yggdrasil.age".publicKeys = hostPublicKeys;
+  "sb-vless-server.age".publicKeys = hostPublicKeys;
+  "sb-vless-uuid.age".publicKeys = hostPublicKeys;
+  "sb-vless-public_key.age".publicKeys = hostPublicKeys;
+  "sb-vless-short_id.age".publicKeys = hostPublicKeys;
 }

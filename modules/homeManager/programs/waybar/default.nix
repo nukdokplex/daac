@@ -2,11 +2,7 @@
 , lib
 , config
 , ...
-}:
-let
-  clamp = value: min: max: lib.trivial.max min (lib.trivial.min value max);
-in
-with config.lib.stylix.colors.withHashtag; {
+}: with config.lib.stylix.colors.withHashtag; {
   config.stylix.targets.waybar.enable = false;
 
   config.programs.waybar = {
@@ -14,7 +10,7 @@ with config.lib.stylix.colors.withHashtag; {
 
     package = pkgs.waybar;
 
-    settings = rec {
+    settings = {
       mainBar = {
         layer = "bottom";
         postition = "top";
@@ -27,8 +23,16 @@ with config.lib.stylix.colors.withHashtag; {
         modules-center = [ "clock" ];
         modules-right = [
           "group/hardware"
+          "idle_inhibitor"
           "tray"
         ];
+        "idle_inhibitor" = {
+          format = "{icon}";
+          format-icons = {
+            activated = "";
+            deactivated = "";
+          };
+        };
         "hyprland/workspaces" = {
           all-outputs = false;
           format = "{name}";
