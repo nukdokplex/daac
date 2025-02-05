@@ -18,6 +18,7 @@
         gtk3
         mono
         dbus
+        nur.repos.nukdokplex.FAE_Linux
       ];
 
       gamescopeSession.enable = true;
@@ -27,7 +28,6 @@
     };
     programs.gamescope = {
       enable = true;
-      capSysNice = false;
     };
     services.ananicy = {
       enable = true;
@@ -36,7 +36,7 @@
       extraRules = [
         {
           "name" = "gamescope";
-          "nise" = -20;
+          "nice" = -20;
         }
       ];
     };

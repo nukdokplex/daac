@@ -1,6 +1,6 @@
-{ self, config, pkgs, lib, ... }:
+{ self, pkgs, lib, ... }:
 let
-  agenix = self.inputs.agenix.packages.${config.nixpkgs.hostPlatform.system}.agenix;
+  agenix = self.inputs.agenix.packages.${pkgs.system}.agenix;
 in
 {
   nixpkgs.config.permittedInsecurePackages = [
