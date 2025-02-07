@@ -1,9 +1,10 @@
-{ config, ... }:
+{ config, lib, ... }:
 let
   tunName = "tun-singbox";
 in
 {
   networking.firewall.trustedInterfaces = [ tunName ];
+  systemd.services.sing-box.wantedBy = lib.mkForce [ ];
   services.sing-box = {
     enable = false;
     settings = {
